@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Home Page</h1>
+    {% if username %}
+        <p>Hello, you are logged in as {{ username }}.</p>
+        <a href="/logout">Logout</a>
+    {% else %}
+        <p>You are not logged in. Please <a href="/user-login">login</a> to access the home page.</p>
+    {% endif %}
+</body>
+</html>
