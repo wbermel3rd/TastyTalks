@@ -1,11 +1,10 @@
-from flask import Flask, abort, render_template, request, redirect, url_for, session, Blueprint, flash
+from flask import render_template, request, redirect, url_for, Blueprint, flash
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_login import login_user, login_required, logout_user
 from .models import User
 from . import db
-from flask_login import login_user, login_required, current_user, logout_user
 
-
-auth = Blueprint('auth', __name__)
+auth = Blueprint('auth', __name__, template_folder='templates')
 
 @auth.route('/user-login')
 def login():
@@ -43,12 +42,12 @@ def register_post():
     new_user = User(username=username, full_name=full_name, password=generate_password_hash(password, method='sha256'))
     db.session.add(new_user)
     db.session.commit()
-    return redirect(url_for(auth.user-login))
+    return redirect(url_for('auth.user-login'))
 
 
 @auth.route('/logout')
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for(main.index))
+    return redirect(url_for('main.index'))
 

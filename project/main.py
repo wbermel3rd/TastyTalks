@@ -2,7 +2,7 @@ from flask import Flask, abort, render_template, request, redirect, url_for, ses
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import login_user, login_required, current_user, logout_user
 
-main = Blueprint('main', __name__)
+main = Blueprint('main', __name__, template_folder='templates')
 
 @main.route('/')
 @login_required
