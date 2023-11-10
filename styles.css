@@ -1,0 +1,93 @@
+:root{
+    --PrimaryBackgroundColor : #cdf7a0;
+    --FooterBackgroundColor : #292b2d;
+    --PopUpWindowBackgroundColor : #252525;
+    --ButtonBackgroundColor : #333333;
+
+    --Trying : #8CC84B;
+    --Trying2 :rgb(104, 150, 56);
+    --TryingFontColor: rgb(139, 199, 75);
+
+
+    
+    /* --PrimaryBackgroundColor : #c4e1c5;
+    --FooterBackgroundColor : #70b673;
+    --PopUpWindowBackgroundColor : #78bb7b;
+    --ButtonBackgroundColor : #a8d3aa;
+
+    --Trying : #8CC84B;
+    --Trying2 :rgb(104, 150, 56);
+    --TryingFontColor: rgb(139, 199, 75); */
+
+
+    --primaryFont: 'Source Sans Pro', sans-serif;
+    --LittleTextIguess: 'Times New Roman', Times, serif;
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Make sure the page height takes up at least the full viewport height. */
+
+
+    background-color: var(--PrimaryBackgroundColor);
+}
+
+header {
+    display: flex;
+    background-color: var(--Trying2);
+
+}
+
+.main-icon img {
+    width: 4%;
+    height: auto;
+    border-radius: 50%;
+}
+
+.navbar {
+
+    text-align: center;
+
+    background-color: var(--Trying);
+    color: var(--TryingFontColor);
+    
+    font-family: var(--primaryFont);
+    font-weight: bold;
+    font-size: 27px;
+
+    padding: 10px;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: var(--PrimaryBackgroundColor)
+}
+
+main {
+    flex-grow: 1; /* Allow the main content to grow and push the footer down. So that the Footer stays at the bootm*/
+}
+
+footer{
+    display:flex;
+    justify-content: right;
+    padding-right: 4%;
+
+    background-color: var(--Trying);
+    font-weight: bold;
+
+
+
+
+}
