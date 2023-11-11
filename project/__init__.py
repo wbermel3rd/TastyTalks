@@ -9,7 +9,7 @@ def create_app():
     app = Flask(__name__)
     app.config['SECRET_KEY'] = ''
 
-    app.config['SQALCHEMY_DATABASE_URI'] = 'mysql://root:PASSWORD@localhost:5000/users'
+    app.config['SQALCHEMY_DATABASE_URI'] = 'mysql://root:PASSWORD@localhost:3306/users'
 
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -35,5 +35,6 @@ def create_app():
     app.register_blueprint(main_blueprint)
 
     return app
+
 
 app = create_app()
