@@ -302,6 +302,7 @@
   
   .registration-box {
     width: 500px;
+    min-height: 600px;
     padding: 40px;
     background-color: #222;
     border-radius: 8px;

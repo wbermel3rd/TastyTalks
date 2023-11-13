@@ -37,7 +37,7 @@
   .login-container {
     display: flex;
     justify-content: center;
-    padding-top: 30px;
+    padding-top: 30;
     padding-bottom: 850px;
     height: 100vh;
     background-color: #cdf7a0;
@@ -46,6 +46,7 @@
   .login-box {
     width: 500px;
     padding: 40px;
+    min-height: 400px;
     background-color: #222;
     border-radius: 8px;
     text-align: center;
