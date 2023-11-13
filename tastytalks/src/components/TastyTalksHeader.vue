@@ -25,6 +25,7 @@
                 <a href="index.html">Home</a>
                 <a href="#">Recipies</a>
                 <a href="#">Post</a>
+                <a href="/login">Login</a>
             </div>
         </div>
     </header>
