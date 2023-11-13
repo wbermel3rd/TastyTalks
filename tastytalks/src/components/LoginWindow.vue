@@ -15,19 +15,25 @@
           </div>
   
           <button type="button" class="btn sign-in">Sign in</button>
-          <button type="button" class="btn create-account">Create Account</button>
+          <button type="button" class="btn create-account" @click="goToRegister">Create Account</button>
         </form>
       </div>
     </div>
   </template>
     
-  <script>
+<script>
   export default {
-    name: 'LoginWindow'
+    name: 'LoginWindow',
+  
+    methods: {
+      goToRegister() {
+        this.$router.push('/register');
+      }
+    }
   }
-  </script>
+</script>
     
-  <style scoped>
+<style scoped>
   .login-container {
     display: flex;
     justify-content: center;
@@ -83,5 +89,5 @@
   .btn:hover {
     opacity: 0.8;
   }
-  </style>
+</style>
   
