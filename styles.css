@@ -1,5 +1,7 @@
+/* Variables for colors */
 :root{
     --PrimaryBackgroundColor : #cdf7a0;
+    --PrimaryBackgroundColorHOVER : #000000;
     --FooterBackgroundColor : #292b2d;
     --PopUpWindowBackgroundColor : #252525;
     --ButtonBackgroundColor : #333333;
@@ -22,6 +24,33 @@
 
     --primaryFont: 'Source Sans Pro', sans-serif;
     --LittleTextIguess: 'Times New Roman', Times, serif;
+
+
+
+    /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+    /*Background Color*/
+    --primaryBackgroundColor: #191c24;
+    --secondaryBackgroundColor: #EFEFEF;
+    --fourthColor: #f58a5c;
+    --lightFourthColor: #F59D77;
+
+    /*Font*/
+    --primaryFontColor: white;
+    --secondaryFontColor: #6c7293;
+
+    /* Colors: */
+    --white: #FFFFFF;
+    --unnamed-color-707070: #707070;
+    
+    /* Font Family */
+    --primaryFont: 'Source Sans Pro', sans-serif;
+
+
+
+
 }
 
 
@@ -43,16 +72,45 @@ body {
     background-color: var(--PrimaryBackgroundColor);
 }
 
-header {
+.top-header {
     display: flex;
+    
+    /* top, right, bottom, left */
+    padding: 1% 5% 1% 3%;
+
     background-color: var(--Trying2);
+    
+    justify-content: space-between;
 
 }
 
-.main-icon img {
-    width: 4%;
+
+/* Div of the entire logo including Icon + "Tasty Talks" Title */
+.TastlyTalks-LogoDiv a{
+    display: flex;
+    gap: 15px;
+    text-decoration: none;
+}
+
+
+.utility-icons a{
+    color: var(--Trying);
+    font-size: 30px;;
+}
+
+.utility-icons a:hover{
+    color: var(--FooterBackgroundColor)
+
+}
+
+header .main-icon img {
     height: auto;
     border-radius: 50%;
+    max-width: 50px;
+}
+
+h1{
+    color: var(--Trying);
 }
 
 .navbar {
@@ -72,7 +130,13 @@ header {
 
 .navbar a {
     text-decoration: none;
-    color: var(--PrimaryBackgroundColor)
+    color: var(--PrimaryBackgroundColor);
+    padding-right: 15px;
+}
+
+.navbar a:hover{
+    color: var(--PrimaryBackgroundColorHOVER);
+    
 }
 
 main {
@@ -84,10 +148,65 @@ footer{
     justify-content: right;
     padding-right: 4%;
 
+    padding: 7px;
+
     background-color: var(--Trying);
     font-weight: bold;
 
-
-
-
 }
+
+
+
+
+/* ///////new Posts Main Section//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+.newPost-main{
+    padding: 20px 100px 100px 100px;
+}
+
+.form-newPost {
+    border-radius: 5px;
+    background-color: #242935;
+    padding: 20px;
+  }
+
+/* /////// Form ///////////////////// */
+
+.form-newPost {
+    border-radius: 5px;
+    background-color: var(--Trying);
+    padding: 20px;
+  }
+
+
+label{
+    font-family: var(--primaryFont);
+    color: white;
+    font-size: 20px;
+}
+
+input[type=text], select, textarea[type=text], input[type=file], input[type=date], input[type=datetime], input[type=datetime-local] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 15px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+
+input[type=submit] {
+    width: 100%;
+    background-color: var(--fourthColor);
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+input[type=submit]:hover {
+    background-color: var(--lightFourthColor)
+  }
