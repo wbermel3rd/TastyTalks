@@ -1,25 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/HomePage.vue'
-import UserLogin from '../views/LoginWindow.vue'
+import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
+
+
+
 
 const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
-    meta: {
-      requiresAuth: true
-    }
+    component: Home
+
+    // Require the authentification of the user to be able to see the page. 
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path: '/about',
     name: 'About',
     component: () => import('../views/AboutView.vue'),
-    meta: {
-      requiresAuth: true
-    }
+    // meta: {
+    //   requiresAuth: true
+    // }
   },
   {
     path: '/login',
