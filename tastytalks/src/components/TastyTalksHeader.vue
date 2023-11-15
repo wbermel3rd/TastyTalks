@@ -17,6 +17,9 @@
             <div class="utility-icons">
                 <a href=""><i class="fa-solid fa-user"></i></a>
             </div>
+            <div>
+                
+            </div>
         </div>
 
         <!-- NAVBAR PLACEHOLDER   -->
