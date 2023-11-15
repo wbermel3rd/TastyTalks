@@ -1,28 +1,12 @@
 <template>
-    <div class="registration-container">
-      <div class="registration-box">
-        <h1>Create an Account</h1>
-        <form class="register" @submit.prevent="Register">
-          <div class="textbox">
-            <input type="text" placeholder="Full Name">
-          </div>
-          <div class="textbox">
-            <input type="email" placeholder="Email Address" v-model="register_form.email">
-          </div>
-          <div class="textbox">
-            <input type="username" placeholder="Username">
-          </div>
-  
-          <div class="textbox">
-            <input type="password" placeholder="Password" v-model="register_form.password">
-          </div>
-          <div class="textbox">
-            <input type="password" placeholder="Confirm Password">
-          </div>
-          
-          <div class="dropdown">
-            <select required>
-                <option value="" disabled selected>Select your country</option>
+    <div class="Create-Container">
+        <h1>Create New Post</h1>
+        <form action="submit">
+            <h2>Recipe Name</h2>
+            <input type="text" name="recipeName" id="recipeName" placeholder="Recipe Name" required>
+            <h2>Recipe Country of Origin</h2>
+            <select name="countryOfOrigin" id="countrySelect" required>
+                <option value="" disabled selected>Select country</option>
                 <option value="US">United States</option>
                 <option value="AF">Afghanistan</option>
                 <option value="AX">Aland Islands</option>
@@ -276,96 +260,41 @@
                 <option value="ZM">Zambia</option>
                 <option value="ZW">Zimbabwe</option>
             </select>
-          </div>
+            <h2>Recipe Description</h2>
+            <input type="text" name="recipeDescription" id="recipeDescription" placeholder="Recipe Description">
+            <h2>Recipe Instructions & Ingredients</h2>
+            <input type="text" name="recipeIngredients" id="recipeIngredients" placeholder="Recipe Ingredients" required>
 
-          <button type="submit" value="Register" class="btn create-account">Create your Account</button>
+            <h2>Upload Image</h2>
+            <input type="file" name="recipeImage" id="recipeImage" accept="image/*">
+
+            <button>Submit Post</button>
         </form>
-      </div>
     </div>
-  </template>
-    
-  <script>
+</template>
 
-  import { ref } from 'vue'
-  import { useStore } from 'vuex'
+<script>
+</script>
 
-  export default {
-    setup() {
-      const register_form = ref({})
-      const store = useStore()
-
-      const Register = () => {
-          store.dispatch('register', register_form.value)
-      }
-      return {
-          register_form,
-          Register
-      }
-    }
-      
-  }
-  </script>
-    
-  <style scoped>
-  .registration-container {
+<style scoped>
+.Create-Container {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding-top: 30px;
-    padding-bottom: 620px;
+    padding-top: 300px;
+    padding-bottom: 850px;
     height: 100vh;
-  }
-  
-  .registration-box {
-    width: 500px;
-    min-height: 600px;
-    padding: 40px;
-    background-color: #222;
-    border-radius: 8px;
-    text-align: center;
-    color: #fff;
-  }
-  
-  
-  .textbox input {
-    width: 100%;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #8CC84B;
-    background-color: transparent;
+}
+h1{
     color: white;
-  }
+    padding-bottom: 10px;
+}
 
-  .dropdown select{
-    width: 100%;
-    margin-bottom: 20px;
-    margin-top: 10px;
-    padding: 10px;
-    border: none;
-    border-bottom: 2px solid #8CC84B;
-    background-color: transparent;
-    color: rgb(158, 158, 158);
-  }
-  
-  .btn {
-    width: 100%;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .create-account {
-    background-color: #8CC84B;
+h2{
     color: white;
-  }
-  
- /*Button animation*/
-  .btn:hover {
-    opacity: 0.8;
-  }
-  </style>
-  
+}
+
+
+
+</style>

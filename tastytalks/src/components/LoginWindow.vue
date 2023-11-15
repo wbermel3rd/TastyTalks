@@ -47,9 +47,7 @@ import TastyTalksFooter from './TastyTalksFooter.vue';
     justify-content: center;
     padding-top: 30px;
     padding-bottom: 850px;
-    height: 100vh;
-    background-color: #cdf7a0;
-  }
+    height: 100vh;  }
   
   .login-box {
     width: 500px;

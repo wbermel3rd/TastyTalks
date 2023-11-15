@@ -2,7 +2,7 @@
 
 /* Variables for colors */
 :root{
-    --PrimaryBackgroundColor : #cdf7a0;
+    --PrimaryBackgroundColor : #1f2f1e;
     --PrimaryBackgroundColorHOVER : #000000;
     --FooterBackgroundColor : #292b2d;
     --PopUpWindowBackgroundColor : #252525;
@@ -10,7 +10,7 @@
 
     --Trying : #8CC84B;
     --Trying2 :rgb(104, 150, 56);
-    --TryingFontColor: rgb(139, 199, 75);
+    --TryingFontColor: white;
 
 
     
@@ -24,8 +24,8 @@
     --TryingFontColor: rgb(139, 199, 75); */
 
 
-    --primaryFont: 'Source Sans Pro', sans-serif;
-    --LittleTextIguess: 'Times New Roman', Times, serif;
+    --primaryFont: 'Helvetica', sans-serif;
+    --LittleTextIguess: 'Helvetica', sans-serif;
 
     /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -120,8 +120,6 @@ h1{
 
     text-align: center;
 
-    background-color: var(--Trying);
-    color: var(--TryingFontColor);
     
     font-family: var(--primaryFont);
     font-weight: bold;
@@ -133,7 +131,7 @@ h1{
 
 .navbar a {
     text-decoration: none;
-    color: var(--PrimaryBackgroundColor);
+    color: var(--Trying);
     padding-right: 15px;
 }
 

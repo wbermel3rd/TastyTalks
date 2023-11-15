@@ -60,10 +60,9 @@ export default {
   .login-container {
     display: flex;
     justify-content: center;
-    padding-top: 30;
+    padding-top: 30px;
     padding-bottom: 850px;
     height: 100vh;
-    background-color: #cdf7a0;
   }
   
   .login-box {
