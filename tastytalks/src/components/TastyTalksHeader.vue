@@ -15,10 +15,6 @@
                 </a>
             </div>
             <div class="utility-icons">
-                <a href=""><i class="fa-solid fa-user"></i></a>
-            </div>
-            <div>
-                
             </div>
         </div>
 
@@ -27,22 +23,32 @@
         <div class="bottom-header">
             <div class="navbar"> 
                 <router-link to="/">Home</router-link>
-                <router-link to="/login">Login</router-link>
                 <router-link to="/about">About</router-link>
                 <a href="#">Recipies</a>
                 <router-link to="/createpost">Post</router-link>
             </div>
         </div>
+
+        <SignedOutHeader />
+
     </header>
 </template>
 
 <!-- //////////////////////////////////////////// SCRIPT ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <script>
+
+import SignedOutHeader from './SignedOutHeader.vue';
+
   export default {
     // Component logic goes here
     name: 'TastyTalksHeader',
+    components: {
+        SignedOutHeader
+    }
   }
+
+
 </script>
   
 
