@@ -62,8 +62,6 @@ import SignedOutHeader from './SignedOutHeader.vue';
         display: flex;
         /* top, right, bottom, left */
         padding: 1% 5% 1% 3%;
-
-        
         justify-content: space-between;
     }
 
@@ -78,6 +76,7 @@ import SignedOutHeader from './SignedOutHeader.vue';
         width: 100%;
         height: 100%;
         background-color: var(--Trying2);
+        font-family: var(--TestingFont);
     }
     
     .bottom-header{

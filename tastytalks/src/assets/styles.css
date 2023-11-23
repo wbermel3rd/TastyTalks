@@ -1,5 +1,8 @@
 /* Global Css for the App */
 
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
 /* Variables for colors */
 :root{
     --PrimaryBackgroundColor : #1f2f1e;
@@ -23,7 +26,7 @@
     --Trying2 :rgb(104, 150, 56);
     --TryingFontColor: rgb(139, 199, 75); */
 
-
+    --TestingFont: 'Roboto', sans-serif;
     --primaryFont: 'Helvetica', sans-serif;
     --LittleTextIguess: 'Helvetica', sans-serif;
 
@@ -153,57 +156,3 @@ footer{
     font-weight: bold;
 }
 
-
-
-/* ///////new Posts Main Section//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
-
-.newPost-main{
-    padding: 20px 100px 100px 100px;
-}
-
-.form-newPost {
-    border-radius: 5px;
-    background-color: #242935;
-    padding: 20px;
-  }
-
-/* /////// Form ///////////////////// */
-
-.form-newPost {
-    border-radius: 5px;
-    background-color: var(--Trying);
-    padding: 20px;
-  }
-
-
-label{
-    font-family: var(--primaryFont);
-    color: white;
-    font-size: 20px;
-}
-
-input[type=text], select, textarea[type=text], input[type=file], input[type=date], input[type=datetime], input[type=datetime-local] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 15px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
-
-
-input[type=submit] {
-    width: 100%;
-    background-color: var(--fourthColor);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-
-input[type=submit]:hover {
-    background-color: var(--lightFourthColor)
-  }

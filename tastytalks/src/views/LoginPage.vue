@@ -1,28 +1,29 @@
 <template>
     <main>
+
       <div class="login-container">
-      <div class="login-box">
-        <div class="logo">
-          <img src="" alt="Logo Placeholder" />
+        <div class="login-box">
+          <div class="logo">
+            <img src="images/TastkyTalkMainIconSmall.jpg" alt="Logo Placeholder" />
+          </div>
+          <br>
+          <h1>Login</h1>
+          <form class="Login" @submit.prevent="Login">
+            <div class="textbox">
+              <input type="text" placeholder="Email address" v-model="login_form.email">
+            </div>
+    
+            <div class="textbox">
+              <input type="password" placeholder="Password" v-model="login_form.password">
+            </div>
+    
+            <button type="submit" value="Login" class="btn sign-in" >Sign in</button>
+            <button type="button" class="btn create-account" @click="goToRegister">Create Account</button>
+          </form>
         </div>
-        <h1>Login</h1>
-        <form class="Login" @submit.prevent="Login">
-          <div class="textbox">
-            <input type="text" placeholder="Email address" v-model="login_form.email">
-          </div>
-  
-          <div class="textbox">
-            <input type="password" placeholder="Password" v-model="login_form.password">
-          </div>
-  
-          <button type="submit" value="Login" class="btn sign-in" >Sign in</button>
-          <button type="button" class="btn create-account" @click="goToRegister">Create Account</button>
-        </form>
       </div>
-    </div>
-
+      
     </main>
-
   </template>
     
 <script>
@@ -63,13 +64,14 @@ export default {
     padding-top: 30px;
     padding-bottom: 850px;
     height: 100vh;
+    background-color: #222;
   }
   
   .login-box {
-    width: 500px;
+    min-width: 500px;
     padding: 40px;
-    min-height: 400px;
-    background-color: #222;
+    min-height: 500px;
+    
     border-radius: 8px;
     text-align: center;
     color: #fff;
@@ -112,5 +114,16 @@ export default {
   .btn:hover {
     opacity: 0.8;
   }
+
+  h1{
+    font-family: var(--primaryFont);
+  }
+
+  .logo img{
+    height: auto;
+    border-radius: 50%;
+    /* max-width: 50px; */
+  }
+
 </style>
   
