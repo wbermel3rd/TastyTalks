@@ -163,26 +163,10 @@ export default {
       if (tag.trim() !== "") {
         this.tags.push({ name: tag});
         this.newTag = "";
-
-      // const tagList = document.getElementById('tagList');
-
-      // if (tag.trim() !== '') {
-      //   const tagElement = document.createElement('div');
-      //   tagElement.className = 'tag';
-      //   tagElement.innerHTML = `${tag} <span class="tag-delete" @click="deleteTag(tag)">×</span>`;
-      //   tagList.appendChild(tagElement);
-      //   this.newTag = '';
       }
     },
     deleteTag(index) {
-      // const tagList = document.getElementById('tagList');
-      // const tags = tagList.getElementsByClassName('tag');
-      // for (const tagElement of tags) {
-      //   if (tagElement.innerText.startsWith(tag)) {
-      //     tagList.removeChild(tagElement);
-      //     break;
-      //   }
-      // }
+
       this.tags.splice(index, 1);
     },
     toggleDropdown(category) {
@@ -288,7 +272,7 @@ input[type=submit]:hover {
 .tag-dropdown {
   display: inline-block;
   position: relative;
-  background-color: red;
+  padding-right: 10px;
 }
 
 .tag-dropdown-btn {
