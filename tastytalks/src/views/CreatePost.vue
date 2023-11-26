@@ -29,30 +29,95 @@
                     <option value="7">Middle East</option>
                 </select>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                 <!-- Tags Dropdown -->
                 <label for="tags">Tags</label>
+                <br>
+                <br>
+
                 <div class="tag-dropdown">
-                <button class="tag-dropdown-btn">Select Tags</button>
-                <div class="tag-dropdown-content">
-                    <a href="#" @click.prevent="addTag('Holiday')">Holiday</a>
+                  <button class="tag-dropdown-btn" @click="toggleDropdown('course')">Course</button>
+                  <div v-if="showDropdown.course" class="tag-dropdown-content">
+                    <a href="#" @click.prevent="addTag('Easter')">Easter</a>
                     <a href="#" @click.prevent="addTag('Christmas')">Christmas</a>
                     <a href="#" @click.prevent="addTag('Valentine\'s Day')">Valentine's Day</a>
-                    <!-- Add more predefined tags here -->
+                  </div>
                 </div>
+
+                <div class="tag-dropdown">
+                  <button class="tag-dropdown-btn" @click="toggleDropdown('region')">Region</button>
+                  <div v-if="showDropdown.region" class="tag-dropdown-content">
+                    <a href="#" @click.prevent="addTag('North')">North</a>
+                    <a href="#" @click.prevent="addTag('South')">South</a>
+                    <!-- Add more predefined tags for region dropdown -->
+                  </div>
                 </div>
+
+                <div class="tag-dropdown">
+                  <button class="tag-dropdown-btn" @click="toggleDropdown('specialDiets')">Special Diets</button>
+                  <div v-if="showDropdown.specialDiets" class="tag-dropdown-content">
+                    <a href="#" @click.prevent="addTag('Vegetarian')">Vegetarian</a>
+                    <a href="#" @click.prevent="addTag('Vegan')">Vegan</a>
+                    <a href="#" @click.prevent="addTag('Gluten-Free')">Gluten-Free</a>
+                    <!-- Add more predefined tags for special diets dropdown -->
+                  </div>
+                </div>
+
+                <div class="tag-dropdown">
+                  <button class="tag-dropdown-btn" @click="toggleDropdown('holiday')">Holiday</button>
+                  <div v-if="showDropdown.holiday" class="tag-dropdown-content">
+                    <a href="#" @click.prevent="addTag('Thanksgiving')">Thanksgiving</a>
+                    <a href="#" @click.prevent="addTag('Halloween')">Halloween</a>
+                    <a href="#" @click.prevent="addTag('Independence Day')">Independence Day</a>
+                    <!-- Add more predefined tags for holiday dropdown -->
+                  </div>
+                </div>
+
 
                 <!-- Selected Tags -->
-                <label for="selectedTags">Selected Tags</label>
                 <div class="tag-container">
-                <div class="tag-list" id="tagList">
-                    <!-- Tags will be dynamically added here -->
-                </div>
-                <div class="tag-input">
-                    <input type="text" id="tagInput" placeholder="Add a tag" v-model="newTag">
-                    <button type="button" @click.prevent="addTag(newTag)">Add Tag</button>
-                </div>
+                  <div class="tag-list" id="tagList">
+                    <div v-for="(tag, index) in tags" :key="index" class="tag" :style="{ backgroundColor: tag.color }">
+                      <div class="tag-item">
+                        {{ tag.name }}
+                        <span class="tag-delete" @click="deleteTag(index)">×</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
 
+
+
+
+
+
+
+
+
+
+                <!-- This is for inputing tag with a input bar (Could be usefull in the future) -->
+                <!-- <div class="tag-input">
+                    <input type="text" id="tagInput" placeholder="Add a tag" v-model="newTag">
+                    <button type="button" @click.prevent="addTag(newTag)">Add Tag</button>
+                </div> -->
+
+
+                <br>
 
                 <!-- Ingredients -->
                 <label for="ingredients">Recipe Ingredients</label>
@@ -83,32 +148,57 @@ export default {
   data() {
     return {
       newTag: '',
+      showDropdown: {
+        course: false,
+        region: false,
+        specialDiets: false,
+        holiday: false,
+      },
+      tags: [],
     };
   },
   methods: {
     addTag(tag) {
-      const tagList = document.getElementById('tagList');
 
-      if (tag.trim() !== '') {
-        const tagElement = document.createElement('div');
-        tagElement.className = 'tag';
-        tagElement.innerHTML = `${tag} <span class="tag-delete" @click="deleteTag(tag)">×</span>`;
-        tagList.appendChild(tagElement);
-        this.newTag = '';
+      if (tag.trim() !== "") {
+        this.tags.push({ name: tag});
+        this.newTag = "";
+
+      // const tagList = document.getElementById('tagList');
+
+      // if (tag.trim() !== '') {
+      //   const tagElement = document.createElement('div');
+      //   tagElement.className = 'tag';
+      //   tagElement.innerHTML = `${tag} <span class="tag-delete" @click="deleteTag(tag)">×</span>`;
+      //   tagList.appendChild(tagElement);
+      //   this.newTag = '';
       }
     },
-    deleteTag(tag) {
-      const tagList = document.getElementById('tagList');
-      const tags = tagList.getElementsByClassName('tag');
-      for (const tagElement of tags) {
-        if (tagElement.innerText.startsWith(tag)) {
-          tagList.removeChild(tagElement);
-          break;
-        }
+    deleteTag(index) {
+      // const tagList = document.getElementById('tagList');
+      // const tags = tagList.getElementsByClassName('tag');
+      // for (const tagElement of tags) {
+      //   if (tagElement.innerText.startsWith(tag)) {
+      //     tagList.removeChild(tagElement);
+      //     break;
+      //   }
+      // }
+      this.tags.splice(index, 1);
+    },
+    toggleDropdown(category) {
+      // Close all dropdowns
+      for (const key in this.showDropdown) {
+        this.showDropdown[key] = false;
       }
+      // Open the clicked dropdown
+      this.showDropdown[category] = true;
+    },
+    //Add what it needs to
+    submitForm() {
     },
   },
-};
+}
+
 
 
 </script>
@@ -192,5 +282,70 @@ input[type=submit]:hover {
     background-color: var(--lightFourthColor)
   }
 
+
+
+/* Tags Dropdown styles */
+.tag-dropdown {
+  display: inline-block;
+  position: relative;
+  background-color: red;
+}
+
+.tag-dropdown-btn {
+  background-color: var(--fourthColor);
+  color: white;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tag-dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.tag-dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+
+.tag-dropdown:hover .tag-dropdown-content {
+  display: block;
+}
+
+.tag-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  margin: 4px;
+  border-radius: 4px;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+}
+
+.tag-item {
+  margin-right: 8px;
+}
+
+.tag-delete {
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  background-color: #ff4d4d;
+  padding: 4px;
+  border-radius: 50%;
+}
 
 </style>
