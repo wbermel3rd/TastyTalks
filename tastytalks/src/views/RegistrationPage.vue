@@ -1,6 +1,9 @@
 <template>
     <div class="registration-container">
       <div class="registration-box">
+        <div class="logo">
+            <img src="images/TastkyTalkMainIconSmall.jpg" alt="Logo Placeholder" />
+          </div>
         <h1>Create an Account</h1>
         <form class="register" @submit.prevent="Register">
           <div class="textbox">
@@ -89,6 +92,7 @@
     padding-top: 30px;
     padding-bottom: 620px;
     height: 100vh;
+    background-color: #222;
   }
   
   .registration-box {
@@ -142,6 +146,16 @@
  /*Button animation*/
   .btn:hover {
     opacity: 0.8;
+  }
+
+  .logo img{
+    height: auto;
+    border-radius: 50%;
+    /* max-width: 50px; */
+  }
+
+  .logo{
+    margin-bottom: 20px;
   }
   </style>
   
