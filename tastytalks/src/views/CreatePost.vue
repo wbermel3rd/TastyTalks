@@ -4,21 +4,21 @@
         <!-- FORM CONTAINER -->
         <div class="form-newPost">
             <div class="title-CreateNewPost">
-                <h1>Create new Receipe</h1>
+                <h1>Create new Recipe</h1>
             </div>
 
             <!-- FORM -->
 
             <!-- The form action goes to /posts because the page should be redirected to the post page with all the posts when the person click submit -->
-            <form action="/posts" enctype= multipart/form-data method="POST">
+            <form action="./PostFeed.vue" enctype= multipart/form-data method="POST">
 
                 <!-- Receipe Name  -->
-                <label for="title">Receipe Name</label>
-                <input type="text" name="recipeName" id="recipeName" placeholder="Recipe Name" required>
+                <label for="title">Recipe Name</label>
+                <input type="text" name="recipeName" id="recipeName" placeholder="Recipe Name" v-model="recipe_form.title" required>
 
                 <!-- Receipe Category -->
                 <label for="category">Post Category</label>
-                <select name="countryOfOrigin" id="countrySelect" required>
+                <select name="countryOfOrigin" id="countrySelect" v-model="recipe_form.region" required>
                     <option value="" disabled selected>Select Region</option>
                     <option value="1">North America</option>
                     <option value="2">South America</option>
@@ -28,22 +28,6 @@
                     <option value="6">Pacific</option>
                     <option value="7">Middle East</option>
                 </select>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                 <!-- Tags Dropdown -->
                 <label for="tags">Tags</label>
@@ -121,19 +105,18 @@
 
                 <!-- Ingredients -->
                 <label for="ingredients">Recipe Ingredients</label>
-                <input type="text" name="recipeIngredients" id="recipeIngredients" placeholder="Recipe Ingredients" required>
+                <input type="text" name="recipeIngredients" id="recipeIngredients" placeholder="Recipe Ingredients" v-model="recipe_form.ingredients" required>
                 
                 <!-- Instructions, description and details -->
-                <label for="details">Receipe Instructions and Description</label>
-                <textarea id="text" name="recipeDescription" type="text" minlength="10" placeholder="Recipe Details..." required></textarea>
+                <label for="details">Recipe Instructions and Description</label>
+                <textarea id="text" name="recipeDescription" type="text" minlength="10" placeholder="Recipe Details..." v-model="recipe_form.instructions" required></textarea>
 
 
-
-                <!-- Image of receipe -->
-                <label for="image">Image of Receipe</label>
+                <!-- Image of recipe -->
+                <label for="image">Image of Recipe</label>
                 <input id="recipeImage" type="file" name="receipeImage" accept="image/*" required>
 
-                <input type="submit" value="Submit">
+                <input type="submit" @click="addPost" value="Submit" >
             </form>
 
         </div>
@@ -143,43 +126,69 @@
 </template>
 
 <script>
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from '../firebase'
+import { ref } from 'vue'
 
 export default {
-  data() {
-    return {
-      newTag: '',
-      showDropdown: {
-        course: false,
-        region: false,
-        specialDiets: false,
-        holiday: false,
-      },
-      tags: [],
-    };
-  },
-  methods: {
-    addTag(tag) {
+  setup() {
+    const recipe_form = ref({
+      title: '',
+    });
+    const newTag = ref('');
+    const showDropdown = ref({
+      course: false,
+      region: false,
+      specialDiets: false,
+      holiday: false,
+    });
+    const tags = ref([]);
 
-      if (tag.trim() !== "") {
-        this.tags.push({ name: tag});
-        this.newTag = "";
+    const addTag = (tag) => {
+      if (tag.trim() !== '') {
+        tags.value.push({ name: tag });
+        newTag.value = '';
       }
-    },
-    deleteTag(index) {
+    };
 
-      this.tags.splice(index, 1);
-    },
-    toggleDropdown(category) {
+    const deleteTag = (index) => {
+      tags.value.splice(index, 1);
+    };
+
+    const toggleDropdown = (category) => {
       // Close all dropdowns
-      for (const key in this.showDropdown) {
-        this.showDropdown[key] = false;
+      for (const key in showDropdown.value) {
+        showDropdown.value[key] = false;
       }
       // Open the clicked dropdown
-      this.showDropdown[category] = true;
-    },
-    //Add what it needs to
-    submitForm() {
-    },
+      showDropdown.value[category] = true;
+    };
+
+    // Create a recipe post in the database
+    const addPost = () => {
+      addDoc(collection(db, 'recipes'), {
+        date: Date.now(),
+        ingredients: recipe_form.value.ingredients,
+        instructions: recipe_form.value.instructions,
+        tags: tags.value,
+        title: recipe_form.value.title,
+        regionID: recipe_form.value.region,
+        summary:'',
+        // MISSING SUMMARY DECLARATION: NO INPUT FIELD IN FORM
+        // SEPARATE INSTRUCTIONS AND SUMMARY
+      });
+    };
+
+    return {
+      recipe_form,
+      newTag,
+      showDropdown,
+      tags,
+      addTag,
+      deleteTag,
+      toggleDropdown,
+      addPost,
+    };
   },
 }
 
