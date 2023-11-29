@@ -20,13 +20,20 @@
                 <label for="category">Post Category</label>
                 <select name="countryOfOrigin" id="countrySelect" v-model="recipe_form.region" required>
                     <option value="" disabled selected>Select Region</option>
-                    <option value="1">North America</option>
-                    <option value="2">South America</option>
-                    <option value="3">Europe</option>
-                    <option value="4">Asia</option>
-                    <option value="5">Africa</option>
-                    <option value="6">Pacific</option>
-                    <option value="7">Middle East</option>
+                    <option value="1">Asia-Pacific</option>
+                    <option value="2">Caribbean</option>
+                    <option value="3">Central America</option>
+                    <option value="4">Central Asia</option>
+                    <option value="5">Eastern Europe</option>
+                    <option value="6">Middle East</option>
+                    <option value="7">Nordic Countries</option>
+                    <option value="8">North America</option>
+                    <option value="9">Northern Africa</option>
+                    <option value="10">Oceania</option>
+                    <option value="11">Southern Africa</option>
+                    <option value="12">South America</option>
+                    <option value="13">Southeast Asia</option>
+                    <option value="14">Western Europe</option>
                 </select>
 
                 <!-- Tags Dropdown -->

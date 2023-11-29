@@ -29,6 +29,7 @@
     --TestingFont: 'Roboto', sans-serif;
     --primaryFont: 'Helvetica', sans-serif;
     --LittleTextIguess: 'Helvetica', sans-serif;
+    --FancyLogo: 'Irish Grover', sans-serif; 
 
     /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
@@ -101,7 +102,7 @@ main {
 
 .utility-icons a{
     color: var(--Trying);
-    font-size: 30px;;
+    font-size: 30px;
 }
 
 .utility-icons a:hover{
@@ -116,8 +117,10 @@ header .main-icon img {
 }
 
 h1{
+    /* color: var(--Trying); */
     color: var(--Trying);
 }
+
 
 .navbar {
 
@@ -156,3 +159,17 @@ footer{
     font-weight: bold;
 }
 
+/*  Working Header Text
+h1{
+    color: var(--Trying);
+    margin: 0;
+    font-family: 'IrishGrover', sans-serif;
+    -webkit-text-stroke: .4px #194c10; 
+    font-weight: bolder;
+    color: #FADF54; 
+}
+
+@font-face {
+    font-family: 'IrishGrover';
+    src: url('./fonts/ChristmasPudding.otf') format('truetype');
+  } */

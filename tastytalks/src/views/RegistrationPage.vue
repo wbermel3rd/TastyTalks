@@ -29,16 +29,20 @@
           <div class="dropdown">
             <select v-model="register_form.region" required>
                 <option value="" disabled selected>Select your country</option>
-                <option value="1">United States</option>
-                <option value="2">Mexico</option>
-                <option value="3">Canada</option>
-                <option value="4">Central America</option>
-                <option value="5">South America</option>
-                <option value="6">Caribbean Islands</option>
-                <option value="7">Pacific Islands</option>
-                <option value="8"></option>
-                <option value="9"></option>
-                <option value="10"></option>
+                <option value="1">Asia-Pacific</option>
+                <option value="2">Caribbean</option>
+                <option value="3">Central America</option>
+                <option value="4">Central Asia</option>
+                <option value="5">Eastern Europe</option>
+                <option value="6">Middle East</option>
+                <option value="7">Nordic Countries</option>
+                <option value="8">North America</option>
+                <option value="9">Northern Africa</option>
+                <option value="10">Oceania</option>
+                <option value="11">Southern Africa</option>
+                <option value="12">South America</option>
+                <option value="13">Southeast Asia</option>
+                <option value="14">Western Europe</option>
 
                 
             </select>

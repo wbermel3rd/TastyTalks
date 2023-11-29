@@ -24,7 +24,7 @@
             <div class="navbar"> 
                 <router-link to="/">Home</router-link>
                 <router-link to="/about">About</router-link>
-                <a href="#">Recipies</a>
+                <a href="#">Recipes</a>
                 <router-link to="/createpost">Post</router-link>
             </div>
         </div>
