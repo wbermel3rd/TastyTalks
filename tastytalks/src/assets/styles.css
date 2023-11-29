@@ -173,3 +173,19 @@ h1{
     font-family: 'IrishGrover';
     src: url('./fonts/ChristmasPudding.otf') format('truetype');
   } */
+
+  .headerlogo-font {
+    color: var(--Trying);
+    margin: 0;
+    font-size: 30px;
+    font-family: 'WickedMouse', sans-serif;
+    -webkit-text-stroke: .5px #194c10; 
+    font-weight: bolder;
+    color: #FADF54; 
+}
+
+/* Font to create .headerlogo-font */
+@font-face {
+    font-family: 'WickedMouse';
+    src: url('./fonts/Wicked\ Mouse\ Demo.otf') format('truetype');
+  } 

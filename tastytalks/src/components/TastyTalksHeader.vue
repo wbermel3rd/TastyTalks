@@ -10,7 +10,7 @@
                     </div>
         
                     <div class="main-title">
-                        <h1>Tasty Talks</h1>
+                        <h1 class="headerlogo-font">Tasty Talks</h1>
                     </div>
                 </a>
             </div>
