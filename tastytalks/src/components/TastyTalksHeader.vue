@@ -4,7 +4,7 @@
     <header>
         <div class="top-header">
             <div class="TastyTalks-LogoDiv">
-                <a href="createAccount.html">
+                <a href="/">
                     <div class="main-icon">
                         <img src="images/TastkyTalkMainIconSmall.jpg" alt="Main_Icon_of_the_page">
                     </div>
@@ -24,7 +24,7 @@
             <div class="navbar"> 
                 <router-link to="/">Home</router-link>
                 <router-link to="/about">About</router-link>
-                <router-link to="/postfeed">Receipies</router-link>
+                <router-link to="/postfeed">Recipes</router-link>
                 <router-link to="/createpost">Post</router-link>
             </div>
         </div>
@@ -66,6 +66,16 @@ import SignedOutHeader from './SignedOutHeader.vue';
         /* top, right, bottom, left */
         padding: 1% 5% 1% 3%;
         justify-content: space-between;
+    }
+
+    .main-title{
+        white-space: nowrap;;
+    }
+    
+    .main-title{
+        font-size: 20px;
+        font-family: var(--TestingFont);
+        color: var(--Trying2);
     }
 
     .top-header a{
