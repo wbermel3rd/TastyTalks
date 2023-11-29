@@ -5,6 +5,7 @@ import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
 import CreatePost from '../views/CreatePost.vue'
 import PostFeed from '../views/PostFeed.vue'
+import FullscreenPost from '../views/FullscreenPost.vue'
 
 
 
@@ -46,6 +47,11 @@ const routes = [
     path: '/postfeed',
     name: 'PostFeed',
     component: PostFeed
+  },
+  {
+    path: '/post/:id',
+    name: 'Post',
+    component: FullscreenPost
   }
 ]
 

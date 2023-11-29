@@ -2,9 +2,10 @@
     <div class="post-feed">
       <h1>Post Feed</h1>
       <div class="post-grid">
-        <div v-for="post in posts" :key="post.id" class="post-item">
+        <div v-for="post in posts" :key="post.id" class="post-item" @click="goToPost(post.id)">
           <h2>{{ post.title }}</h2>
           <p>{{ post.instructions }}</p>
+          <p>{{ post.date }}</p>
           <!-- Add more details you want to display -->
   
           <!-- Example: Display tags -->
@@ -20,9 +21,15 @@
   import { onMounted, ref } from 'vue';
   import { collection, getDocs } from 'firebase/firestore';
   import { db } from '../firebase';
+import { useRouter } from 'vue-router'; // Import useRouter
+
   
   export default {
     setup() {
+      //Used for fullscreen view
+      const router = useRouter();
+
+
       const posts = ref([]);
   
       // Fetch posts from Firebase and update the component's data
@@ -37,13 +44,18 @@
           });
         });
       };
-  
+
+      const goToPost = (postId) => {
+      router.push({ name: 'Post', params: { id: postId } });
+    };
+      
       onMounted(() => {
         fetchPosts();
       });
   
       return {
         posts,
+        goToPost,
       };
     },
   };
@@ -88,6 +100,7 @@
     border-radius: 5px;
   } */
 }
+
 
 
 </style>
