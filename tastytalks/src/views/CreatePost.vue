@@ -10,7 +10,7 @@
             <!-- FORM -->
 
             <!-- The form action goes to /posts because the page should be redirected to the post page with all the posts when the person click submit -->
-            <form action="./PostFeed.vue" enctype= multipart/form-data method="POST">
+            <form @submit="addPost" enctype= multipart/form-data method="POST">
 
                 <!-- Receipe Name  -->
                 <label for="title">Recipe Name</label>
@@ -139,6 +139,7 @@ import { ref } from 'vue'
 
 export default {
   setup() {
+
     const recipe_form = ref({
       title: '',
     });
@@ -172,8 +173,10 @@ export default {
     };
 
     // Create a recipe post in the database
-    const addPost = () => {
-      addDoc(collection(db, 'recipes'), {
+    const addPost = async (event) => {
+      event.preventDefault();
+
+      await addDoc(collection(db, 'recipes'), {
         date: Date.now(),
         ingredients: recipe_form.value.ingredients,
         instructions: recipe_form.value.instructions,
@@ -183,7 +186,10 @@ export default {
         summary:'',
         // MISSING SUMMARY DECLARATION: NO INPUT FIELD IN FORM
         // SEPARATE INSTRUCTIONS AND SUMMARY
+
+        
       });
+      window.location.href = '/postfeed';
     };
 
     return {
