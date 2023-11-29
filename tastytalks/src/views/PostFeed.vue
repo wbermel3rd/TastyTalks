@@ -1,46 +1,93 @@
 <template>
-
-    <main>
-        
-    </main>
-
-</template>
-
-<script>
-import {onSnapshot,collection,doc,orderBy,query} from 'firebase/firestore';
-import { ref } from 'vue';
-
-export default{
-
-    data:()=>{
-        return {
-            recipes:ref([])
-        }
-    },
-    mounted() {
-        const latestQuery = query(collection(db,"recipes"),orderBy('date'));
-        const liveRecipes = onSnapshot(latestQuery,(snapshot)=>{
-            this.messages = snapshot.docs.map((doc) => {
-                return {
-                title:doc.data().title,
-                date:doc.data().date,
-                ingredients:doc.data().ingredients,
-                instructions:doc.data().instructions, 
-                summary:doc.data().summary,
-                region:doc.data().regionID,
-                tags:doc.data().tags
-                }
-            });
+    <div class="post-feed">
+      <h1>Post Feed</h1>
+      <div class="post-grid">
+        <div v-for="post in posts" :key="post.id" class="post-item">
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.instructions }}</p>
+          <!-- Add more details you want to display -->
+  
+          <!-- Example: Display tags -->
+          <div class="tags">
+            <span v-for="tag in post.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import { onMounted, ref } from 'vue';
+  import { collection, getDocs } from 'firebase/firestore';
+  import { db } from '../firebase';
+  
+  export default {
+    setup() {
+      const posts = ref([]);
+  
+      // Fetch posts from Firebase and update the component's data
+      const fetchPosts = async () => {
+        const postsCollection = collection(db, 'recipes');
+        const querySnapshot = await getDocs(postsCollection);
+  
+        querySnapshot.forEach((doc) => {
+          posts.value.push({
+            id: doc.id,
+            ...doc.data(),
+          });
         });
-        onUnmounted(liveRecipes)
-  }
-
-}
-
-</script>
+      };
+  
+      onMounted(() => {
+        fetchPosts();
+      });
+  
+      return {
+        posts,
+      };
+    },
+  };
+  </script>
+  
 
 
 <style scoped>
+.post-feed {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.post-item {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
+
+.post-item:hover {
+  transform: scale(1.05);
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 10px;
+
+  /* .tag {
+    margin-right: 8px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 5px;
+  } */
+}
 
 
 </style>

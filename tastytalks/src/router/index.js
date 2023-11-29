@@ -4,7 +4,7 @@ import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
 import CreatePost from '../views/CreatePost.vue'
-
+import PostFeed from '../views/PostFeed.vue'
 
 
 
@@ -41,6 +41,11 @@ const routes = [
     path: '/createpost',
     name: 'CreatePost',
     component: CreatePost
+  },
+  {
+    path: '/postfeed',
+    name: 'PostFeed',
+    component: PostFeed
   }
 ]
 
