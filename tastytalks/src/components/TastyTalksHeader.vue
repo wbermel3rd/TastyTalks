@@ -28,8 +28,11 @@
                 <router-link to="/createpost">Post</router-link>
             </div>
         </div>
+        <div class="custom-header">
+            <SignedOutHeader />
+        </div>
 
-        <SignedOutHeader />
+
 
     </header>
 </template>
@@ -84,6 +87,13 @@ import SignedOutHeader from './SignedOutHeader.vue';
         justify-content: center;
         align-items: center;
         width: 55%;
+    }
+    .custom-header{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        width: 45%;
+        max-height: auto;
     }
 
 
