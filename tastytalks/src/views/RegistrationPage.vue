@@ -1,4 +1,5 @@
 <template>
+  <main>
     <div class="registration-container">
       <div class="registration-box">
         <div class="logo">
@@ -52,6 +53,7 @@
         </form>
       </div>
     </div>
+  </main>
   </template>
     
   <script>
