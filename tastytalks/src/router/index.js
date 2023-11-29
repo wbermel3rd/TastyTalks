@@ -4,7 +4,7 @@ import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
 import CreatePost from '../views/CreatePost.vue'
-import RecipeFeed from '../views/PostFeed.vue'
+import RecipeFeed from '../views/RecipeFeed.vue'
 
 
 
