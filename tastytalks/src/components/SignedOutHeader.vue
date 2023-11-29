@@ -10,9 +10,18 @@
 export default{
     name: 'SignedOutHeader',
     methods: {
+<<<<<<< Updated upstream
         goToLogin() {
             this.$router.push('/login');
         }
+=======
+      goToRegister() {
+        this.$router.push('/register');
+      },
+      goToLogin() {
+        this.$router.push('/login');
+      }
+>>>>>>> Stashed changes
     }
 }
 </script>

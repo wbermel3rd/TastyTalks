@@ -4,8 +4,7 @@ import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
 import CreatePost from '../views/CreatePost.vue'
-import PostFeed from '../views/PostFeed.vue'
-import FullscreenPost from '../views/FullscreenPost.vue'
+import RecipeFeed from '../views/PostFeed.vue'
 
 
 
@@ -13,7 +12,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
 
     // Require the authentification of the user to be able to see the page. 
     // meta: {
@@ -44,14 +43,9 @@ const routes = [
     component: CreatePost
   },
   {
-    path: '/postfeed',
-    name: 'PostFeed',
-    component: PostFeed
-  },
-  {
-    path: '/post/:id',
-    name: 'Post',
-    component: FullscreenPost
+    path: '/recipefeed',
+    name: 'RecipeFeed',
+    component: RecipeFeed
   }
 ]
 
