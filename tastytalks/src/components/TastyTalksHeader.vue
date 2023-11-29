@@ -29,7 +29,8 @@
             </div>
         </div>
         <div class="custom-header">
-            <SignedOutHeader />
+            <SignedInHeader v-if="isUserSignedIn" />
+            <SignedOutHeader v-else />
         </div>
 
 
@@ -40,18 +41,30 @@
 <!-- //////////////////////////////////////////// SCRIPT ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
 
 <script>
-
+import { ref, onMounted } from 'vue';
+import { onAuthStateChanged } from 'firebase/auth';
+import { auth } from '../firebase/index'; // Adjust the path to your Firebase configuration
 import SignedOutHeader from './SignedOutHeader.vue';
+import SignedInHeader from './SignedInHeader.vue';
 
-  export default {
-    // Component logic goes here
+export default {
     name: 'TastyTalksHeader',
     components: {
-        SignedOutHeader
+        SignedOutHeader,
+        SignedInHeader
+    },
+    setup() {
+        const isUserSignedIn = ref(false);
+
+        onMounted(() => {
+            onAuthStateChanged(auth, (user) => {
+                isUserSignedIn.value = !!user;
+            });
+        });
+
+        return { isUserSignedIn };
     }
-  }
-
-
+}
 </script>
   
 
