@@ -3,8 +3,19 @@ import Home from '../views/HomePage.vue'
 import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
-import CreatePost from '../views/CreatePost.vue'
+
+//Creating Questions and Recepies Import
+
+import ChoosePost from '../views/ChoosePost.vue'
+import CreateRecipe from '../views/CreateRecipe.vue'
+import CreateQuestion from '../views/CreateQuestion.vue'
+
+
+//Question and Recipe Feed Import
+
+import QuestionFeed from '../views/QuestionFeed.vue'
 import RecipeFeed from '../views/RecipeFeed.vue'
+
 
 
 
@@ -38,15 +49,31 @@ const routes = [
     component: UserRegister
   },
   {
-    path: '/createpost',
-    name: 'CreatePost',
-    component: CreatePost
+    path: '/choosepost',
+    name: 'ChoosePost',
+    component: ChoosePost
+  },
+  {
+    path: '/createrecipe',
+    name: 'CreateRecipe',
+    component: CreateRecipe
+  },
+  {
+    path: '/createquestion',
+    name: 'CreateQuestion',
+    component: CreateQuestion
   },
   {
     path: '/recipefeed',
     name: 'RecipeFeed',
     component: RecipeFeed
-  }
+  },
+  {
+    path: '/questionfeed',
+    name: 'QuestionFeed',
+    component: QuestionFeed
+  },
+  
 ]
 
 const router = createRouter({

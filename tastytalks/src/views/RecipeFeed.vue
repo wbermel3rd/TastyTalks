@@ -1,20 +1,27 @@
 <template>
-  <div class="post-feed">
-    <h1>Recipe Feed</h1>
-    <div class="post-grid">
-      <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)">
-        <h2>{{ recipe.title }}</h2>
-        <p>{{ recipe.instructions }}</p>
-        <p>{{ recipe.date }}</p>
-        <!-- Add more details you want to display -->
+  <main>
+    <div class="post-feed">
+      <h1>Recipe Feed</h1>
+      
+      <div class="post-grid">
+        <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)">
+          <h2>{{ recipe.title }}</h2>
+          <p>{{ recipe.instructions }}</p>
+          <p>{{ recipe.date }}</p>
+          <!-- Add more details you want to display -->
 
-        <!-- Example: Display tags -->
-        <div class="tags">
-          <span v-for="tag in recipe.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
+          <!-- Example: Display tags -->
+          <div class="tags">
+            <span v-for="tag in recipe.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
+          </div>
+
+
+
         </div>
       </div>
     </div>
-  </div>
+    <br>
+  </main>
 </template>
 
 <script>

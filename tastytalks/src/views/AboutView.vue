@@ -1,22 +1,24 @@
 <template>
-
-  <div>
-    <h1>About Us</h1>
-    <div class="slider-container">
-      <div @click="prevPerson" class="nav-button left">❮</div>
-      <div class="slides">
-        <transition :name="slideDirection">
-          <div :key="currentPersonIndex" class="person-slider">
-            <img :src="persons[currentPersonIndex].image" :alt="persons[currentPersonIndex].name">
-            <h2>{{ persons[currentPersonIndex].name }}</h2>
-            <p>{{ persons[currentPersonIndex].jobTitle }}</p>
-          </div>
-        </transition>
+  <main>
+    
+    <div>
+      <h1>About Us</h1>
+      <div class="slider-container">
+        <div @click="prevPerson" class="nav-button left">❮</div>
+        <div class="slides">
+          <transition :name="slideDirection">
+            <div :key="currentPersonIndex" class="person-slider">
+              <img :src="persons[currentPersonIndex].image" :alt="persons[currentPersonIndex].name">
+              <h2>{{ persons[currentPersonIndex].name }}</h2>
+              <p>{{ persons[currentPersonIndex].jobTitle }}</p>
+            </div>
+          </transition>
+        </div>
+        <div @click="nextPerson" class="nav-button right">❯</div>
       </div>
-      <div @click="nextPerson" class="nav-button right">❯</div>
     </div>
-  </div>
 
+  </main>
 </template>
 
 
