@@ -12,6 +12,7 @@
                     <div class="main-title">
                         <h1 class="headerlogo-font">Tasty Talks</h1>
                     </div>
+                    
                 </a>
             </div>
             <div class="utility-icons">
@@ -33,10 +34,11 @@
             <SignedInHeader v-if="isUserSignedIn" />
             <SignedOutHeader v-else />
         </div>
-
+        
 
 
     </header>
+    
 </template>
 
 <!-- //////////////////////////////////////////// SCRIPT ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
@@ -80,6 +82,7 @@ export default {
         /* top, right, bottom, left */
         padding: 1% 5% 1% 3%;
         justify-content: space-between;
+        border-bottom: 2px inset #373D20;
     }
 
     .main-title{
@@ -95,7 +98,7 @@ export default {
     .top-header a{
         display: flex;
         text-decoration: none;
-        gap: 15px;
+        gap: 10px;
     }
     header{
         display: flex;
@@ -111,6 +114,7 @@ export default {
         justify-content: center;
         align-items: center;
         width: 55%;
+        border-bottom: 2px inset #373D20;
     }
     .custom-header{
         display: flex;
@@ -118,6 +122,7 @@ export default {
         align-items: center;
         width: 45%;
         max-height: auto;
+        border-bottom: 2px inset #373D20;
     }
 
 

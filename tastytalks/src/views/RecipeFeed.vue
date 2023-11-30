@@ -1,8 +1,10 @@
+<!-- RecipeFeed.vue -->
 <template>
   <main>
     <div class="post-feed">
-      <h1>Recipe Feed</h1>
-      
+      <div class="centered-container">
+          <h1 class="cylinder-heading">Recipe Feed</h1>
+      </div>
       <div class="post-grid">
         <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)">
           <h2>{{ recipe.title }}</h2>
@@ -14,13 +16,9 @@
           <div class="tags">
             <span v-for="tag in recipe.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
           </div>
-
-
-
         </div>
       </div>
     </div>
-    <br>
   </main>
 </template>
 
@@ -108,6 +106,31 @@ margin-top: 10px;
 } */
 }
 
+/* Page's Heading Background */
+.centered-container {
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
 
+/* Page's Heading  */
+.cylinder-heading {
+    display: inline-block;
+    padding: 10px;
+    background: #373D20; 
+    color: #fff; 
+    border-radius: 20px; /* Border-radius to create a cylinder shape */
+    width: 650px;
+    font-family: 'Arturo', sans-serif; /* Set your font-family */
+    font-size: 35px;
+    margin: 0;
+    line-height: normal;
+}
+
+/* Import title's font */
+@font-face {
+    font-family: 'Arturo';
+    src: url('@/assets/fonts/Arturo-BoldItalic\ Trial.ttf') format('truetype');
+  } 
 
 </style>
