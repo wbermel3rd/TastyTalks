@@ -5,6 +5,7 @@
       <div class="centered-container">
           <h1 class="cylinder-heading">Recipe Feed</h1>
       </div>
+      <p class="page-instructions">Filter recipes by region to find a dilicious recipe.  Once you find an intriguing dish, click to learn more and contribute to the community conversation.</p>
       <div class="post-grid">
         <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)">
           <h2>{{ recipe.title }}</h2>
@@ -109,7 +110,7 @@ margin-top: 10px;
 /* Page's Heading Background */
 .centered-container {
     text-align: center;
-    padding-top: 15px;
+    padding-top: 30px;
     padding-bottom: 15px;
 }
 
@@ -133,4 +134,10 @@ margin-top: 10px;
     src: url('@/assets/fonts/Arturo-BoldItalic\ Trial.ttf') format('truetype');
   } 
 
+.page-instructions {
+  text-align: center;
+  padding-bottom: 15px;
+  font-size: 16px;
+  font-family: 'Helvetica', sans-serif;
+}
 </style>
