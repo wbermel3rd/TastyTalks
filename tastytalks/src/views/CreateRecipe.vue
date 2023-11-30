@@ -1,5 +1,6 @@
 <template>
     <main>
+      <div class="divForm">
 
         <!-- FORM CONTAINER -->
         <div class="form-newPost">
@@ -127,9 +128,10 @@
             </form>
 
         </div>
+      
+      
+      </div>  
     </main>
-
-    
 </template>
 
 <script>
@@ -189,7 +191,7 @@ export default {
 
         
       });
-      window.location.href = '/postfeed';
+      window.location.href = '/recipefeed';
     };
 
     return {
@@ -231,9 +233,7 @@ h2{
 
 /* ///////new Posts Main Section//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-main {
-  padding: 20px 100px 100px 100px;
-}
+
 
 
 
