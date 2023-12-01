@@ -23,7 +23,7 @@
         <!-- (Bottom rectangle with lighter green color that has the pages link inside) -->
         <div class="bottom-header">
             <div class="navbar"> 
-                <router-link to="/">Home</router-link>
+
                 <router-link to="/about">About</router-link>
                 <router-link to="/recipefeed">Recipes</router-link>
                 <router-link to="/questionfeed">Questions</router-link>

@@ -1,11 +1,48 @@
 <!-- RecipeFeed.vue -->
 <template>
   <main>
+
     <div class="post-feed">
+      
       <div class="centered-container">
           <h1 class="cylinder-heading">Recipe Feed</h1>
       </div>
+
       <p class="page-instructions">Filter recipes by region to find a dilicious recipe.  Once you find an intriguing dish, click to learn more and contribute to the community conversation.</p>
+      
+      
+
+
+
+      <!-- Filter Section -->
+      <div class="filter-container">
+        <!-- Region Filter -->
+        <label for="region">Region</label>
+        <select v-model="selectedRegion" @change="fetchRecipes">
+          <option value="" disabled>Select Region</option>
+          <option value="1">Asia-Pacific</option>
+          <!-- Add more options for other regions -->
+        </select>
+
+        <!-- Holiday Filter -->
+        <label for="holiday">Holiday</label>
+        <select v-model="selectedHoliday" @change="fetchRecipes">
+          <option value="" disabled>Select Holiday</option>
+          <option value="Christmas">Christmas</option>
+          <!-- Add more options for other holidays -->
+        </select>
+
+        <!-- Special Diet Filter -->
+        <label for="specialDiet">Special Diet</label>
+        <select v-model="selectedSpecialDiet" @change="fetchRecipes">
+          <option value="" disabled>Select Special Diet</option>
+          <option value="Vegan">Vegan</option>
+          <!-- Add more options for other special diets -->
+        </select>
+      </div>
+
+
+
       <div class="post-grid">
         <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)">
           <h2>{{ recipe.title }}</h2>
@@ -14,34 +51,54 @@
           <!-- Add more details you want to display -->
 
           <!-- Example: Display tags -->
+
           <div class="tags">
             <span v-for="tag in recipe.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
           </div>
         </div>
       </div>
+      <br>
+
     </div>
+
   </main>
 </template>
 
 <script>
 import { onMounted, ref } from 'vue';
-import { collection, getDocs } from 'firebase/firestore';
+import { collection, getDocs, where, query } from 'firebase/firestore';
 import { db } from '../firebase';
-import { useRouter } from 'vue-router'; // Import useRouter
-
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
-    //Used for fullscreen view
     const router = useRouter();
-
-
     const recipes = ref([]);
+    const selectedRegion = ref('');
+    const selectedHoliday = ref('');
+    const selectedSpecialDiet = ref('');
 
-    // Fetch posts from Firebase and update the component's data
     const fetchRecipes = async () => {
       const recipesCollection = collection(db, 'recipes');
-      const querySnapshot = await getDocs(recipesCollection);
+
+      // Prepare filters based on selected values
+      const filters = [];
+      if (selectedRegion.value !== '') {
+        filters.push(where('regionID', '==', selectedRegion.value));
+      }
+      if (selectedHoliday.value !== '') {
+        filters.push(where('tags', 'array-contains', { name: selectedHoliday.value }));
+      }
+      if (selectedSpecialDiet.value !== '') {
+        filters.push(where('tags', 'array-contains', { name: selectedSpecialDiet.value }));
+      }
+
+      // Create a query with filters
+      const q = query(recipesCollection, ...filters);
+
+      const querySnapshot = await getDocs(q);
+
+      recipes.value = [];
 
       querySnapshot.forEach((doc) => {
         recipes.value.push({
@@ -52,9 +109,9 @@ export default {
     };
 
     const goToRecipe = (recipeId) => {
-    router.push({ name: 'Recipe', params: { id: recipeId } });
-  };
-    
+      router.push({ name: 'Recipe', params: { id: recipeId } });
+    };
+
     onMounted(() => {
       fetchRecipes();
     });
@@ -62,14 +119,33 @@ export default {
     return {
       recipes,
       goToRecipe,
+      selectedRegion,
+      selectedHoliday,
+      selectedSpecialDiet,
+      fetchRecipes,
     };
   },
 };
 </script>
 
 
-
 <style scoped>
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.filter-select {
+  margin-right: 10px;
+}
+
+.tag-dropdown {
+  position: relative;
+  margin-right: 10px;
+}
+
 .post-feed {
 max-width: 1200px;
 margin: 0 auto;
