@@ -5,7 +5,7 @@
     <div class="post-feed">
       
       <div class="centered-container">
-          <h1 class="cylinder-heading">Recipe Feed</h1>
+          <h1 class="cylinder-heading">Recipes</h1>
       </div>
 
       <p class="page-instructions">Filter recipes by region, course, season, holiday, or dietary restrictions to find a dilicious recipe. <br>Once you find an intriguing dish, click to learn more and contribute to the community conversation.</p>
