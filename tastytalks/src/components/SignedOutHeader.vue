@@ -2,7 +2,6 @@
     <div class="Account-Container">
         <a href=""><i class="fa-solid fa-user user-icon"></i></a>
         <button class="btn" @click="goToLogin">Login</button>
-        <button class="btn" @click="goToRegister">Create Account</button>
 
     </div>
 </template>
@@ -11,9 +10,6 @@
 export default{
     name: 'SignedOutHeader',
     methods: {
-      goToRegister() {
-        this.$router.push('/register');
-      },
         goToLogin() {
             this.$router.push('/login');
         }
@@ -33,6 +29,7 @@ export default{
 .user-icon{
     color: gray;
     font-size: 45px;
+    padding-right: 25px;
 }
 
 .btn {

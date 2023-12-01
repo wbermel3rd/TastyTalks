@@ -1,5 +1,6 @@
 <template>
     <main>
+      <div class="divForm">
 
         <!-- FORM CONTAINER -->
         <div class="form-newPost">
@@ -17,9 +18,9 @@
                 <input type="text" name="recipeName" id="recipeName" placeholder="Recipe Name" v-model="recipe_form.title" required>
 
                 <!-- Receipe Category -->
-                <label for="category">Post Category</label>
+                <label for="category">Region</label>
                 <select name="countryOfOrigin" id="countrySelect" v-model="recipe_form.region" required>
-                    <option value="" disabled selected>Select Region</option>
+                    <option value="" selected disabled>Select Region</option>
                     <option value="1">Asia-Pacific</option>
                     <option value="2">Caribbean</option>
                     <option value="3">Central America</option>
@@ -44,17 +45,19 @@
                 <div class="tag-dropdown">
                   <button class="tag-dropdown-btn" @click="toggleDropdown('course')">Course</button>
                   <div v-if="showDropdown.course" class="tag-dropdown-content">
-                    <a href="#" @click.prevent="addTag('Easter')">Easter</a>
-                    <a href="#" @click.prevent="addTag('Christmas')">Christmas</a>
-                    <a href="#" @click.prevent="addTag('Valentine\'s Day')">Valentine's Day</a>
+                    <a href="#" @click.prevent="addTag('Starter')">Starter</a>
+                    <a href="#" @click.prevent="addTag('Entrée')">Entrée</a>
+                    <a href="#" @click.prevent="addTag('Dessert')">Dessert</a>
                   </div>
                 </div>
 
                 <div class="tag-dropdown">
-                  <button class="tag-dropdown-btn" @click="toggleDropdown('region')">Region</button>
+                  <button class="tag-dropdown-btn" @click="toggleDropdown('region')">Season</button>
                   <div v-if="showDropdown.region" class="tag-dropdown-content">
-                    <a href="#" @click.prevent="addTag('North')">North</a>
-                    <a href="#" @click.prevent="addTag('South')">South</a>
+                    <a href="#" @click.prevent="addTag('Spring')">Spring</a>
+                    <a href="#" @click.prevent="addTag('Summer')">Summer</a>
+                    <a href="#" @click.prevent="addTag('Fall')">Fall</a>
+                    <a href="#" @click.prevent="addTag('Winter')">Winter</a>
                     <!-- Add more predefined tags for region dropdown -->
                   </div>
                 </div>
@@ -75,6 +78,9 @@
                     <a href="#" @click.prevent="addTag('Thanksgiving')">Thanksgiving</a>
                     <a href="#" @click.prevent="addTag('Halloween')">Halloween</a>
                     <a href="#" @click.prevent="addTag('Independence Day')">Independence Day</a>
+                    <a href="#" @click.prevent="addTag('Easter')">Easter</a>
+                    <a href="#" @click.prevent="addTag('Christmas')">Christmas</a>
+                    <a href="#" @click.prevent="addTag('Valentine\'s Day')">Valentine's Day</a>
                     <!-- Add more predefined tags for holiday dropdown -->
                   </div>
                 </div>
@@ -127,9 +133,10 @@
             </form>
 
         </div>
+      
+      
+      </div>  
     </main>
-
-    
 </template>
 
 <script>
@@ -189,7 +196,7 @@ export default {
 
         
       });
-      window.location.href = '/postfeed';
+      window.location.href = '/recipefeed';
     };
 
     return {
@@ -231,9 +238,7 @@ h2{
 
 /* ///////new Posts Main Section//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
-main {
-    padding: 20px 100px 100px 100px;
-}
+
 
 
 

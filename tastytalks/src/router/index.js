@@ -3,9 +3,23 @@ import Home from '../views/HomePage.vue'
 import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
-import CreatePost from '../views/CreatePost.vue'
-import PostFeed from '../views/PostFeed.vue'
-import FullscreenPost from '../views/FullscreenPost.vue'
+import FullscreenRecipe from '../views/FullscreenRecipe.vue'
+import ProfilePage from '../views/ProfilePage.vue'
+import { onAuthStateChanged } from 'firebase/auth';
+
+
+//Creating Questions and Recepies Import
+
+import ChoosePost from '../views/ChoosePost.vue'
+import CreateRecipe from '../views/CreateRecipe.vue'
+import CreateQuestion from '../views/CreateQuestion.vue'
+
+
+//Question and Recipe Feed Import
+
+import QuestionFeed from '../views/QuestionFeed.vue'
+import RecipeFeed from '../views/RecipeFeed.vue'
+
 
 
 
@@ -13,7 +27,7 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home
+    component: Home,
 
     // Require the authentification of the user to be able to see the page. 
     // meta: {
@@ -23,7 +37,7 @@ const routes = [
   {
     path: '/about',
     name: 'About',
-    component: () => import('../views/AboutView.vue'),
+    component: () => import('../views/AboutPage.vue'),
     // meta: {
     //   requiresAuth: true
     // }
@@ -39,20 +53,53 @@ const routes = [
     component: UserRegister
   },
   {
-    path: '/createpost',
-    name: 'CreatePost',
-    component: CreatePost
+    path: '/choosepost',
+    name: 'ChoosePost',
+    component: ChoosePost
   },
   {
-    path: '/postfeed',
-    name: 'PostFeed',
-    component: PostFeed
+    path: '/createrecipe',
+    name: 'CreateRecipe',
+    component: CreateRecipe
   },
   {
-    path: '/post/:id',
-    name: 'Post',
-    component: FullscreenPost
+    path: '/createquestion',
+    name: 'CreateQuestion',
+    component: CreateQuestion
+  },
+  {
+    path: '/recipefeed',
+    name: 'RecipeFeed',
+    component: RecipeFeed
+  },
+  {
+    path: '/questionfeed',
+    name: 'QuestionFeed',
+    component: QuestionFeed
+  },
+  {
+    path: '/recipe/:id',
+    name: 'Recipe',
+    component: FullscreenRecipe
+  },
+  { 
+    path: '/profile', 
+    name: 'ProfilePage', 
+    component: ProfilePage,
+    beforeEnter: (to, from, next) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          next(); // User is signed in, continue to profile page
+        } else {
+          next({ name: 'UserLogin' }); // No user is signed in, redirect to login
+        }
+      });
+    } 
   }
+  
+  
+  
+  
 ]
 
 const router = createRouter({

@@ -1,9 +1,10 @@
 <template>
+  <main>
     <div class="registration-container">
       <div class="registration-box">
         <div class="logo">
             <img src="images/TastkyTalkMainIconSmall.jpg" alt="Logo Placeholder" />
-          </div>
+        </div>
         <h1>Create an Account</h1>
         <form class="register" @submit.prevent="Register">
           <div class="textbox">
@@ -52,6 +53,7 @@
         </form>
       </div>
     </div>
+    </main>
   </template>
     
   <script>
@@ -95,7 +97,7 @@
     justify-content: center;
     padding-top: 30px;
     padding-bottom: 620px;
-    height: 100vh;
+    /* height: 100vh; */
     background-color: #222;
   }
   

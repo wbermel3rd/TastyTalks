@@ -1,17 +1,22 @@
 <template>
-    <div class="full-post-view" v-if="post">
-      <h1>{{ post.title }}</h1>
-      <p>{{ post.instructions }}</p>
-      <p>{{ post.date }}</p>
-      <!-- Display other post details and comments -->
-    </div>
-    <div v-else>
-      Loading post...
-    </div>
+    <main>
 
-    <div class="comments-container">
-    <h2 class="comments-header">Comments:</h2>
-    </div>
+      <div class="full-post-view" v-if="post">
+        <h1>{{ post.title }}</h1>
+        <p>{{ post.instructions }}</p>
+        <p>{{ post.date }}</p>
+        <!-- Display other post details and comments -->
+      </div>
+
+      <div v-else>
+        Loading post...
+      </div>
+
+      <div class="comments-container">
+        <h2 class="comments-header">Comments:</h2>
+      </div>
+
+    </main>
   </template>
   
   

@@ -5,11 +5,17 @@
 
 /* Variables for colors */
 :root{
+<<<<<<< HEAD
     --PrimaryBackgroundColor : #d1fdcd;
     --PrimaryBackgroundColorHOVER : #000000;
+=======
+    --PrimaryBackgroundColor : #AEDF79;
+    --PrimaryBackgroundColorHOVER : #373D20;
+>>>>>>> 71cac33bd88211956238e4d3e92b1b1db55a7600
     --FooterBackgroundColor : #292b2d;
     --PopUpWindowBackgroundColor : #252525;
     --ButtonBackgroundColor : #333333;
+    --TitleBackgroundColor : #373D20; 
 
     --Trying : #fcfcfc;
     --Trying2 :rgb(24, 236, 87);
@@ -17,7 +23,9 @@
 
 
     
-    /* --PrimaryBackgroundColor : #c4e1c5;
+    /* 
+    --PrimaryBackgroundColor : #1f2f1e;
+    --PrimaryBackgroundColor : #c4e1c5;
     --FooterBackgroundColor : #70b673;
     --PopUpWindowBackgroundColor : #78bb7b;
     --ButtonBackgroundColor : #a8d3aa;
@@ -129,7 +137,7 @@ h1{
     
     font-family: var(--primaryFont);
     font-weight: bold;
-    font-size: 27px;
+    font-size: 20px;
 
     padding: 10px;
 
@@ -137,8 +145,8 @@ h1{
 
 .navbar a {
     text-decoration: none;
-    color: var(--Trying);
-    padding-right: 15px;
+    color: #bce195;
+    padding-right: 20px;
 }
 
 .navbar a:hover{
@@ -159,17 +167,49 @@ footer{
     font-weight: bold;
 }
 
-/*  Working Header Text
-h1{
+/* Font for Tasty Talks header */
+.headerlogo-font {
     color: var(--Trying);
     margin: 0;
-    font-family: 'IrishGrover', sans-serif;
-    -webkit-text-stroke: .4px #194c10; 
+    font-size: 30px;
+    font-family: 'WickedMouse', sans-serif;
+    -webkit-text-stroke: .5px #194c10; 
     font-weight: bolder;
     color: #FADF54; 
 }
 
+/* Font to create .headerlogo-font */
 @font-face {
-    font-family: 'IrishGrover';
-    src: url('./fonts/ChristmasPudding.otf') format('truetype');
-  } */
+    font-family: 'WickedMouse';
+    src: url('./fonts/Wicked\ Mouse\ Demo.otf') format('truetype');
+  } 
+
+/* Nav bar line */
+.custom-line {
+    border: none;
+    height: 10px;
+    background-color: var(--TitleBackgroundColor);
+}
+
+/* Page Heading Background */
+.centered-container {
+    text-align: center;
+}
+
+/* Page Heading  */
+.cylinder-heading {
+    display: inline-block;
+    padding: 20px;
+    background: #3498db; /* Set your background color */
+    color: #fff; /* Set your text color */
+    border-radius: 30px; /* Adjust the border-radius to create a cylinder shape */
+    font-family: 'Arial', sans-serif; /* Set your font-family */
+    margin: 0;
+}
+
+
+
+
+.divForm {
+    padding: 20px 100px 100px 100px;
+  }

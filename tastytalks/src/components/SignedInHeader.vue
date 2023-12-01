@@ -1,15 +1,33 @@
 <template>
     <div class="Account-Container">
-        <a href=""><i class="fa-solid fa-user user-icon"></i></a>
+        <a href=""><i class="fa-solid fa-user user-icon" @click="goToProfile"></i></a>
         <button class="btn">Settings</button>
-        <button class="btn">Log Out</button>
+        <button class="btn" @click="handleLogout">Log Out</button>
 
     </div>
 </template>
 
 <script>
-export default{
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase/index'; // Adjust the path to your Firebase configuration
+
+export default {
     name: 'SignedInHeader',
+    methods: {
+        async handleLogout() {
+            try {
+                await signOut(auth);
+                window.location.reload();
+                // Handle post-logout logic, like redirecting to the home page
+                console.log("Logged out successfully");
+            } catch (error) {
+                console.error("Logout failed:", error);
+            }
+        },
+        goToProfile(){
+            this.$router.push({ name: 'ProfilePage'});
+        }
+    }
 }
 </script>
 
