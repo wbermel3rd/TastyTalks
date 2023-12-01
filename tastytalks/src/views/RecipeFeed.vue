@@ -10,7 +10,7 @@
 
       <p class="page-instructions">Filter recipes by region to find a dilicious recipe.  Once you find an intriguing dish, click to learn more and contribute to the community conversation.</p>
       
-      
+
 
 
 
@@ -19,27 +19,73 @@
         <!-- Region Filter -->
         <label for="region" class= "filter-label">Region</label>
         <select v-model="selectedRegion" @change="fetchRecipes">
-          <option value="" disabled>Select Region</option>
+          <option value="">Select Region</option>
           <option value="1">Asia-Pacific</option>
-          <!-- Add more options for other regions -->
+            <option value="2">Caribbean</option>
+            <option value="3">Central America</option>
+            <option value="4">Central Asia</option>
+            <option value="5">Eastern Europe</option>
+            <option value="6">Middle East</option>
+            <option value="7">Nordic Countries</option>
+            <option value="8">North America</option>
+            <option value="9">Northern Africa</option>
+            <option value="10">Oceania</option>
+            <option value="11">Southern Africa</option>
+            <option value="12">South America</option>
+            <option value="13">Southeast Asia</option>
+            <option value="14">Western Europe</option>
+            <!-- Add more options for other regions -->
         </select>
+
+        <!-- Course Filter -->
+        <label for="course" class= "filter-label">Course</label>
+        <select v-model="selectedCourse" @change="fetchRecipes">
+          <option value="">Select Course</option>
+          <option value="Starter">Starter</option>
+          <option value="Entrée">Entrée</option>
+          <option value="Dessert">Dessert</option>
+          <!-- Add more options for other holidays -->
+        </select>
+
+        <!-- Season Filter -->
+        <label for="specialDiet" class= "filter-label">Season</label>
+        <select v-model="selectedSpecialDiet" @change="fetchRecipes">
+          <option value="">Select Special Diet</option>
+          <option value="Spring">Spring</option>
+          <option value="Summer">Summer</option>
+          <option value="Fall">Fall</option>
+          <option value="Winter">Winter</option>
+          <!-- Add more options for other special diets -->
+        </select>
+
+        <!-- Special Diets Filter -->
+        <label for="specialDiet" class= "filter-label">Special Diet</label>
+        <select v-model="selectedSpecialDiet" @change="fetchRecipes">
+          <option value="">Select Special Diet</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Vegan">Vegan</option>
+          <option value="Gluten-Free">Gluten-Free</option>
+          <!-- Add more options for other special diets -->
+        </select>
+
 
         <!-- Holiday Filter -->
         <label for="holiday" class= "filter-label">Holiday</label>
         <select v-model="selectedHoliday" @change="fetchRecipes">
-          <option value="" disabled>Select Holiday</option>
+          <option value="">Select Holiday</option>
+          <option value="Thanksgiving">Thanksgiving</option>
+          <option value="Halloween">Halloween</option>
+          <option value="Independence Day">Independence Day</option>
+          <option value="Easter">Easter</option>
           <option value="Christmas">Christmas</option>
+          <option value="Valentine's Day">Valentine's Day</option>
           <!-- Add more options for other holidays -->
         </select>
 
-        <!-- Special Diet Filter -->
-        <label for="specialDiet" class= "filter-label">Special Diet</label>
-        <select v-model="selectedSpecialDiet" @change="fetchRecipes">
-          <option value="" disabled>Select Special Diet</option>
-          <option value="Vegan">Vegan</option>
-          <!-- Add more options for other special diets -->
-        </select>
+
       </div>
+
+
 
 
 
@@ -67,7 +113,7 @@
 
 <script>
 import { onMounted, ref } from 'vue';
-import { collection, getDocs, where, query } from 'firebase/firestore';
+import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../firebase';
 import { useRouter } from 'vue-router';
 
@@ -76,37 +122,37 @@ export default {
     const router = useRouter();
     const recipes = ref([]);
     const selectedRegion = ref('');
-    const selectedHoliday = ref('');
+    const selectedCourse = ref('');
+    const selectedSeason = ref('');
     const selectedSpecialDiet = ref('');
+    const selectedHoliday = ref('');
 
     const fetchRecipes = async () => {
       const recipesCollection = collection(db, 'recipes');
+      const querySnapshot = await getDocs(recipesCollection);
 
-      // Prepare filters based on selected values
-      const filters = [];
-      if (selectedRegion.value !== '') {
-        filters.push(where('regionID', '==', selectedRegion.value));
-      }
-      if (selectedHoliday.value !== '') {
-        filters.push(where('tags', 'array-contains', { name: selectedHoliday.value }));
-      }
-      if (selectedSpecialDiet.value !== '') {
-        filters.push(where('tags', 'array-contains', { name: selectedSpecialDiet.value }));
-      }
-
-      // Create a query with filters
-      const q = query(recipesCollection, ...filters);
-
-      const querySnapshot = await getDocs(q);
-
-      recipes.value = [];
+      const filteredRecipes = [];
 
       querySnapshot.forEach((doc) => {
-        recipes.value.push({
-          id: doc.id,
-          ...doc.data(),
-        });
+        const recipeData = doc.data();
+
+        // Check if the recipe matches all selected filters
+        const matchesFilters =
+          (selectedRegion.value === '' || recipeData.regionID === selectedRegion.value) &&
+          (selectedCourse.value === '' || recipeData.course === selectedCourse.value) &&
+          (selectedSeason.value === '' || recipeData.season === selectedSeason.value) &&
+          (selectedSpecialDiet.value === '' || recipeData.tags.some((tag) => tag.name === selectedSpecialDiet.value)) &&
+          (selectedHoliday.value === '' || recipeData.tags.some((tag) => tag.name === selectedHoliday.value));
+
+        if (matchesFilters) {
+          filteredRecipes.push({
+            id: doc.id,
+            ...recipeData,
+          });
+        }
       });
+
+      recipes.value = filteredRecipes;
     };
 
     const goToRecipe = (recipeId) => {
@@ -121,13 +167,18 @@ export default {
       recipes,
       goToRecipe,
       selectedRegion,
-      selectedHoliday,
+      selectedCourse,
+      selectedSeason,
       selectedSpecialDiet,
+      selectedHoliday,
       fetchRecipes,
     };
   },
 };
 </script>
+
+
+
 
 
 <style scoped>
