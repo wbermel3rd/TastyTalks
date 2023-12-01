@@ -3,6 +3,7 @@ import Home from '../views/HomePage.vue'
 import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
+import FullscreenRecipe from '../views/FullscreenRecipe.vue'
 
 //Creating Questions and Recepies Import
 
@@ -73,6 +74,11 @@ const routes = [
     name: 'QuestionFeed',
     component: QuestionFeed
   },
+  {
+    path: '/recipe/:id',
+    name: 'Recipe',
+    component: FullscreenRecipe
+  }
   
 ]
 
