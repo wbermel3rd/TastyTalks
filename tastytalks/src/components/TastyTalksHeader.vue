@@ -26,7 +26,7 @@
                 <router-link to="/">Home</router-link>
                 <router-link to="/about">About</router-link>
                 <router-link to="/recipefeed">Recipes</router-link>
-                <router-link to="/question">Questions</router-link>
+                <router-link to="/questionfeed">Questions</router-link>
                 <router-link to="/choosepost">Create Post</router-link>
             </div>
         </div>
