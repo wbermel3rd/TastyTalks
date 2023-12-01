@@ -5,14 +5,14 @@
 
 /* Variables for colors */
 :root{
-    --PrimaryBackgroundColor : #1f2f1e;
+    --PrimaryBackgroundColor : #d1fdcd;
     --PrimaryBackgroundColorHOVER : #000000;
     --FooterBackgroundColor : #292b2d;
     --PopUpWindowBackgroundColor : #252525;
     --ButtonBackgroundColor : #333333;
 
-    --Trying : #8CC84B;
-    --Trying2 :rgb(104, 150, 56);
+    --Trying : #fcfcfc;
+    --Trying2 :rgb(24, 236, 87);
     --TryingFontColor: white;
 
 
