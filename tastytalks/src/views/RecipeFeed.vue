@@ -8,7 +8,7 @@
           <h1 class="cylinder-heading">Recipe Feed</h1>
       </div>
 
-      <p class="page-instructions">Filter recipes by region to find a dilicious recipe.  Once you find an intriguing dish, click to learn more and contribute to the community conversation.</p>
+      <p class="page-instructions">Filter recipes by region, course, season, holiday, or dietary restrictions to find a dilicious recipe. <br>Once you find an intriguing dish, click to learn more and contribute to the community conversation.</p>
       
 
 
@@ -58,30 +58,28 @@
           <!-- Add more options for other special diets -->
         </select>
 
-        <!-- Special Diets Filter -->
-        <label for="specialDiet" class= "filter-label">Special Diet</label>
-        <select v-model="selectedSpecialDiet" @change="fetchRecipes">
-          <option value="">Select Special Diet</option>
-          <option value="Vegetarian">Vegetarian</option>
-          <option value="Vegan">Vegan</option>
-          <option value="Gluten-Free">Gluten-Free</option>
-          <!-- Add more options for other special diets -->
-        </select>
-
-
         <!-- Holiday Filter -->
         <label for="holiday" class= "filter-label">Holiday</label>
         <select v-model="selectedHoliday" @change="fetchRecipes">
           <option value="">Select Holiday</option>
-          <option value="Thanksgiving">Thanksgiving</option>
+          <option value="Christmas">Christmas</option>
+          <option value="Easter">Easter</option>
           <option value="Halloween">Halloween</option>
           <option value="Independence Day">Independence Day</option>
-          <option value="Easter">Easter</option>
-          <option value="Christmas">Christmas</option>
+          <option value="Thanksgiving">Thanksgiving</option>
           <option value="Valentine's Day">Valentine's Day</option>
           <!-- Add more options for other holidays -->
         </select>
 
+        <!-- Special Diets Filter -->
+        <label for="specialDiet" class= "filter-label">Dietary Restrictions</label>
+        <select v-model="selectedSpecialDiet" @change="fetchRecipes">
+          <option value="">Select Dietary Restrictions</option>
+          <option value="Gluten-Free">Gluten-Free</option>
+          <option value="Vegetarian">Vegetarian</option>
+          <option value="Vegan">Vegan</option>
+          <!-- Add more options for other special diets -->
+        </select>
 
       </div>
 
