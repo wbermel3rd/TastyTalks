@@ -17,7 +17,7 @@
       <!-- Filter Section -->
       <div class="filter-container">
         <!-- Region Filter -->
-        <label for="region">Region</label>
+        <label for="region" class= "filter-label">Region</label>
         <select v-model="selectedRegion" @change="fetchRecipes">
           <option value="" disabled>Select Region</option>
           <option value="1">Asia-Pacific</option>
@@ -25,7 +25,7 @@
         </select>
 
         <!-- Holiday Filter -->
-        <label for="holiday">Holiday</label>
+        <label for="holiday" class= "filter-label">Holiday</label>
         <select v-model="selectedHoliday" @change="fetchRecipes">
           <option value="" disabled>Select Holiday</option>
           <option value="Christmas">Christmas</option>
@@ -33,7 +33,7 @@
         </select>
 
         <!-- Special Diet Filter -->
-        <label for="specialDiet">Special Diet</label>
+        <label for="specialDiet" class= "filter-label">Special Diet</label>
         <select v-model="selectedSpecialDiet" @change="fetchRecipes">
           <option value="" disabled>Select Special Diet</option>
           <option value="Vegan">Vegan</option>
@@ -45,14 +45,15 @@
 
       <div class="post-grid">
         <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)">
-          <h2>{{ recipe.title }}</h2>
-          <p>{{ recipe.instructions }}</p>
-          <p>{{ recipe.date }}</p>
-          <!-- Add more details you want to display -->
-
-          <!-- Example: Display tags -->
-
+          <div class="post-content">
+            <h2 class="recipe-title">{{ recipe.title }}</h2>
+            <p>{{ recipe.instructions }}</p>
+            <!-- Add more details you want to display -->
+          
+          </div>
+          <!-- Display tags -->
           <div class="tags">
+            <strong>Tags:</strong>
             <span v-for="tag in recipe.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
           </div>
         </div>
@@ -135,7 +136,16 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 25px;
+  text-align: center;
 }
+
+/* Spacing Filter Title */
+.filter-label {
+  margin: 12px; 
+  
+}
+
 
 .filter-select {
   margin-right: 10px;
@@ -158,36 +168,55 @@ gap: 20px;
 }
 
 .post-item {
-border: 1px solid #ccc;
+display: flex;
+flex-direction: column;
+box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 padding: 20px;
 border-radius: 8px;
-background-color: #fff;
+height: 275px;
+width: 375px;
+background-color: #bbc9f1;
 transition: transform 0.3s ease-in-out;
+}
+
+.post-content {
+  flex: 1; /* Allow the content to grow and take the available space */
 }
 
 .post-item:hover {
 transform: scale(1.05);
 }
 
-.tags {
-display: flex;
-flex-wrap: wrap;
-margin-top: 10px;
-
-/* .tag {
-  margin-right: 8px;
-  background-color: #007bff;
-  color: #fff;
-  padding: 5px 10px;
-  border-radius: 5px;
-} */
+/* Used for "Tags:" label before tags*/
+.tags strong {
+  margin-right: 8px; 
+  margin-top: auto;
+  font-size: 16px;
 }
+
+/* Format for tag lists in recipe boxes*/
+.tags .tag { 
+  display: inline-block;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-right: 8px; 
+  padding: 3px;
+  background-color: rgb(104, 150, 56);
+  font-weight: bold;
+  font-size: 16px;
+  color: #fff4ba;
+  border-radius: 2px;
+}
+
+/* background-color: rgb(104, 150, 56);
+  border-radius: 10px;
+  color: #FADF54; */
 
 /* Page's Heading Background */
 .centered-container {
     text-align: center;
     padding-top: 30px;
-    padding-bottom: 15px;
+    padding-bottom: 25px;
 }
 
 /* Page's Heading  */
@@ -210,10 +239,19 @@ margin-top: 10px;
     src: url('@/assets/fonts/Arturo-BoldItalic\ Trial.ttf') format('truetype');
   } 
 
+  /* Font and format for text under title*/
 .page-instructions {
   text-align: center;
-  padding-bottom: 15px;
+  padding: 22px;
   font-size: 16px;
   font-family: 'Helvetica', sans-serif;
 }
+
+.recipe-title {
+  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Helvetica', sans-serif;
+}
+
 </style>
