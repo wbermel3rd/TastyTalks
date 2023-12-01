@@ -4,6 +4,9 @@ import UserLogin from '../views/LoginPage.vue'
 import UserRegister from '../views/RegistrationPage.vue'
 import { auth } from '../firebase'
 import FullscreenRecipe from '../views/FullscreenRecipe.vue'
+import ProfilePage from '../views/ProfilePage.vue'
+import { onAuthStateChanged } from 'firebase/auth';
+
 
 //Creating Questions and Recepies Import
 
@@ -78,7 +81,24 @@ const routes = [
     path: '/recipe/:id',
     name: 'Recipe',
     component: FullscreenRecipe
+  },
+  { 
+    path: '/profile', 
+    name: 'ProfilePage', 
+    component: ProfilePage,
+    beforeEnter: (to, from, next) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          next(); // User is signed in, continue to profile page
+        } else {
+          next({ name: 'UserLogin' }); // No user is signed in, redirect to login
+        }
+      });
+    } 
   }
+  
+  
+  
   
 ]
 

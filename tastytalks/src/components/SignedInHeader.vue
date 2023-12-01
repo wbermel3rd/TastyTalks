@@ -1,6 +1,6 @@
 <template>
     <div class="Account-Container">
-        <a href=""><i class="fa-solid fa-user user-icon"></i></a>
+        <a href=""><i class="fa-solid fa-user user-icon" @click="goToProfile"></i></a>
         <button class="btn">Settings</button>
         <button class="btn" @click="handleLogout">Log Out</button>
 
@@ -23,6 +23,9 @@ export default {
             } catch (error) {
                 console.error("Logout failed:", error);
             }
+        },
+        goToProfile(){
+            this.$router.push({ name: 'ProfilePage'});
         }
     }
 }
