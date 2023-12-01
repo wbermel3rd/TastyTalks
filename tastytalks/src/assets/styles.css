@@ -5,13 +5,10 @@
 
 /* Variables for colors */
 :root{
-<<<<<<< HEAD
     --PrimaryBackgroundColor : #d1fdcd;
     --PrimaryBackgroundColorHOVER : #000000;
-=======
-    --PrimaryBackgroundColor : #AEDF79;
+    --PrimaryBackgroundColor : #dcfabd;
     --PrimaryBackgroundColorHOVER : #373D20;
->>>>>>> 71cac33bd88211956238e4d3e92b1b1db55a7600
     --FooterBackgroundColor : #292b2d;
     --PopUpWindowBackgroundColor : #252525;
     --ButtonBackgroundColor : #333333;
@@ -145,7 +142,7 @@ h1{
 
 .navbar a {
     text-decoration: none;
-    color: #bce195;
+    color: #d7f1bc;
     padding-right: 20px;
 }
 
