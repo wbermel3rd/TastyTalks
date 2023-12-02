@@ -2,8 +2,17 @@
   <main>
 
     <div class="centered-container">
-          <h1 class="cylinder-heading">About Us</h1>
+          <h1 class="cylinder-heading">Tasty Talks</h1>
       </div>
+
+    
+    <div class="container">
+        <img src="images/TastkyTalkMainIcon.jpg" alt="Image">
+          <div class="text-box">
+              <p>       Where UNC Charlotte students come together to share and discover recipes from around the world.  Explore diverse culinary traditions, and connect with fellow students passionate about the art of cooking. Embark on a flavorful journey with us!</p>
+        </div>
+    </div>
+    
 
     <div class="slider-container">
 
@@ -83,7 +92,7 @@ export default {
 
 </script>
 
-<style>
+<style scoped>
 
 h1 {
   text-align: center;
@@ -176,6 +185,34 @@ h1 {
 
 .slide-right-enter, .slide-left-leave-to {
   transform: translateX(100%);
+}
+
+
+.container {
+    display: flex;
+    align-items: center;
+    margin-top: 50px;
+    margin-right: 150px;
+    margin-left: 150px;
+    margin-bottom: 50px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    margin-right: 120px;
+}
+
+
+.text-box {
+    background-color: #373D20;
+    padding: 20px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;
+    color: #dcfabd;
 }
 
 
