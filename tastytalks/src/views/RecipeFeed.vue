@@ -88,10 +88,12 @@
 
 
       <div class="post-grid">
-        <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)">
+        <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)"> <!--  -->
           <div class="post-content">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
             <p>{{ recipe.instructions }}</p>
+            <img :src="recipe.image" alt="Recipe Image" style="max-height:30px;">
+
             <!-- Add more details you want to display -->
           
           </div>
@@ -172,6 +174,8 @@ export default {
       fetchRecipes,
     };
   },
+  
+
 };
 </script>
 

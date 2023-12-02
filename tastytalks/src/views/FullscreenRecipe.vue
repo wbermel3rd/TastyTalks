@@ -52,7 +52,7 @@
       return {
         post,
       };
-    },
+    }
   };
   </script>
   

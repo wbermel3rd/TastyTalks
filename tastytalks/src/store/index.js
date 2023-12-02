@@ -11,7 +11,35 @@ import {
 
 export default createStore({
   state: {
-    user: null
+    loadedRecipes:[
+      {
+        id: 'qlwkjdhfiuqewnlc',
+        title: '',
+        date: '2023-12-1',
+      },
+      {
+        id: 'alksecluqwneckqjn',
+        title: '',
+        date: '2023-12-2',
+      }
+    ],
+    loadedQuestions:[
+      {
+        id: 'qlwkjdhfiuqewnlc',
+        title: '',
+        date: '2023-12-1',
+      },
+      {
+        id: 'alksecluqwneckqjn',
+        title: '',
+        date: '2023-12-2',
+      }
+    ],
+    user: {
+      id: 'asdfasdfasdf',
+      createdRecipes: ['qlwkjdhfiuqewnlc'],
+      createdQuestions: [] 
+    }
   },
   mutations: {
 
@@ -91,5 +119,38 @@ export default createStore({
         }
       })
     }
+  },
+  getters: {
+    loadedRecipes(state){
+      return state.loadedRecipes.sort((recipeA, recipeB) => {
+        return recipeA.date > recipeB.date
+      })
+    },
+    loadedRecipe(state){
+      return(recipeId) => {
+        return state.loadedRecipes.find((recipe) => {
+          return recipe.id === recipeId
+        })
+      }
+    },
+    loadedQuestions(state){
+      return state.loadedQuestions.sort((questionA, questionB) => {
+        return questionA.date > questionB.date
+      })
+    },
+    loadedQuestion(state){
+      return(questionId) => {
+        return state.loadedQuestions.find((question) => {
+          return question.id === questionId
+        })
+      }
+    },
+    featuredRecipes(state, getters){
+      return getters.loadedRecipes.slice(0, 3)
+    },
+    featuredQuestions(state, getters){
+      return getters.loadedQuestions.slice(0, 3)
+    }
+
   }
 })

@@ -125,10 +125,17 @@
                 <textarea id="text" name="recipeDescription" type="text" minlength="10" placeholder="Recipe Details..." v-model="recipe_form.instructions" required></textarea>
 
 
-                <!-- Image of recipe -->
-                <label for="image">Image of Recipe</label>
-                <input id="recipeImage" type="file" name="receipeImage" accept="image/*" required>
+                <!-- Image upload -->
+                <label for="image">Recipe Image</label>
+                <input 
+                type="file" 
+                id="imageUpload"
+                accept="image/*"
+                required>
 
+                <!-- <img :src="picture.value" alt="preview">      -->
+
+                <!-- Submit recipe -->
                 <input type="submit" @click="addPost" value="Submit" >
             </form>
 
@@ -143,12 +150,18 @@
 import { addDoc, collection } from 'firebase/firestore';
 import { db } from '../firebase'
 import { ref } from 'vue'
+import { uploadBytes } from 'firebase/storage';
+import { firebaseRef, storage} from '../firebase';
+import { getDownloadURL } from 'firebase/storage';
+
 
 export default {
+
   setup() {
 
     const recipe_form = ref({
       title: '',
+
     });
     const newTag = ref('');
     const showDropdown = ref({
@@ -181,22 +194,49 @@ export default {
 
     // Create a recipe post in the database
     const addPost = async (event) => {
+
       event.preventDefault();
+      const imageInput = document.getElementById("imageUpload");
+      const file = imageInput.files[0];
+      let imageUrl = '';
 
-      await addDoc(collection(db, 'recipes'), {
-        date: Date.now(),
-        ingredients: recipe_form.value.ingredients,
-        instructions: recipe_form.value.instructions,
-        tags: tags.value,
-        title: recipe_form.value.title,
-        regionID: recipe_form.value.region,
-        summary:'',
-        // MISSING SUMMARY DECLARATION: NO INPUT FIELD IN FORM
-        // SEPARATE INSTRUCTIONS AND SUMMARY
+      if (file) {
+        try {
+          // Perform the upload
+          const fileRef = firebaseRef(storage, `images/recipePics/${file.name}`);
 
+          // Now upload the file
+          const uploadTaskSnapshot = await uploadBytes(fileRef, file);
+          imageUrl = await getDownloadURL(uploadTaskSnapshot.ref);
+        } 
         
-      });
-      window.location.href = '/recipefeed';
+        catch (error) {
+          console.error("Error uploading file: ", error);
+          // Handle the error (e.g., display an error message)
+          return;
+        }
+      }
+
+      try {
+        await addDoc(collection(db, 'recipes'), {
+          date: Date.now(),
+          ingredients: recipe_form.value.ingredients,
+          instructions: recipe_form.value.instructions,
+          tags: tags.value,
+          title: recipe_form.value.title,
+          regionID: recipe_form.value.region,
+          summary: '',
+          image: imageUrl
+          // MISSING SUMMARY DECLARATION: NO INPUT FIELD IN FORM
+          // SEPARATE INSTRUCTIONS AND SUMMARY
+        });
+        window.location.href = '/recipefeed';
+      } 
+      
+      catch (error) {
+        console.error("Error adding document: ", error);
+        // Handle the error (e.g., display an error message)
+      }
     };
 
     return {
@@ -210,10 +250,9 @@ export default {
       addPost,
     };
   },
+  methods:{
+  }
 }
-
-
-
 </script>
 
 <style scoped>
