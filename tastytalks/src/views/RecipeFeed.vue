@@ -261,26 +261,6 @@ transform: scale(1.05);
   border-radius: 10px;
   color: #FADF54; */
 
-/* Page's Heading Background */
-.centered-container {
-    text-align: center;
-    padding-top: 30px;
-    padding-bottom: 25px;
-}
-
-/* Page's Heading  */
-.cylinder-heading {
-    display: inline-block;
-    padding: 10px;
-    background: #373D20; 
-    color: #fff; 
-    border-radius: 20px; /* Border-radius to create a cylinder shape */
-    width: 650px;
-    font-family: 'Arturo', sans-serif; /* Set your font-family */
-    font-size: 35px;
-    margin: 0;
-    line-height: normal;
-}
 
 /* Import title's font */
 @font-face {
@@ -288,7 +268,7 @@ transform: scale(1.05);
     src: url('@/assets/fonts/Arturo-BoldItalic\ Trial.ttf') format('truetype');
   } 
 
-  /* Font and format for text under title*/
+  /* Font and format for text under page title*/
 .page-instructions {
   text-align: center;
   padding: 22px;
@@ -296,6 +276,7 @@ transform: scale(1.05);
   font-family: 'Helvetica', sans-serif;
 }
 
+/* For recipe title in recipe feed boxes*/
 .recipe-title {
   margin-bottom: 10px;
   font-size: 26px;

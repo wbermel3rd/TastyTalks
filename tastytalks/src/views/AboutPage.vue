@@ -179,23 +179,4 @@ h1 {
 }
 
 
-/* Page's Heading Background */
-.centered-container {
-    text-align: center;
-    padding-top: 30px;
-    padding-bottom: 25px;
-}
-
-.cylinder-heading {
-    display: inline-block;
-    padding: 10px;
-    background: #373D20; 
-    color: #fff; 
-    border-radius: 20px; /* Border-radius to create a cylinder shape */
-    width: 650px;
-    font-family: 'Arturo', sans-serif; /* Set your font-family */
-    font-size: 35px;
-    margin: 0;
-    line-height: normal;
-}
 </style>
