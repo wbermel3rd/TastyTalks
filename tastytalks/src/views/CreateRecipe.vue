@@ -147,12 +147,11 @@
 </template>
 
 <script>
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, updateDoc, doc, arrayUnion, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../firebase'
 import { ref } from 'vue'
-import { uploadBytes } from 'firebase/storage';
-import { firebaseRef, storage} from '../firebase';
-import { getDownloadURL } from 'firebase/storage';
+import { uploadBytes, getDownloadURL } from 'firebase/storage';
+import { firebaseRef, storage, auth} from '../firebase';
 
 
 export default {
@@ -196,62 +195,109 @@ export default {
     const addPost = async (event) => {
 
       event.preventDefault();
-      const imageInput = document.getElementById("imageUpload");
-      const file = imageInput.files[0];
-      let imageUrl = '';
 
-      if (file) {
-        try {
-          // Perform the upload
-          const fileRef = firebaseRef(storage, `images/recipePics/${file.name}`);
+      const user = auth.currentUser
 
-          // Now upload the file
-          const uploadTaskSnapshot = await uploadBytes(fileRef, file);
-          imageUrl = await getDownloadURL(uploadTaskSnapshot.ref);
-        } 
-        
-        catch (error) {
-          console.error("Error uploading file: ", error);
-          // Handle the error (e.g., display an error message)
-          return;
+      if(user){
+
+        const userId = auth.currentUser.uid
+
+        try{
+          
+          const userQuery = query(collection(db, 'users'), where('authId', '==', auth.currentUser.uid));
+          const userSnapshot = await getDocs(userQuery);
+          const userDoc = userSnapshot.docs[0]
+          const userDocId = userDoc.id
+
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            console.log("userData:", userData);
+            
+            if(userData && userData.username && userData.region) {
+
+              const username = userData.username
+              const userRegion = userData.region
+
+              console.log("username:", username);
+              console.log("userRegion:", userRegion);
+
+              const imageInput = document.getElementById("imageUpload");
+              const file = imageInput.files[0];
+              let imageUrl = '';
+
+              if (file) {
+                try {
+                  // Perform the upload
+                  const fileRef = firebaseRef(storage, `images/recipePics/${file.name}`);
+
+                  // Now upload the file
+                  const uploadTaskSnapshot = await uploadBytes(fileRef, file);
+                  imageUrl = await getDownloadURL(uploadTaskSnapshot.ref);
+                } 
+                
+                catch (error) {
+                  console.error("Error uploading file: ", error);
+                  // Handle the error (e.g., display an error message)
+                  return;
+                }
+              }
+
+              try {
+                const recipeRef = await addDoc(collection(db, 'recipes'), {
+                  date: Date.now(),
+                  ingredients: recipe_form.value.ingredients,
+                  instructions: recipe_form.value.instructions,
+                  tags: tags.value,
+                  title: recipe_form.value.title,
+                  regionID: recipe_form.value.region,
+                  summary: '',
+                  image: imageUrl,
+                  user: userId,
+                  username: username,
+                  userRegion: userRegion,
+                  // MISSING SUMMARY DECLARATION: NO INPUT FIELD IN FORM
+                  // SEPARATE INSTRUCTIONS AND SUMMARY
+                  
+                });
+                //add the recipeId to the user's created recipes
+                await updateDoc(doc(db, 'users', userDocId), {
+                  recipes: arrayUnion(recipeRef.id),
+                });
+
+                //redirect
+                window.location.href = '/recipefeed';
+
+              } catch (error) {
+                console.error("Error adding document: ", error);
+                // Handle the error (e.g., display an error message)
+              }
+            } else{
+              console.error("Error fetching user data, username, or regionID is undefined")
+            }
+          } else {
+            console.error("User document does not exist")
+          }
+        } catch (error) {
+          console.error("Error fetching user document", error)
         }
+      } else {
+      console.log("User not authenticated")
       }
+   };
 
-      try {
-        await addDoc(collection(db, 'recipes'), {
-          date: Date.now(),
-          ingredients: recipe_form.value.ingredients,
-          instructions: recipe_form.value.instructions,
-          tags: tags.value,
-          title: recipe_form.value.title,
-          regionID: recipe_form.value.region,
-          summary: '',
-          image: imageUrl
-          // MISSING SUMMARY DECLARATION: NO INPUT FIELD IN FORM
-          // SEPARATE INSTRUCTIONS AND SUMMARY
-        });
-        window.location.href = '/recipefeed';
-      } 
-      
-      catch (error) {
-        console.error("Error adding document: ", error);
-        // Handle the error (e.g., display an error message)
-      }
-    };
-
-    return {
-      recipe_form,
-      newTag,
-      showDropdown,
-      tags,
-      addTag,
-      deleteTag,
-      toggleDropdown,
-      addPost,
-    };
-  },
-  methods:{
-  }
+      return {
+        recipe_form,
+        newTag,
+        showDropdown,
+        tags,
+        addTag,
+        deleteTag,
+        toggleDropdown,
+        addPost,
+      };
+    },
+    methods:{
+    }
 }
 </script>
 

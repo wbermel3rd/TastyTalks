@@ -8,7 +8,7 @@ import ProfilePage from '../views/ProfilePage.vue'
 import { onAuthStateChanged } from 'firebase/auth';
 
 
-//Creating Questions and Recepies Import
+//Creating Questions and Recipes Import
 
 import ChoosePost from '../views/ChoosePost.vue'
 import CreateRecipe from '../views/CreateRecipe.vue'
@@ -27,20 +27,12 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
-
-    // Require the authentification of the user to be able to see the page. 
-    // meta: {
-    //   requiresAuth: true
-    // }
+    component: Home,    
   },
   {
     path: '/about',
     name: 'About',
     component: () => import('../views/AboutPage.vue'),
-    // meta: {
-    //   requiresAuth: true
-    // }
   },
   {
     path: '/login',
@@ -55,17 +47,25 @@ const routes = [
   {
     path: '/choosepost',
     name: 'ChoosePost',
-    component: ChoosePost
+    component: ChoosePost,
   },
   {
     path: '/createrecipe',
     name: 'CreateRecipe',
-    component: CreateRecipe
+    component: CreateRecipe,
+    // Require the authentification of the user to be able to see the page. 
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/createquestion',
     name: 'CreateQuestion',
-    component: CreateQuestion
+    component: CreateQuestion,
+    // Require the authentification of the user to be able to see the page. 
+    meta: {
+      requiresAuth: true
+    }
   },
   {
     path: '/recipefeed',

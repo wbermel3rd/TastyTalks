@@ -24,7 +24,7 @@
             <input type="password" placeholder="Password" v-model="register_form.password">
           </div>
           <div class="textbox">
-            <input type="password" placeholder="Confirm Password">
+            <input type="password" placeholder="Confirm Password" v-model="register_form.confirmPassword">
           </div>
           
           <div class="dropdown">
@@ -59,9 +59,11 @@
   <script>
 
   import { ref } from 'vue'
-  import { useStore } from 'vuex'
-  import { db } from '../firebase'
+  // import { useStore } from 'vuex'
+  import { db, auth } from '../firebase'
   import { collection, addDoc } from 'firebase/firestore'
+  import { createUserWithEmailAndPassword } from 'firebase/auth'
+import router from '@/router'
 
   export default {
     name: 'User-Register',
@@ -70,17 +72,42 @@
     setup() {
      
       const register_form = ref({})
-      const store = useStore()
+      // const store = useStore()
 
       const Register = async () => {
-        await store.dispatch('register', register_form.value)
-        await addDoc(collection(db, "users"), {
-            email: register_form.value.email,
-            username: register_form.value.username,
-            first_name: register_form.value.first_name,
-            last_name: register_form.value.last_name,
-            region: register_form.value.region,
-        })
+        try{
+          // Check if passwords match
+          if (register_form.value.password !== register_form.value.confirmPassword) {
+            // Handle password mismatch
+            console.error('Passwords do not match');
+            return;
+          }
+
+          const { user } = await createUserWithEmailAndPassword(
+            auth,
+            register_form.value.email,
+            register_form.value.password
+          );
+
+          // await store.dispatch('register', register_form.value)
+
+          await addDoc(collection(db, "users"), {
+              email: register_form.value.email,
+              username: register_form.value.username,
+              first_name: register_form.value.first_name,
+              last_name: register_form.value.last_name,
+              region: register_form.value.region,
+              recipes: [],
+              questions: [],
+              authId: user.uid,
+          });
+          // Continue with any additional logic or redirection
+          console.log('User registered successfully:', user);
+          router.push('/about')
+        } catch(error) {
+          console.error("Error registering user", error)
+        }
+        
       }
       return {
           register_form,

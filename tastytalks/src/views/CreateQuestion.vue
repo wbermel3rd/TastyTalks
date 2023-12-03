@@ -46,7 +46,8 @@
 </template>
 
 <script>
-import { addDoc, collection } from 'firebase/firestore';
+import { addDoc, collection, updateDoc, doc, arrayUnion, getDocs, query, where } from 'firebase/firestore';
+import { auth } from '../firebase'
 import { db } from '../firebase';
 import { ref } from 'vue';
 
@@ -60,15 +61,63 @@ export default {
 
     // Create a question post in the database
     const addPost = async (event) => {
+
       event.preventDefault();
 
-      await addDoc(collection(db, 'questions'), {
-        date: Date.now(),
-        title: question_form.value.title,
-        regionID: question_form.value.region,
-        description: question_form.value.description,
-      });
-      window.location.href = '/questionfeed';
+      const user = auth.currentUser
+
+      if(user){
+
+        const userId = auth.currentUser.uid
+
+        try{
+          
+          const userQuery = query(collection(db, 'users'), where('authId', '==', auth.currentUser.uid));
+          const userSnapshot = await getDocs(userQuery);
+          const userDoc = userSnapshot.docs[0]
+          const userDocId = userDoc.id
+
+          if (userDoc.exists()) {
+            const userData = userDoc.data();
+            console.log("userData:", userData);
+            
+            if(userData && userData.username && userData.region) {
+
+              const username = userData.username
+              const userRegion = userData.region
+
+              console.log("username:", username);
+              console.log("userRegion:", userRegion);
+
+              const questionRef = await addDoc(collection(db, 'questions'), {
+                date: Date.now(),
+                title: question_form.value.title,
+                regionID: question_form.value.region,
+                description: question_form.value.description,
+                user: userId,
+                username: username,
+                userRegion: userRegion,
+              });
+
+              //add the questionId to the user's created questions
+              await updateDoc(doc(db, 'users', userDocId), {
+                  questions: arrayUnion(questionRef.id),
+              });
+
+              //redirect 
+              window.location.href = '/questionfeed';
+            } else{
+              console.error("Error fetching user data, username, or regionID is undefined")
+            }
+          } else {
+            console.error("User document does not exist")
+          }
+        } catch (error) {
+          console.error("Error fetching user document", error)
+        }
+      } else {
+      console.log("User not authenticated")
+      }
     };
 
     return {

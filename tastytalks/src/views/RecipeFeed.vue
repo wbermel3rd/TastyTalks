@@ -92,8 +92,8 @@
           <div class="post-content">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
             <p>{{ recipe.instructions }}</p>
-            <img :src="recipe.image" alt="Recipe Image" style="max-height:30px;">
-
+            <img :src="recipe.image" alt="Recipe Image" style="max-height:80px; max-width:100%;">
+            
             <!-- Add more details you want to display -->
           
           </div>

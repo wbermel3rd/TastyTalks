@@ -6,7 +6,7 @@
             <div class="TastyTalks-LogoDiv">
                 <a href="/">
                     <div class="main-icon">
-                        <img src="images/TastkyTalkMainIconSmall.jpg" alt="Main_Icon_of_the_page">
+                        <img src="../assets/images/TastkyTalkMainIconSmall.jpg" alt="Main_Icon_of_the_page">
                     </div>
         
                     <div class="main-title">
