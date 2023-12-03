@@ -32,6 +32,7 @@ export default{
     padding-right: 25px;
 }
 
+/* Login Button Style */
 .btn {
     width: auto;
     padding: 10px;
@@ -39,8 +40,9 @@ export default{
     border-radius: 5px;
     margin-bottom: 10px;
     cursor: pointer;
-    background-color: #8CC84B;
-
+    background-color: #FADF54;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bolder;
   }
 
 </style>

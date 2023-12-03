@@ -151,7 +151,7 @@ h1 {
 .person-slider {
   display: flex;
   position: relative;
-  background-color: white;
+  background-color: #bbc9f1;
   border-radius: 15px;
   padding: 20px;
   text-align: center;
@@ -192,7 +192,7 @@ h1 {
 .container {
     display: flex;
     align-items: center;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-right: 150px;
     margin-left: 150px;
     margin-bottom: 50px;

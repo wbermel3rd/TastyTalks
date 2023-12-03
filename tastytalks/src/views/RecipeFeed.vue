@@ -193,12 +193,6 @@ export default {
   text-align: center;
 }
 
-/* Spacing Filter Title */
-.filter-label {
-  margin: 12px; 
-  
-}
-
 
 .filter-select {
   margin-right: 10px;
@@ -245,6 +239,8 @@ transform: scale(1.05);
   margin-right: 8px; 
   margin-top: auto;
   font-size: 16px;
+  font-family: 'Helvetica', sans-serif;
+  color:black
 }
 
 /* Format for tag lists in recipe boxes*/

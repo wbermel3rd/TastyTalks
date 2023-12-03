@@ -17,6 +17,7 @@
     --Trying : #fcfcfc;
     --Trying2 :rgb(24, 236, 87);
     --TryingFontColor: white;
+    --TextboxBackground: rgb(104, 150, 56);
 
 
     
@@ -142,7 +143,7 @@ h1{
 
 .navbar a {
     text-decoration: none;
-    color: #d7f1bc;
+    color: white;
     padding-right: 20px;
 }
 
@@ -150,8 +151,6 @@ h1{
     color: var(--PrimaryBackgroundColorHOVER);
     
 }
-
-
 
 footer{
     display:flex;
@@ -209,9 +208,21 @@ footer{
     line-height: normal;
 }
 
-
-
-
 .divForm {
     padding: 20px 100px 100px 100px;
+  }
+
+   /* Font and format for text under page titles*/
+.page-instructions {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  
+  /* Filter Labels (For Recipe Feed and Questions Page*/
+.filter-label {
+    margin: 12px;
+    color: #000000;
   }
