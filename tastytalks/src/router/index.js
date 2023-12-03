@@ -7,7 +7,6 @@ import FullscreenRecipe from '../views/FullscreenRecipe.vue'
 import ProfilePage from '../views/ProfilePage.vue'
 import { onAuthStateChanged } from 'firebase/auth';
 
-
 //Creating Questions and Recipes Import
 
 import ChoosePost from '../views/ChoosePost.vue'
@@ -81,6 +80,11 @@ const routes = [
     path: '/recipe/:id',
     name: 'Recipe',
     component: FullscreenRecipe
+  },
+  {
+    path: '/question/:id',
+    name: 'Question',
+    component: () => import('../views/FullscreenQuestion.vue')
   },
   { 
     path: '/profile', 
