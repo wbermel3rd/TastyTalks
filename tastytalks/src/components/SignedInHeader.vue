@@ -1,7 +1,7 @@
 <template>
     <div class="Account-Container">
         <a href=""><i class="fa-solid fa-user user-icon" @click="goToProfile"></i></a>
-        <button class="btn">Settings</button>
+        <button class="btn" @click="goToSettings" >Settings</button>
         <button class="btn" @click="handleLogout">Log Out</button>
 
     </div>
@@ -26,6 +26,9 @@ export default {
         },
         goToProfile(){
             this.$router.push({ name: 'ProfilePage'});
+        },
+        goToSettings() {
+            this.$router.push('/settings');
         }
     }
 }

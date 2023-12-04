@@ -4,7 +4,7 @@
       <div class="profile-card">
         <div class="profile-header">
           <h1>Your Profile</h1>
-          <i class="fa-solid fa-gear settings-icon" @click="goToEditProfile"></i>
+          <i @click="goToSettings" class="fa-solid fa-gear settings-icon"></i>
         </div>
         <div class="profile-body">
           <div class="profile-info">
@@ -39,8 +39,12 @@
           // Fetch additional user info if needed
           this.user = currentUser;
         }
-      }
+      },
+      goToSettings() {
+        this.$router.push('/settings');
     }
+    }
+
   }
   </script>
 

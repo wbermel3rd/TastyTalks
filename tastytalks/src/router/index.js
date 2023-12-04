@@ -86,6 +86,11 @@ const routes = [
     name: 'Question',
     component: () => import('../views/FullscreenQuestion.vue')
   },
+  {
+    path: '/settings',
+    name: 'Settings',
+    component: () => import('../views/SettingsPage.vue'),
+  },
   { 
     path: '/profile', 
     name: 'ProfilePage', 
