@@ -66,7 +66,7 @@ export default {
       persons: [
         { id: 1, name: 'Samuel Baynes', jobTitle: 'Job Title', image: 'person1.jpg' },
         { id: 2, name: 'Ian Boyd', jobTitle: 'Job Title', image: 'person2.jpg' },
-        { id: 3, name: 'Sushmita Hari', jobTitle: 'Job Title', image: 'person1.jpg' },
+        { id: 3, name: 'Sushmita Hari', jobTitle: 'Job Title', image: require('@/assets/images/Sushmita.jpg') },
         { id: 4, name: 'Olivier Deschamps', jobTitle: 'Job Title', image: require('@/assets/images/Olivier.jpg')},
         { id: 5, name: 'Will Bermel', jobTitle: 'Job Title', image: 'person2.jpg' },
         
