@@ -158,13 +158,14 @@ export default {
 
 .title-CreateNewPost h1{
     text-align: center;
+    color: #4c934c;
     /* justify-content: center; */
 
 }
 
 label{
     font-family: var(--primaryFont);
-    color: white;
+    color: #4c934c;
     font-size: 20px;
     font-weight: bold;
 }
