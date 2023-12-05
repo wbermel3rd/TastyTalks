@@ -39,11 +39,8 @@
   
 
 <script>
-// import { onMounted, ref } from 'vue';
 import { collection, query, where, getDocs } from 'firebase/firestore';
-import { db } from '../firebase';
-// import { useRouter } from 'vue-router';
-import { auth } from '../firebase'
+import { db, auth } from '../firebase';
 
 export default {
 
@@ -142,10 +139,10 @@ export default {
         this.$router.push('/settings');
     },
     // goToRecipe(recipeId){
-    //     router.push({ name: 'Recipe', params: { id: recipeId } });
+    //     this.$router.push({ name: 'Recipe', params: { id: recipeId } });
     // },
-    // goToEditProfile(){
-    //   //fill in
+    // goToQuestion(questionId){
+    //   this.$router.push({ name: 'Question', params: { id: questionId}})
     // },
   }
 }

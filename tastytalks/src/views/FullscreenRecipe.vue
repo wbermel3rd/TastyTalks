@@ -15,14 +15,15 @@
       <div class="comments-container">
         <h2 class="comments-header">Comments:</h2>
         <!-- Comments Section -->
-        <div class="comments">
+        <div class="comments" v-for="comment in comments" :key="comment.id">
           <!-- Display comments here -->
           <div class="comment-card">
-            <p class="comment-author">John Doe</p>
-            <p class="comment-text">This is a sample comment to show how it will look on the page.</p>
-            <p class="comment-date">2023-12-03</p>
+            <p class="comment-author">{{ comment.username }}</p>
+            <p class="comment-text">{{ comment.text }}</p>
+            <p class="comment-date">{{ comment.date }}</p>
+            <!-- <p class="comment-region">{{ comment.region }}</p>  NEEDS STYLING  -->  
           </div>
-      </div>
+        </div>
         <!-- Add Comment Button -->
         <button @click="showCommentBox = !showCommentBox">Add Comment</button>
 
@@ -37,50 +38,106 @@
   
   
   <script>
-  import { onMounted, ref } from 'vue';
+  import { ref, reactive } from 'vue';
   import { useRoute } from 'vue-router'; // Import useRoute
-  import { doc, getDoc } from 'firebase/firestore';
-  import { db } from '../firebase';
+  import { addDoc, doc, getDoc, getDocs, collection, query, where } from 'firebase/firestore';
+  import { db, auth } from '../firebase';
   
   export default {
-    setup() {
+    data(){
       const route = useRoute(); // Use the useRoute hook
-      const postId = route.params.id; // Access the id parameter from the route
       const post = ref(null);
-  
-      const fetchPost = async () => {
+      const showCommentBox = ref(false); // For toggling the comment box
+      const newComment = ref(''); // For storing new comment text
+      const user = auth.currentUser;
+
+      return{
+        route,
+        post,
+        showCommentBox,
+        newComment,
+        comments: reactive([]),
+        user
+      };
+    },
+    mounted(){
+      this.fetchPost()
+    },
+    methods: {
+      //fetch recipe
+      async fetchPost() {
+        const postId = this.route.params.id; // Access the id parameter from the route
         if (postId) {
           const postDoc = doc(db, 'recipes', postId);
           const docSnap = await getDoc(postDoc);
   
           if (docSnap.exists()) {
-            post.value = { id: docSnap.id, ...docSnap.data() };
+            const postData = docSnap.data()
+            this.post = { id: docSnap.id, ...postData}
+
+            // Fetch comments on the server side
+            const commentsCollectionRef = collection(db, 'recipes', postId, 'comments');
+            const commentsSnapshot = await getDocs(commentsCollectionRef);
+            this.comments = commentsSnapshot.docs.map(doc => doc.data());
           } else {
             console.log("No such document!");
           }
         } else {
           console.error("Post ID is undefined");
         }
-      };
-      const showCommentBox = ref(false); // For toggling the comment box
-      const newComment = ref(''); // For storing new comment text
+      },
+      
+      //submit comment
+      async submitComment() {
 
-      const submitComment = () => {
-        console.log('Comment submitted:', newComment.value);
-        // Here, you can add logic to send the comment to your backend or Firebase
-        newComment.value = ''; // Clear the comment box after submission
-        showCommentBox.value = false; // Hide the comment box after submission
-      };
-  
-      onMounted(fetchPost);
-  
-      return {
-        post,
-        showCommentBox,
-        newComment,
-        submitComment,
-      };
-    }
+        const currentUser = auth.currentUser;
+        if(currentUser){
+          try{
+            //fetches user data from the user document, based on the authId
+            const userCollection = collection(db, 'users');   // Create a reference to the "users" collection
+            const userQuery = query(userCollection, where('authId', '==', currentUser.uid));   // Create a query to find the user document by authId
+            const userQuerySnapshot = await getDocs(userQuery);   // Fetch the user document based on the query
+            
+            if (!userQuerySnapshot.empty) { // Check if there are any matching documents
+              const userData = userQuerySnapshot.docs[0].data();  // Assuming there is only one user document per authId
+              this.user = userData;
+              this.username = userData.username;
+              this.region = userData.region;
+            } else {
+              console.log('User document not found.');
+            }
+          } catch (error) {
+              console.error('Error fetching user data: ', error)
+          }
+          // create new comment object
+          const newCommentObject = {
+            username: this.username,
+            region: this.region,
+            text: this.newComment,
+            date: new Date().toISOString(),
+          }; 
+
+          // update comments in document
+          try{
+
+            const postId = this.route.params.id;
+            const commentsCollectionRef = collection(db, 'recipes', postId, 'comments'); //get comments collection ref
+            //add new document to the comments collection
+            await addDoc(commentsCollectionRef, newCommentObject);
+
+            // Update the local comments array
+            this.comments.push(newCommentObject);
+            this.newComment = ''; // Clear the comment box after submission
+            this.showCommentBox = false; // Hide the comment box after submission
+
+          } catch (error) {
+            console.error('Error adding comment: ', error);
+          }
+        } else {
+          console.log('User not authenticated');
+        }
+      },
+    },
   };
   </script>
   
