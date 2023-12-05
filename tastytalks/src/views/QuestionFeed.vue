@@ -3,7 +3,7 @@
     <main>
       <div class="question-feed">
         <div class="centered-container">
-          <h1 class="cylinder-heading">Question Feed</h1>
+          <h1 class="cylinder-heading">Questions</h1>
         </div>
   
         <p class="page-instructions">
@@ -13,7 +13,7 @@
         <!-- Filter Section -->
         <div class="filter-container">
           <!-- Region Filter -->
-          <label for="region" class="filter-label">Region</label>
+          <label for="region" class="heading-stylized">Filter Region:</label>
           <select v-model="selectedRegion" @change="fetchQuestions">
             <option value="">Select Region</option>
             <option value="1">Asia-Pacific</option>

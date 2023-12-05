@@ -198,12 +198,26 @@ footer{
 .cylinder-heading {
     display: inline-block;
     padding: 10px;
-    background: #373D20; 
+    background: #0B6E4F; 
     color: #fff; 
     border-radius: 20px; /* Border-radius to create a cylinder shape */
     width: 650px;
     font-family: 'Arturo', sans-serif; /* Set your font-family */
     font-size: 35px;
+    margin: 0;
+    line-height: normal;
+}
+
+/* Page Heading - Smaller Font  */
+.cylinder-heading2 {
+    display: inline-block;
+    padding: 10px;
+    background: #0B6E4F; 
+    color: #fff; 
+    border-radius: 20px; /* Border-radius to create a cylinder shape */
+    width: 650px;
+    font-family: 'Arturo', sans-serif; /* Set your font-family */
+    font-size: 26px;
     margin: 0;
     line-height: normal;
 }
@@ -220,9 +234,36 @@ footer{
     font-family: 'Helvetica', sans-serif;
   }
 
-  
+  /* Font and format for text on About Page, next to buttons*/
+.button-description {
+    text-align: right;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 540; 
+    color: #373D20;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-right: auto;
+  }
+
   /* Filter Labels (For Recipe Feed and Questions Page*/
 .filter-label {
     margin: 12px;
     color: #4c934c;
   }
+
+  /* Heading for "Filter Region" on Questions Page and Carousel Heading on About Page*/
+.heading-stylized {
+    color: #373D20;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 32;
+    font-weight: bolder;
+  }
+
+  /* For having text and a button next to each other (e.g. on About Page) */
+  .textButton-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  

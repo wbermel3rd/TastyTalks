@@ -13,17 +13,37 @@
         </div>
     </div>
     
+    <!-- Recipes Button -->
+    <div class= "textButton-container">
+      <router-link to="/recipefeed" class="btn-1">Recipes</router-link>
+      <p class="button-description">Filter, read, and provide feedback on other students' recipes.</p>
+    </div>
+          
 
-    <div class="slider-container">
+    <!-- Questions Button -->
+    <div class= "textButton-container">
+      <router-link to="/questionfeed" class="btn-2">Questions</router-link>
+      <p class="button-description">View other students' cooking related questions and provide feedback.</p>
+    </div>    
 
-      <div @click="nextPerson" class="nav-button right">
-        <div class="arrow-container">
-          <div class="arrow-circle"></div>
-          <span>&#x2190;</span>
-        </div>
-      </div>
+    <!-- Recipes Button -->
+    <div class= "textButton-container">
+      <router-link to="/choosepost" class="btn-1">Create Post</router-link>
+      <p class="button-description">Post your own recipes and question.</p>
+    </div> 
 
+    <div class="centered-container">
+          <h1 class="cylinder-heading2"><code>&lt;-</code> Meet the Tasty Talk Team -></h1>
+    </div>
 
+        <div class="slider-container">
+
+          <div @click="nextPerson" class="nav-button right">
+            <div class="arrow-container">
+              <div class="arrow-circle"></div>
+              <span>&#x2190;</span>
+            </div>
+          </div>   
 
       <div class="slides">
         <transition :name="slideDirection">
@@ -207,14 +227,74 @@ img {
 
 
 .text-box {
-    background-color: #373D20;
+    background-color: #0B6E4F;
     padding: 20px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 20px;
-    color: #dcfabd;
+    font-size: 22px;
+    color: white;
 }
 
+/* Button Style 1 */
+.btn-1 {
+    width: 200px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 180px;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #4c934c;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bolder;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #FADF54;
+    text-align: center;
+  }
 
+ 
+  /* Button Style 2 */
+  .btn-2 {
+    width: 200px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-left: 180px;
+    margin-right: 20px;
+    cursor: pointer;
+    background-color: #FADF54 ;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    font-weight: bolder;
+    font-size: 25px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: #4c934c;
+    text-align: center;
+  }
+
+ /*Button animation*/
+ .btn-1:hover {
+    opacity: 0.8;
+  }
+
+  /*Button animation*/
+ .btn-2:hover {
+    opacity: 0.8;
+  }
+
+  header {
+    background-color: #373D20;
+    border-radius: 10px;
+    width: 650px;
+    padding: auto;
+    text-align: center;
+    color: white;
+  }
 </style>
