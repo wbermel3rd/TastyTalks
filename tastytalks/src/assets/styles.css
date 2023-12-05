@@ -1,0 +1,269 @@
+/* Global Css for the App */
+
+/* Imports */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+/* Variables for colors */
+:root{
+    --PrimaryBackgroundColor : #d1fdcd;
+    --PrimaryBackgroundColorHOVER : #000000;
+    --PrimaryBackgroundColor : #dcfabd;
+    --PrimaryBackgroundColorHOVER : #373D20;
+    --FooterBackgroundColor : #292b2d;
+    --PopUpWindowBackgroundColor : #252525;
+    --ButtonBackgroundColor : #333333;
+    --TitleBackgroundColor : #373D20; 
+
+    --Trying : #fcfcfc;
+    --Trying2 :rgb(24, 236, 87);
+    --TryingFontColor: white;
+    --TextboxBackground: rgb(104, 150, 56);
+
+
+    
+    /* 
+    --PrimaryBackgroundColor : #1f2f1e;
+    --PrimaryBackgroundColor : #c4e1c5;
+    --FooterBackgroundColor : #70b673;
+    --PopUpWindowBackgroundColor : #78bb7b;
+    --ButtonBackgroundColor : #a8d3aa;
+
+    --Trying : #8CC84B;
+    --Trying2 :rgb(104, 150, 56);
+    --TryingFontColor: rgb(139, 199, 75); */
+
+    --TestingFont: 'Roboto', sans-serif;
+    --primaryFont: 'Helvetica', sans-serif;
+    --LittleTextIguess: 'Helvetica', sans-serif;
+    --FancyLogo: 'Irish Grover', sans-serif; 
+
+    /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
+
+
+
+    /*Background Color*/
+    --primaryBackgroundColor: #191c24;
+    --secondaryBackgroundColor: #EFEFEF;
+    --fourthColor: #f58a5c;
+    --lightFourthColor: #F59D77;
+
+    /*Font*/
+    --primaryFontColor: white;
+    --secondaryFontColor: #6c7293;
+
+    /* Colors: */
+    --white: #FFFFFF;
+    --unnamed-color-707070: #707070;
+    
+    /* Font Family */
+    --primaryFont: 'Source Sans Pro', sans-serif;
+
+
+
+}
+
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    /* display: flex;
+    flex-direction: column; */
+    min-height: 100vh; /* Make sure the page height takes up at least the full viewport height. */
+
+
+    background-color: var(--PrimaryBackgroundColor);
+}
+
+main {
+    flex-grow: 1; /* Allow the main content to grow and push the footer down. So that the Footer stays at the bottom*/
+}
+
+/* .top-header {
+    display: flex;
+    
+    top, right, bottom, left
+    padding: 1% 5% 1% 3%;
+
+    background-color: var(--Trying2);
+    
+    justify-content: space-between;
+
+} */
+
+
+/* Div of the entire logo including Icon + "Tasty Talks" Title */
+.TastlyTalks-LogoDiv a{
+    display: flex;
+    gap: 15px;
+    text-decoration: none;
+}
+
+
+.utility-icons a{
+    color: var(--Trying);
+    font-size: 30px;
+}
+
+.utility-icons a:hover{
+    color: var(--FooterBackgroundColor)
+
+}
+
+header .main-icon img {
+    height: auto;
+    border-radius: 50%;
+    max-width: 50px;
+}
+
+h1{
+    /* color: var(--Trying); */
+    color: var(--Trying);
+}
+
+
+.navbar {
+
+    text-align: center;
+
+    
+    font-family: var(--primaryFont);
+    font-weight: bold;
+    font-size: 20px;
+
+    padding: 10px;
+
+}
+
+.navbar a {
+    text-decoration: none;
+    color: white;
+    padding-right: 20px;
+}
+
+.navbar a:hover{
+    color: var(--PrimaryBackgroundColorHOVER);
+    
+}
+
+footer{
+    display:flex;
+    justify-content: right;
+    padding-right: 4%;
+
+    padding: 7px;
+
+    background-color: var(--Trying);
+    font-weight: bold;
+}
+
+/* Font for Tasty Talks header */
+.headerlogo-font {
+    color: var(--Trying);
+    margin: 0;
+    font-size: 30px;
+    font-family: 'WickedMouse', sans-serif;
+    -webkit-text-stroke: .5px #194c10; 
+    font-weight: bolder;
+    color: #FADF54; 
+}
+
+/* Font to create .headerlogo-font */
+@font-face {
+    font-family: 'WickedMouse';
+    src: url('./fonts/Wicked\ Mouse\ Demo.otf') format('truetype');
+  } 
+
+/* Nav bar line */
+.custom-line {
+    border: none;
+    height: 10px;
+    background-color: var(--TitleBackgroundColor);
+}
+
+/* Page Heading Background */
+.centered-container {
+    text-align: center;
+    padding-top: 30px;
+    padding-bottom: 25px;
+}
+
+/* Page Heading  */
+.cylinder-heading {
+    display: inline-block;
+    padding: 10px;
+    background: #0B6E4F; 
+    color: #fff; 
+    border-radius: 20px; /* Border-radius to create a cylinder shape */
+    width: 650px;
+    font-family: 'Arturo', sans-serif; /* Set your font-family */
+    font-size: 35px;
+    margin: 0;
+    line-height: normal;
+}
+
+/* Page Heading - Smaller Font  */
+.cylinder-heading2 {
+    display: inline-block;
+    padding: 10px;
+    background: #0B6E4F; 
+    color: #fff; 
+    border-radius: 20px; /* Border-radius to create a cylinder shape */
+    width: 650px;
+    font-family: 'Arturo', sans-serif; /* Set your font-family */
+    font-size: 26px;
+    margin: 0;
+    line-height: normal;
+}
+
+.divForm {
+    padding: 20px 100px 100px 100px;
+  }
+
+   /* Font and format for text under page titles*/
+.page-instructions {
+    text-align: center;
+    padding: 20px;
+    font-size: 16px;
+    font-family: 'Helvetica', sans-serif;
+  }
+
+  /* Font and format for text on About Page, next to buttons*/
+.button-description {
+    text-align: right;
+    padding: 20px;
+    font-size: 20px;
+    font-weight: 540; 
+    color: #373D20;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    margin-right: auto;
+  }
+
+  /* Filter Labels (For Recipe Feed and Questions Page*/
+.filter-label {
+    margin: 12px;
+    color: #4c934c;
+  }
+
+  /* Heading for "Filter Region" on Questions Page and Carousel Heading on About Page*/
+.heading-stylized {
+    color: #373D20;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 32;
+    font-weight: bolder;
+  }
+
+  /* For having text and a button next to each other (e.g. on About Page) */
+  .textButton-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+  }
+
+  
