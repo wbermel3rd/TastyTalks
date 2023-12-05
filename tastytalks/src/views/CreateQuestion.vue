@@ -47,7 +47,7 @@
 
 <script>
 import { addDoc, collection, updateDoc, doc, arrayUnion, getDocs, query, where } from 'firebase/firestore';
-import { auth } from '../firebase'
+import { auth } from '../firebase';
 import { db } from '../firebase';
 import { ref } from 'vue';
 

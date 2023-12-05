@@ -203,7 +203,7 @@ export default {
         const userId = auth.currentUser.uid
 
         try{
-          
+          //find the user's document with same authId
           const userQuery = query(collection(db, 'users'), where('authId', '==', auth.currentUser.uid));
           const userSnapshot = await getDocs(userQuery);
           const userDoc = userSnapshot.docs[0]
