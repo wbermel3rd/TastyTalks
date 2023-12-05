@@ -222,7 +222,7 @@ padding: 20px;
 border-radius: 8px;
 height: 275px;
 width: 375px;
-background-color: #bbc9f1;
+background-color: #4c934c;
 transition: transform 0.3s ease-in-out;
 }
 
@@ -250,10 +250,10 @@ transform: scale(1.05);
   margin-top: 10px;
   margin-right: 8px; 
   padding: 3px;
-  background-color: rgb(104, 150, 56);
+  background-color: #0B6E4F;
   font-weight: bold;
   font-size: 16px;
-  color: #fff4ba;
+  color: white;
   border-radius: 2px;
 }
 
@@ -273,7 +273,7 @@ transform: scale(1.05);
   text-align: center;
   padding: 22px;
   font-size: 16px;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Times New Roman', serif;
 }
 
 /* For recipe title in recipe feed boxes*/
@@ -281,7 +281,8 @@ transform: scale(1.05);
   margin-bottom: 10px;
   font-size: 26px;
   font-weight: bold;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Georgia', serif;
+  color: #FADF54;
 }
 
 </style>

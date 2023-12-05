@@ -148,7 +148,7 @@
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     padding: 20px;
     border-radius: 8px;
-    background-color: #bbc9f1;
+    background-color: #4c934c;
     transition: transform 0.3s ease-in-out;
     margin-bottom: 20px;
   }
