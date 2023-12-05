@@ -1,72 +1,105 @@
 <template>
-    <main>
-      <!-- <h1>Welcome to Taksty Talks</h1>
+  <main>
+    <div class="main-page">
+      <!-- Recommended Recipe Section -->
+      <div class="section recommended-recipe-section">
+        <h2>Recommended Recipe</h2>
+        <div class="recipe-card">
+          <img :src="recommendedRecipe.image" alt="Recipe Image">
+          <div class="recipe-info">
+            <h3>{{ recommendedRecipe.title }}</h3>
+            <p>{{ recommendedRecipe.instructions }}</p>
+            <a :href="'/recipe/' + recommendedRecipe.id" class="btn">View Recipe</a>
+          </div>
+        </div>
+      </div>
 
-      <P>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos quia, laborum ut natus sequi unde reiciendis nostrum. Obcaecati reiciendis odit asperiores, voluptates accusamus quibusdam excepturi ipsam quidem quas ad debitis.</P>
-
-
-      <div class="bigGreebBox">
-        <div class="receipeRectangle">
-          
+      <!-- Container for Ingredient of the Day and Discovery Section -->
+      <div class="section-container">
+        <!-- Ingredients of the Day Section -->
+        <div class="section ingredients-section">
+          <h2>Ingredient of the Day</h2>
+          <div class="ingredient-card">
+            <img :src="currentIngredient.image" alt="Ingredient Image">
+            <p>{{ currentIngredient.name }}</p>
+          </div>
         </div>
 
-        <div class="questionsSquare">
-          
-        </div>
-
-        <div class="AboutUsSquare">
-
-        </div>
-      </div> -->
-
-      <div class="main-page">
-    <!-- Ingredients of the Day Section -->
-    <div class="section ingredients-section">
-      <h2>Ingredients of the Day</h2>
-      <ul>
-        <li>Ingredient 1</li>
-        <li>Ingredient 2</li>
-        <li>Ingredient 3</li>
-        <!-- Add more ingredients as needed -->
-      </ul>
-    </div>
-
-    <!-- Recommended Recipe Section -->
-    <div class="section recommended-recipe-section">
-      <h2>Recommended Recipe</h2>
-      <div class="recipe-card">
-        <img src="recipe-image.jpg" alt="Recipe Image">
-        <div class="recipe-info">
-          <h3>Delicious Recipe Title</h3>
-          <p>Description of the recommended recipe. Lorem ipsum dolor sit amet...</p>
-          <a href="#" class="btn">View Recipe</a>
+        <!-- Discovery Section -->
+        <div class="section discovery-section">
+          <h2>Explore Something New</h2>
+          <p>Discover unique cooking techniques, kitchen hacks, and more!</p>
+          <!-- Add your discovery content or link to the recipe feed page here -->
+          <a href="/recipefeed" class="btn">Discover More</a>
         </div>
       </div>
     </div>
-
-    <!-- Creative Element Section -->
-    <div class="section creative-element-section">
-      <h2>Explore Something New</h2>
-      <p>Discover unique cooking techniques, kitchen hacks, and more!</p>
-      <!-- Your creative element goes here -->
-    </div>
-  </div>
-
-
-
-    </main>
+  </main>
 </template>
-  
 <script>
-  export default {
-    name: 'LoginWindow'
-    
-  }
-</script>
-  
-<style scoped>
+import { ref, onMounted } from 'vue';
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../firebase';
 
+export default {
+  name: 'HomePage',
+  setup() {
+    const recommendedRecipe = ref({});
+    const recommendedRecipeId = 'JbMIsU3rAChbhW7Tkoy4';
+
+    const currentIngredient = ref({});
+    const ingredients = [
+      { name: 'Avocado', image: require('@/assets/images/Ingredients/avocado.jpg') },
+      { name: 'Quinoa', image: require('@/assets/images/Ingredients/quinoa.jpg') },
+      { name: 'Tomatoes', image: require('@/assets/images/Ingredients/tomato.jpg') },
+      { name: 'Salmon', image: require('@/assets/images/Ingredients/salmon.jpg') },
+      { name: 'Shrimp', image:  require('@/assets/images/Ingredients/shrimp.jpg') },
+    ];
+
+    const fetchRecommendedRecipe = async () => {
+      const recipeDoc = doc(db, 'recipes', recommendedRecipeId);
+      const docSnapshot = await getDoc(recipeDoc);
+
+      if (docSnapshot.exists()) {
+        recommendedRecipe.value = {
+          id: docSnapshot.id,
+          ...docSnapshot.data(),
+        };
+      } else {
+        console.error('Recommended recipe not found');
+      }
+    };
+
+    const calculateIngredientIndex = () => {
+      const currentDate = new Date();
+      const dayOfMonth = currentDate.getDate();
+      return (dayOfMonth - 1) % ingredients.length; // Adjust to 0-based index
+    };
+
+    const updateCurrentIngredient = () => {
+      const index = calculateIngredientIndex();
+      currentIngredient.value = ingredients[index];
+    };
+
+    onMounted(() => {
+      fetchRecommendedRecipe();
+      updateCurrentIngredient();
+    });
+
+    return {
+      recommendedRecipe,
+      currentIngredient,
+    };
+  },
+};
+</script>
+
+
+
+<style scoped>
 .main-page {
+  display: flex;
+  flex-direction: column;
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -74,11 +107,20 @@
 
 .section {
   margin-bottom: 40px;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  flex-grow: 1; /* Make the sections take up an equal amount of space */
 }
 
-.ingredients-section ul {
-  list-style-type: none;
-  padding: 0;
+.section-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.ingredient-card {
+  text-align: center;
 }
 
 .recipe-card {
@@ -86,6 +128,8 @@
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
+  background-color: #fff;
+  margin-bottom: 20px;
 }
 
 .recipe-card img {
@@ -112,4 +156,22 @@
   background-color: #45a049;
 }
 
+@media (max-width: 768px) {
+  .section {
+    width: 100%;
+  }
+
+  .section-container {
+    flex-direction: column;
+  }
+}
+
+
+img {
+  max-width: 20%;
+}
+
+.section-container{
+  gap: 20px;
+}
 </style>

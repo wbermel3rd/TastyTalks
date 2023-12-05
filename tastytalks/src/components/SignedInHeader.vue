@@ -1,7 +1,7 @@
 <template>
     <div class="Account-Container">
-        <a href=""><i class="fa-solid fa-user user-icon" @click="goToProfile"></i></a>
-        <button class="btn" @click="goToSettings" >Settings</button>
+        <!-- <a href=""><i class="fa-solid fa-user user-icon" @click="goToProfile"></i></a> -->
+        <button class="btn" @click="goToProfile" >Profile</button>
         <button class="btn" @click="handleLogout">Log Out</button>
 
     </div>
