@@ -171,11 +171,14 @@ h1 {
 .person-slider {
   display: flex;
   position: relative;
-  background-color: #bbc9f1;
+
+  /* BACKGROUND COLOR OF THE SLIDER */
+  background-color: #0B6E4F;
   border-radius: 15px;
   padding: 20px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  color: #FADF54;
 }
 
 .person-info {
