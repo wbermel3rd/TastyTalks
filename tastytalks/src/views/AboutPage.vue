@@ -29,11 +29,11 @@
     <!-- Recipes Button -->
     <div class= "textButton-container">
       <router-link to="/choosepost" class="btn-1">Create Post</router-link>
-      <p class="button-description">Post your own recipes and question.</p>
+      <p class="button-description">Post your own recipes and questions.</p>
     </div> 
 
     <div class="centered-container">
-          <h1 class="cylinder-heading2"><code>&lt;-</code> Meet the Tasty Talk Team -></h1>
+          <h1 class="cylinder-heading2"><code>&lt;-</code> Meet the Tasty Talks Team -></h1>
     </div>
 
         <div class="slider-container">
