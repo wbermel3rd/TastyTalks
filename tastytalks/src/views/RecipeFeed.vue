@@ -140,28 +140,28 @@ export default {
     const selectedSpecialDiet = ref('');
     const selectedHoliday = ref('');
 
-     // Define a map to store region names based on IDs
-     const regionMap = {
-        1: 'Asia-Pacific',
-        2: 'Caribbean',
-        3: 'Central America',
-        4: 'Central Asia',
-        5: 'Eastern Europe',
-        6: 'Middle East',
-        7: 'Nordic Countries',
-        8: 'North America',
-        9: 'Northern Africa',
-        10: 'Oceania',
-        11: 'Southern Africa',
-        12: 'South America',
-        13: 'Southeast Asia',
-        14: 'Western Europe',
-        // Add more entries for other regions
-      };
-  
-      const getRegionName = (regionID) => {
-        return regionMap[regionID] || 'Unknown Region';
-      };
+    // Define a map to store region names based on IDs
+    const regionMap = {
+      1: 'Asia-Pacific',
+      2: 'Caribbean',
+      3: 'Central America',
+      4: 'Central Asia',
+      5: 'Eastern Europe',
+      6: 'Middle East',
+      7: 'Nordic Countries',
+      8: 'North America',
+      9: 'Northern Africa',
+      10: 'Oceania',
+      11: 'Southern Africa',
+      12: 'South America',
+      13: 'Southeast Asia',
+      14: 'Western Europe',
+      // Add more entries for other regions
+    };
+
+    const getRegionName = (regionID) => {
+      return regionMap[regionID] || 'Unknown Region';
+    };
 
     const fetchRecipes = async () => {
       const recipesCollection = collection(db, 'recipes');
@@ -175,7 +175,6 @@ export default {
         // Check if the recipe matches all selected filters
         const matchesFilters =
           (selectedRegion.value === '' || recipeData.regionID === selectedRegion.value) &&
-          // (selectedCourse.value === '' || recipeData.course === selectedCourse.value) &&
           (selectedCourse.value === '' || recipeData.tags.some((tag) => tag.name === selectedCourse.value)) &&
           (selectedSeason.value === '' || recipeData.tags.some((tag) => tag.name === selectedSeason.value)) &&
           (selectedSpecialDiet.value === '' || recipeData.tags.some((tag) => tag.name === selectedSpecialDiet.value)) &&
@@ -188,6 +187,9 @@ export default {
           });
         }
       });
+
+      // Sort recipes by date in descending order
+      filteredRecipes.sort((a, b) => new Date(b.date) - new Date(a.date));
 
       recipes.value = filteredRecipes;
     };
@@ -212,8 +214,6 @@ export default {
       getRegionName,
     };
   },
-  
-
 };
 </script>
 
