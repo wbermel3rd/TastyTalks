@@ -145,7 +145,7 @@
   <style scoped>
 
   h1{
-    color: black;
+    color: #FADF54;
   }
   h2{
     font-size: 25px;
@@ -156,8 +156,10 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: white;
+    background-color: #4c934c;
     min-height: 500px;
+    font-family: 'Lucida Sans';
+    color: #FADF54
   }
   .comments-container{
     max-width: 800px;
@@ -165,7 +167,9 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: white;
+    background-color: #FADF54;
+    font-family:'Times New Roman';
+    color: #4c934c
   }
   .comment-box textarea {
     width: 100%; /* Full width of the container */
@@ -176,12 +180,14 @@
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    font-family:'Times New Roman';
   }
 
   .comments-container button {
     margin-top: 10px;
     padding: 6px 12px;
     background-color: rgb(104, 150, 56);
+    font-family:'Times New Roman';
     color: white;
     border: none;
     border-radius: 4px;
@@ -198,20 +204,24 @@
     border-radius: 8px;
     padding: 15px;
     margin-top: 20px;
+    font-family:'Times New Roman';
   }
 
   .comment-author {
     font-weight: bold;
     margin-bottom: 5px;
+    font-family:'Times New Roman';
   }
 
   .comment-text {
     margin-bottom: 10px;
+    font-family:'Times New Roman';
   }
 
   .comment-date {
     font-size: 0.8em;
     color: #666;
+    font-family:'Times New Roman';
   }
 
   </style>

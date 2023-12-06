@@ -279,7 +279,7 @@ transform: scale(1.05);
   margin-right: 8px; 
   margin-top: auto;
   font-size: 16px;
-  font-family: 'Helvetica', sans-serif;
+  font-family: 'Georgia', serif;
   color:black
 }
 

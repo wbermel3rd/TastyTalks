@@ -164,7 +164,7 @@ export default {
 }
 
 .profile-card {
-  background-color: #ffffff;
+  background-color: #FADF54;;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -175,6 +175,7 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+  color: #0B6E4F
   /* Stack children vertically */
 }
 
