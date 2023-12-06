@@ -175,8 +175,9 @@ export default {
         // Check if the recipe matches all selected filters
         const matchesFilters =
           (selectedRegion.value === '' || recipeData.regionID === selectedRegion.value) &&
-          (selectedCourse.value === '' || recipeData.course === selectedCourse.value) &&
-          (selectedSeason.value === '' || recipeData.season === selectedSeason.value) &&
+          // (selectedCourse.value === '' || recipeData.course === selectedCourse.value) &&
+          (selectedCourse.value === '' || recipeData.tags.some((tag) => tag.name === selectedCourse.value)) &&
+          (selectedSeason.value === '' || recipeData.tags.some((tag) => tag.name === selectedSeason.value)) &&
           (selectedSpecialDiet.value === '' || recipeData.tags.some((tag) => tag.name === selectedSpecialDiet.value)) &&
           (selectedHoliday.value === '' || recipeData.tags.some((tag) => tag.name === selectedHoliday.value));
 

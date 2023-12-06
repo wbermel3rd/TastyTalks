@@ -45,7 +45,7 @@ export default {
   name: 'HomePage',
   setup() {
     const recommendedRecipe = ref({});
-    const recommendedRecipeId = 'JbMIsU3rAChbhW7Tkoy4';
+    const recommendedRecipeId = 'yq6W5tWHekzSMiyRrzFn';
 
     const currentIngredient = ref({});
     const ingredients = [

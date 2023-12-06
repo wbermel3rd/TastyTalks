@@ -11,7 +11,7 @@
             <!-- FORM -->
 
             <!-- The form action goes to /posts because the page should be redirected to the post page with all the posts when the person click submit -->
-            <form @submit="addPost" enctype= multipart/form-data method="POST">
+            <form @submit="addPost" enctype= multipart/form-data method="POST" novalidate>
 
                 <!-- Receipe Name  -->
                 <label for="title">Recipe Name</label>
@@ -243,8 +243,12 @@ export default {
               }
 
               try {
+
+                //Format the date to "month/day/year"
+                const formattedDate = new Date().toLocaleDateString('en-US');
+
                 const recipeRef = await addDoc(collection(db, 'recipes'), {
-                  date: Date.now(),
+                  date: formattedDate,
                   ingredients: recipe_form.value.ingredients,
                   instructions: recipe_form.value.instructions,
                   tags: tags.value,
