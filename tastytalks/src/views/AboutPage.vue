@@ -2,35 +2,35 @@
   <main>
 
     <div class="centered-container">
-          <h1 class="cylinder-heading">Tasty Talks</h1>
-      </div>
-
-    
-    <div class="container">
-        <img src="images/TastkyTalkMainIcon.jpg" alt="Image">
-          <div class="text-box">
-              <p>       Where UNC Charlotte students come together to share and discover recipes from around the world.  Explore diverse culinary traditions, and connect with fellow students passionate about the art of cooking. Embark on a flavorful journey with us!</p>
-        </div>
+      <h1 class="cylinder-heading">Tasty Talks</h1>
     </div>
-    
+
+
+    <div class="container">
+      <img src="images/TastkyTalkMainIcon.jpg" alt="Image">
+      <div class="text-box">
+        <p>       Where UNC Charlotte students come together to share and discover recipes from around the world.  Explore diverse culinary traditions, and connect with fellow students passionate about the art of cooking. Embark on a flavorful journey with us!</p>
+      </div>
+    </div>
+
     <!-- Recipes Button -->
     <div class= "textButton-container">
       <router-link to="/recipefeed" class="btn-1">Recipes</router-link>
       <p class="button-description">Filter, read, and provide feedback on other students' recipes.</p>
     </div>
-          
+
 
     <!-- Questions Button -->
     <div class= "textButton-container">
       <router-link to="/questionfeed" class="btn-2">Questions</router-link>
       <p class="button-description">View other students' cooking related questions and provide feedback.</p>
-    </div>    
+    </div>
 
     <!-- Recipes Button -->
     <div class= "textButton-container">
       <router-link to="/choosepost" class="btn-1">Create Post</router-link>
       <p class="button-description">Post your own recipes and questions.</p>
-    </div> 
+    </div>
 
     <div class="centered-container">
           <h1 class="cylinder-heading2"><code>&lt;-</code> Meet the Tasty Talks Team -></h1>
@@ -43,7 +43,7 @@
               <div class="arrow-circle"></div>
               <span>&#x2190;</span>
             </div>
-          </div>   
+          </div>
 
       <div class="slides">
         <transition :name="slideDirection">
@@ -89,7 +89,7 @@ export default {
         { id: 3, name: 'Sushmita Hari', jobTitle: 'Job Title', image: require('@/assets/images/Group/Sushmita.jpg') },
         { id: 4, name: 'Olivier Deschamps', jobTitle: 'Job Title', image: require('@/assets/images/Group/Olivier.jpg')},
         { id: 5, name: 'Will Bermel', jobTitle: 'Job Title', image: 'person2.jpg' },
-        
+
         // Add more persons as needed
       ],
       currentPersonIndex: 0,
@@ -173,11 +173,12 @@ h1 {
   position: relative;
 
   /* BACKGROUND COLOR OF THE SLIDER */
-  background-color: #0B6E4F;
+  background-color: var(--darkMainBackgroundColor);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
   border-radius: 15px;
   padding: 20px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   color: #FADF54;
 }
 
@@ -256,11 +257,11 @@ img {
     font-weight: bolder;
     font-size: 25px;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    color: #FADF54;
+    color: var(--secondaryFontColor);
     text-align: center;
   }
 
- 
+
   /* Button Style 2 */
   .btn-2 {
     width: 200px;
@@ -273,7 +274,7 @@ img {
     margin-left: 180px;
     margin-right: 20px;
     cursor: pointer;
-    background-color: #FADF54 ;
+    background-color: var(--secondaryBackgroundColor) ;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     font-weight: bolder;
     font-size: 25px;

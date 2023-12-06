@@ -5,7 +5,7 @@
     <div class="post-feed">
       
       <div class="centered-container">
-          <h1 class="cylinder-heading">Recipes</h1>
+        <h1 class="cylinder-heading">Recipes</h1>
       </div>
 
       <p class="page-instructions">Filter recipes by region, course, season, holiday, or dietary restrictions to find a dilicious recipe. <br>Once you find an intriguing dish, click to learn more and contribute to the community conversation.</p>
@@ -294,7 +294,7 @@ transform: scale(1.05);
   font-weight: bold;
   font-size: 16px;
   color: white;
-  border-radius: 2px;
+  border-radius: 4px;
 }
 
 /* Format for Regions in recipe boxes*/
@@ -308,12 +308,8 @@ transform: scale(1.05);
   font-weight: bold;
   font-size: 16px;
   color: #0B6E4F;
-  border-radius: 2px;
+  border-radius: 4px;
 }
-
-/* background-color: rgb(104, 150, 56);
-  border-radius: 10px;
-  color: #FADF54; */
 
 
 /* Import title's font */
@@ -335,7 +331,9 @@ transform: scale(1.05);
   margin-bottom: 10px;
   font-size: 26px;
   font-weight: bold;
-  font-family: 'Georgia', serif;
+
+  /* Find a titleFont for the recipes titles in the recepe feed */
+  /* font-family: var(--titleFont); */
   color: #FADF54;
 }
 
@@ -425,7 +423,7 @@ img{
 /* Add the same background color and box shadow as the recipe boxes */
 .filter-container select {
   background-color: #FADF54;
-  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'Lucida Sans';
   color: #0B6E4F;
   padding: 8px;
   border-radius: 4px;

@@ -3,6 +3,18 @@
 /* Imports */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+/* @font-face {
+    font-family: 'Arturo';
+    src: url('@/assets/fonts/Arturo-BoldItalic\ Trial.ttf') format('truetype');
+  }  */
+
+/* Font to create .headerlogo-font */
+@font-face {
+    font-family: 'WickedMouse';
+    src: url('./fonts/Wicked\ Mouse\ Demo.otf') format('truetype');
+  } 
+
+
 /* Variables for colors */
 :root{
     --PrimaryBackgroundColor : #d1fdcd;
@@ -20,36 +32,65 @@
     --TextboxBackground: rgb(104, 150, 56);
 
 
+    /* COLORS */
+
+
+    /* Green Colors from Dark to light (Main Color of the app */
+    --mainBackgroundColor: #4c934c;
+    --darkMainBackgroundColor: #0B6E4F;
+    --mainFontColor: #4c934c;
+    /* 4caf50
+    Hover of this color 45a049 */
+    --evenLighterMainBackgroundColor: ;
     
-    /* 
-    --PrimaryBackgroundColor : #1f2f1e;
-    --PrimaryBackgroundColor : #c4e1c5;
-    --FooterBackgroundColor : #70b673;
-    --PopUpWindowBackgroundColor : #78bb7b;
-    --ButtonBackgroundColor : #a8d3aa;
+    
+    
+    /* Yellow Color from the Darkest to the lighest (Secondary color of the app) */
+    --secondaryBackgroundColor: #FADF54;
+    --secondaryBackgroundColorHover: #d6be47;
+    --secondaryFontColor: #FADF54;
 
-    --Trying : #8CC84B;
-    --Trying2 :rgb(104, 150, 56);
-    --TryingFontColor: rgb(139, 199, 75); */
 
-    --TestingFont: 'Roboto', sans-serif;
+    /* Others Colors */
+    --White: ;
+    --Black: ;
+
+    /* FONTS */
+
+    --titleSectionFont: 'Arturo';
+    --littleTitleFont: 'Roboto', sans-serif;
+    --littleTextFont: 'Roboto', sans-serif;
+    --filterOptionFont: 'Lucida Sans';
+
+    --footerFont: 'Roboto';
+  
+  
+    /* /////// */
+
+
+
+    /* --titleFont: Georgia, 'Times New Roman', Times, serif; */
+
+    
     --primaryFont: 'Helvetica', sans-serif;
     --LittleTextIguess: 'Helvetica', sans-serif;
     --FancyLogo: 'Irish Grover', sans-serif; 
+    
+
+    /* /////// */
+
+
 
     /* ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////// */
 
 
 
     /*Background Color*/
-    --primaryBackgroundColor: #191c24;
-    --secondaryBackgroundColor: #EFEFEF;
     --fourthColor: #f58a5c;
     --lightFourthColor: #F59D77;
 
     /*Font*/
     --primaryFontColor: white;
-    --secondaryFontColor: #6c7293;
 
     /* Colors: */
     --white: #FFFFFF;
@@ -131,8 +172,6 @@ h1{
 .navbar {
 
     text-align: center;
-
-    
     font-family: var(--primaryFont);
     font-weight: bold;
     font-size: 20px;
@@ -159,7 +198,7 @@ footer{
 
     padding: 7px;
 
-    background-color: var(--Trying);
+    background-color: #4c934c;
     font-weight: bold;
 }
 
@@ -174,11 +213,7 @@ footer{
     color: #FADF54; 
 }
 
-/* Font to create .headerlogo-font */
-@font-face {
-    font-family: 'WickedMouse';
-    src: url('./fonts/Wicked\ Mouse\ Demo.otf') format('truetype');
-  } 
+
 
 /* Nav bar line */
 .custom-line {
@@ -198,11 +233,12 @@ footer{
 .cylinder-heading {
     display: inline-block;
     padding: 10px;
+    padding-top: 15px;
     background: #0B6E4F; 
     color: #fff; 
     border-radius: 20px; /* Border-radius to create a cylinder shape */
     width: 650px;
-    font-family: 'Arturo', sans-serif; /* Set your font-family */
+    font-family: var(--titleSectionFont); /* Set your font-family */
     font-size: 35px;
     margin: 0;
     line-height: normal;
@@ -216,7 +252,7 @@ footer{
     color: #fff; 
     border-radius: 20px; /* Border-radius to create a cylinder shape */
     width: 650px;
-    font-family: 'Arturo', sans-serif; /* Set your font-family */
+    font-family: var(--titleFont); /* Set your font-family */
     font-size: 26px;
     margin: 0;
     line-height: normal;
