@@ -183,7 +183,7 @@ input[type=text], select, textarea[type=text], input[type=file], input[type=date
 
 input[type=submit] {
     width: 100%;
-    background-color: var(--fourthColor);
+    background-color: var(--secondaryBackgroundColor);
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -193,7 +193,7 @@ input[type=submit] {
   }
 
 input[type=submit]:hover {
-    background-color: var(--lightFourthColor)
+    background-color: var(--secondaryBackgroundColorHover)
   }
 
   textarea {

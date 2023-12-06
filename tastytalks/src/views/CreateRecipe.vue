@@ -307,21 +307,21 @@ export default {
 
 <style scoped>
 .Create-Container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-top: 300px;
-    padding-bottom: 850px;
-    height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 300px;
+  padding-bottom: 850px;
+  height: 100vh;
 }
 h1{
-    color: white;
-    padding-bottom: 10px;
+  color: white;
+  padding-bottom: 10px;
 }
 
 h2{
-    color: white;
+  color: white;
 }
 
 
@@ -334,53 +334,53 @@ h2{
 /* /////// Form ///////////////////// */
 
 .form-newPost {
-    border-radius: 5px;
-    padding: 20px;
-    background-color: var(--Trying);
-    font-family: var(--primaryFont);
-    /* Control the width of the Receipe Form container */
-    /* max-width: 800px; */
-  }
+  border-radius: 5px;
+  padding: 20px;
+  background-color: var(--Trying);
+  font-family: var(--primaryFont);
+  /* Control the width of the Receipe Form container */
+  /* max-width: 800px; */
+}
 
 
 .title-CreateNewPost h1{
-    text-align: center;
-    /* justify-content: center; */
+  text-align: center;
+  /* justify-content: center; */
 
 }
 
 label{
-    font-family: var(--primaryFont);
-    color: #4c934c;
-    font-size: 20px;
-    font-weight: bold;
+  font-family: var(--primaryFont);
+  color: #4c934c;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 input[type=text], select, textarea[type=text], input[type=file], input[type=date], input[type=datetime], input[type=datetime-local] {
-    width: 100%;
-    padding: 12px 20px;
-    margin: 15px 0;
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-  }
+  width: 100%;
+  padding: 12px 20px;
+  margin: 15px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
 
 
 input[type=submit] {
-    width: 100%;
-    background-color: var(--fourthColor);
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
+  width: 100%;
+  background-color: var(--secondaryBackgroundColor);
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 input[type=submit]:hover {
-    background-color: var(--lightFourthColor)
-  }
+  background-color: var(--secondaryBackgroundColorHover);
+}
 
 
 
@@ -392,8 +392,9 @@ input[type=submit]:hover {
 }
 
 .tag-dropdown-btn {
-  background-color: var(--fourthColor);
-  color: white;
+  background-color: var(--secondaryBackgroundColor);
+  color: var(--mainFontColor);
+  font-weight: bold;
   padding: 14px 20px;
   border: none;
   border-radius: 4px;
@@ -444,8 +445,8 @@ input[type=submit]:hover {
   font-weight: bold;
   color: white;
   background-color: #ff4d4d;
-  padding: 4px;
-  border-radius: 50%;
+  padding: 0.1px 5px 1px 5px;
+  border-radius: 100%;
 }
 
 </style>
