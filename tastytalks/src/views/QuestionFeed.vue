@@ -151,6 +151,7 @@
     background-color: #4c934c;
     transition: transform 0.3s ease-in-out;
     margin-bottom: 20px;
+    color: #FADF54;
   }
   
   .region {
