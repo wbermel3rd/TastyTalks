@@ -1,6 +1,7 @@
 <template>
   <main>
     <div class="main-page">
+
       <!-- Recommended Recipe Section -->
       <div class="section recommended-recipe-section">
         <h2>Recommended Recipe</h2>
@@ -29,11 +30,11 @@
         <div class="section discovery-section">
           <h2>Explore Something New</h2>
           <p>Discover unique cooking techniques, kitchen hacks, and more!</p>
-          <!-- Add your discovery content or link to the recipe feed page here -->
           <a href="/recipefeed" class="btn">Discover More</a>
         </div>
       </div>
     </div>
+
   </main>
 </template>
 <script>
@@ -97,6 +98,12 @@ export default {
 
 
 <style scoped>
+
+h2{
+  font-family: var(--littleTitleFont);
+  color: var(--mainFontColor);
+  padding: 20px;
+}
 .main-page {
   display: flex;
   flex-direction: column;
@@ -159,6 +166,7 @@ export default {
 @media (max-width: 768px) {
   .section {
     width: 100%;
+    background-color: lightgreen;
   }
 
   .section-container {
@@ -166,10 +174,34 @@ export default {
   }
 }
 
+.section{
+  background-color: lightgreen;;
+}
+
+.recipe-card p{
+  padding-bottom: 10px;
+}
+  
+
+.ingredients-section{
+  max-width: 60%;
+}
+
+.discovery-section p{
+  padding-bottom: 10px;
+}
+.discovery-section {
+  text-align: center;
+}
 
 img {
   max-width: 20%;
 }
+
+p{
+  font-family: var(--littleTextFont);
+}
+
 
 .section-container{
   gap: 20px;
