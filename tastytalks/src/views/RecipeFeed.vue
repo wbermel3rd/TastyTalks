@@ -112,7 +112,7 @@
           <!-- Display regions -->
           <div class="tags">
             <strong>Region: </strong>
-            <span v-for="tag in recipe.tags" :key="tag.name" class="region">{{ getRegionName(recipe.regionID) }}</span>
+            <span :key="recipe.tags[0].name" class="region">{{ getRegionName(recipe.regionID) }}</span>
           </div>
     
         </div>
