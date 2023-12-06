@@ -91,17 +91,27 @@
         <div v-for="recipe in recipes" :key="recipe.id" class="post-item" @click="goToRecipe(recipe.id)"> <!--  -->
           <div class="post-content">
             <h2 class="recipe-title">{{ recipe.title }}</h2>
-            <p>{{ recipe.instructions }}</p>
-            <img :src="recipe.image" alt="Recipe Image" style="max-height:80px; max-width:100%;">
+            <div class="image-container">
+              <img :src="recipe.image" alt="Recipe Image" style="max-height:120px; max-width:100%;">
+            </div>
+            <!-- Following Line adds instructions, but it'll go out of the box -->
+           <!--  <p>{{ recipe.instructions }}</p> -->
             
-            <!-- Add more details you want to display -->
           
           </div>
+
+          <!-- Display regions -->
+          <div class="tags">
+            <strong>Region: </strong>
+            <span v-for="tag in recipe.tags" :key="tag.name" class="region">{{ getRegionName(recipe.regionID) }}</span>
+          </div>
+
           <!-- Display tags -->
           <div class="tags">
             <strong>Tags:</strong>
             <span v-for="tag in recipe.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
           </div>
+    
         </div>
       </div>
       <br>
@@ -126,6 +136,29 @@ export default {
     const selectedSeason = ref('');
     const selectedSpecialDiet = ref('');
     const selectedHoliday = ref('');
+
+     // Define a map to store region names based on IDs
+     const regionMap = {
+        1: 'Asia-Pacific',
+        2: 'Caribbean',
+        3: 'Central America',
+        4: 'Central Asia',
+        5: 'Eastern Europe',
+        6: 'Middle East',
+        7: 'Nordic Countries',
+        8: 'North America',
+        9: 'Northern Africa',
+        10: 'Oceania',
+        11: 'Southern Africa',
+        12: 'South America',
+        13: 'Southeast Asia',
+        14: 'Western Europe',
+        // Add more entries for other regions
+      };
+  
+      const getRegionName = (regionID) => {
+        return regionMap[regionID] || 'Unknown Region';
+      };
 
     const fetchRecipes = async () => {
       const recipesCollection = collection(db, 'recipes');
@@ -172,6 +205,7 @@ export default {
       selectedSpecialDiet,
       selectedHoliday,
       fetchRecipes,
+      getRegionName,
     };
   },
   
@@ -257,6 +291,20 @@ transform: scale(1.05);
   border-radius: 2px;
 }
 
+/* Format for Regions in recipe boxes*/
+.tags .region { 
+  display: inline-block;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  margin-right: 8px; 
+  padding: 3px;
+  background-color: white;
+  font-weight: bold;
+  font-size: 16px;
+  color: #0B6E4F;
+  border-radius: 2px;
+}
+
 /* background-color: rgb(104, 150, 56);
   border-radius: 10px;
   color: #FADF54; */
@@ -285,4 +333,11 @@ transform: scale(1.05);
   color: #FADF54;
 }
 
+/* for centering the image in the box */
+.image-container {
+  display: flex;
+  justify-content: center; /* Center the img horizontally */
+  align-items: center; /* Center the img vertically */
+  margin-bottom: 2px; 
+}
 </style>
