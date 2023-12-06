@@ -100,16 +100,19 @@
           
           </div>
 
-          <!-- Display regions -->
-          <div class="tags">
-            <strong>Region: </strong>
-            <span v-for="tag in recipe.tags" :key="tag.name" class="region">{{ getRegionName(recipe.regionID) }}</span>
-          </div>
+
 
           <!-- Display tags -->
           <div class="tags">
             <strong>Tags:</strong>
             <span v-for="tag in recipe.tags" :key="tag.name" class="tag">{{ tag.name }}</span>
+          </div>
+
+
+          <!-- Display regions -->
+          <div class="tags">
+            <strong>Region: </strong>
+            <span v-for="tag in recipe.tags" :key="tag.name" class="region">{{ getRegionName(recipe.regionID) }}</span>
           </div>
     
         </div>
@@ -340,4 +343,9 @@ transform: scale(1.05);
   align-items: center; /* Center the img vertically */
   margin-bottom: 2px; 
 }
+
+img{
+  border-radius: 2%;
+}
+
 </style>
