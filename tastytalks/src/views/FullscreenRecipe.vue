@@ -145,7 +145,7 @@
   <style scoped>
 
   h1{
-    color: black;
+    color: #FADF54;
   }
   h2{
     font-size: 25px;
@@ -156,16 +156,18 @@
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
-    background-color: white;
+    background-color: #4c934c;
     min-height: 500px;
+    color: #FADF54
   }
   .comments-container{
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #0B6E4F;
     border-radius: 8px;
-    background-color: white;
+    background-color: #FADF54;
+    color: #4c934c
   }
   .comment-box textarea {
     width: 100%; /* Full width of the container */
