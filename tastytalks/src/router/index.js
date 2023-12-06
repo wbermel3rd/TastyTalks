@@ -90,6 +90,15 @@ const routes = [
     path: '/settings',
     name: 'Settings',
     component: () => import('../views/SettingsPage.vue'),
+    beforeEnter: (to, from, next) => {
+      onAuthStateChanged(auth, (user) => {
+        if (user) {
+          next(); // User is signed in, continue to profile page
+        } else {
+          next({ name: 'UserLogin' }); // No user is signed in, redirect to login
+        }
+      });
+    } 
   },
   { 
     path: '/profile', 
