@@ -153,6 +153,9 @@
     margin-bottom: 20px;
     color: #FADF54;
   }
+  .question-item:hover {
+transform: scale(1.02);
+}
   
   .region {
     margin-top: 10px;
