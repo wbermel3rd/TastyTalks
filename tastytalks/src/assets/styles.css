@@ -259,6 +259,27 @@ footer{
     font-family: 'Helvetica', sans-serif;
   }
 
+  /* For Code of Conduct statement on Create new Recipe page*/
+.codeOfContent-instructions {
+    text-align: center;
+    padding: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 14px;
+  }
+
+  /* For Code of Conduct statement on Create new Recipe page*/
+.codeOfContent-registration {
+    text-align: left;
+    color: white;
+    padding: 5px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+
+
+
   /* Font and format for text on About Page, next to buttons*/
 .button-description {
     text-align: right;

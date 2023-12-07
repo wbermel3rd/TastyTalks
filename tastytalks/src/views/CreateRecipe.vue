@@ -135,6 +135,9 @@
 
                 <!-- <img :src="picture.value" alt="preview">      -->
 
+                <!-- Authorized Content Statement     -->
+                <p class="codeOfContent-instructions">By submitting this recipe, you acknowledge you are authorized to share the recipe by the owner, you give proper credit to the original author, or you are the owner.</p>
+      
                 <!-- Submit recipe -->
                 <input type="submit" @click="addPost" value="Submit" >
             </form>
@@ -370,6 +373,7 @@ input[type=text], select, textarea[type=text], input[type=file], input[type=date
 input[type=submit] {
   width: 100%;
   background-color: var(--secondaryBackgroundColor);
+  font-weight: bolder;
   color: white;
   padding: 14px 20px;
   margin: 8px 0;

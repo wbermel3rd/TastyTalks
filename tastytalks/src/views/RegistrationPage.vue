@@ -47,6 +47,8 @@
             </select>
           </div>
 
+          <!-- Code of Conduct Statement     -->
+          <p class="codeOfContent-registration">Tasty Talks is committed to fostering a welcoming community. We do not tolerate bullying or hate speech. All users are expected to adhere to the code of conduct established by UNC Charlotte. Any individuals found breaking this code of conduct will be subject to banning from the community.  By clicking to Create your Account, you are agreeing to these terms.</p>
           <button type="submit" value="Register" class="btn create-account">Create your Account</button>
         </form>
       </div>
