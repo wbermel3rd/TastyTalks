@@ -6,6 +6,10 @@
       <p>{{ post.date }}</p>
       <br>
 
+      <div class="image-fullscreen">
+        <img :src="post.image" alt="Recipe Image">
+      </div>
+
       <h2> Instructions </h2>
       <br>
       <p>{{ post.instructions }}</p>
@@ -354,5 +358,13 @@ h2{
 button {
   margin-right: 10px;
 }
+
+.image-fullscreen img {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 8px; /* Optional, for rounded corners */
+  margin-bottom: 20px; /* Space below the image */
+}
+
 
 </style>
