@@ -122,12 +122,15 @@ export default {
             console.error('Error fetching user data: ', error)
         }
         // create new comment object
+
+        const formattedDate = new Date().toLocaleDateString('en-US');
+
         const newCommentObject = {
           username: this.username,
           userId: currentUser.uid,
           region: this.region,
           text: this.newComment,
-          date: new Date().toISOString(),
+          date: formattedDate,
         }; 
 
         // update comments in document
@@ -341,6 +344,10 @@ h2{
   font-size: 0.8em;
   font-family:'Times New Roman';
   color: #666;
+}
+
+button {
+  margin-right: 10px;
 }
 
 </style>
