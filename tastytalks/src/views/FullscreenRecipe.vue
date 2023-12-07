@@ -16,19 +16,11 @@
         <h2 class="comments-header">Comments:</h2>
         <!-- Comments Section -->
         <div class="comments" v-for="comment in comments" :key="comment.id">
-          <template v-if="comment.editMode">
-            <!-- Edit mode -->
-            <textarea v-model="comment.text"></textarea>
-            <button @click="cancelEdit(comment.id)">Cancel</button>
-            <button @click="saveEdit(comment.id)">Save</button>
-          </template>
-          <!-- Comment display -->
+          <!-- Display comments here -->
           <div class="comment-card">
             <p class="comment-author">{{ comment.username }}</p>
             <p class="comment-text">{{ comment.text }}</p>
             <p class="comment-date">{{ comment.date }}</p>
-            <button @click="deleteComment(comment.id)">Delete</button>
-            <button @click="editComment(comment.id)">Edit</button>
             <!-- <p class="comment-region">{{ comment.region }}</p>  NEEDS STYLING  -->  
           </div>
         </div>
@@ -48,7 +40,7 @@
   <script>
   import { ref, reactive } from 'vue';
   import { useRoute } from 'vue-router'; // Import useRoute
-  import { addDoc, doc, getDoc, getDocs, collection, query, where, deleteDoc, updateDoc } from 'firebase/firestore';
+  import { addDoc, doc, getDoc, getDocs, collection, query, where } from 'firebase/firestore';
   import { db, auth } from '../firebase';
   
   export default {
@@ -83,14 +75,10 @@
             const postData = docSnap.data()
             this.post = { id: docSnap.id, ...postData}
 
-            // Fetch comments on the server side and ensure that the id is set for each comment
+            // Fetch comments on the server side
             const commentsCollectionRef = collection(db, 'recipes', postId, 'comments');
             const commentsSnapshot = await getDocs(commentsCollectionRef);
-            this.comments = commentsSnapshot.docs.map(doc => {
-              const commentData = doc.data();
-              return { id: doc.id, ...commentData };
-            });
-            
+            this.comments = commentsSnapshot.docs.map(doc => doc.data());
           } else {
             console.log("No such document!");
           }
@@ -124,7 +112,6 @@
           // create new comment object
           const newCommentObject = {
             username: this.username,
-            userId: currentUser.uid,
             region: this.region,
             text: this.newComment,
             date: new Date().toISOString(),
@@ -145,110 +132,6 @@
 
           } catch (error) {
             console.error('Error adding comment: ', error);
-          }
-        } else {
-          console.log('User not authenticated');
-        }
-      },
-      async deleteComment(commentId) {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-          try {
-            // Identify the comment to be deleted in the local array
-            const indexToDelete = this.comments.findIndex(comment => comment.id === commentId);
-
-            if (indexToDelete !== -1) {
-              const commentToDelete = this.comments[indexToDelete];
-
-              // Check if the current user is the original poster
-              if (commentToDelete.userId === currentUser.uid) {
-
-                // Identify the comment to be deleted in the Firestore collection
-                const postId = this.route.params.id;
-                const commentDocRef = doc(db, 'recipes', postId, 'comments', commentId);
-
-                // Delete the comment from Firestore
-                await deleteDoc(commentDocRef);
-
-                this.comments.splice(indexToDelete, 1)
-
-              } else {
-                console.log('User is not the original poster and cannot delete the comment.');
-              }
-            }
-
-          } catch (error) {
-            console.error('Error deleting comment: ', error);
-          }
-        } else {
-          console.log('User not authenticated');
-        }
-      },
-      async editComment(commentId) {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-          try {
-            // Identify the comment to be edited in the local array
-            const indexToEdit = this.comments.findIndex(comment => comment.id === commentId);
-
-            if (indexToEdit !== -1) {
-              const commentToEdit = this.comments[indexToEdit];
-
-              // Check if the current user is the original poster
-              if (commentToEdit.userId === currentUser.uid) {
-                commentToEdit.editMode = true;
-                commentToEdit.originalText = commentToEdit.text;
-              } else {
-                console.log('User is not the original poster and cannot edit the comment.');
-              }
-            } else {
-              console.log('Comment not found in the local array.');
-            }
-
-          } catch (error) {
-            console.error('Error editing comment: ', error);
-          }
-        } else {
-          console.log('User not authenticated');
-        }
-      },
-      async cancelEdit(commentId) {
-        // Find the comment in the local array
-        const indexToCancel = this.comments.findIndex(comment => comment.id === commentId);
-
-        if (indexToCancel !== -1) {
-          const commentToCancel = this.comments[indexToCancel];
-          commentToCancel.text = commentToCancel.originalText; // revert the comment text to the original text
-          commentToCancel.editMode = false; //disable edit mode
-        }
-      },
-      async saveEdit(commentId) {
-        const currentUser = auth.currentUser;
-        if (currentUser) {
-          try {
-            // Find the comment in the local array
-            const indexToSave = this.comments.findIndex(comment => comment.id === commentId);
-
-            if (indexToSave !== -1) {
-              const commentToSave = this.comments[indexToSave];
-
-              // Check if the current user is the original poster
-              if (commentToSave.userId === currentUser.uid) {
-                // Update the comment text in Firestore
-                const postId = this.route.params.id;
-                const commentDocRef = doc(db, 'recipes', postId, 'comments', commentId);
-                await updateDoc(commentDocRef, { text: commentToSave.text });
-
-                commentToSave.editMode = false; //disable edit mode with new comment
-              } else {
-                console.log('User is not the original poster and cannot edit the comment.');
-              }
-            } else {
-              console.log('Comment not found in the local array.');
-            }
-
-          } catch (error) {
-            console.error('Error saving edited comment: ', error);
           }
         } else {
           console.log('User not authenticated');
