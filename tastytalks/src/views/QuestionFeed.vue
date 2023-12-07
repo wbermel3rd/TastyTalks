@@ -13,7 +13,7 @@
         <!-- Filter Section -->
         <div class="filter-container">
           <!-- Region Filter -->
-          <label for="region" class="heading-stylized">Filter Region:</label>
+          <label for="region" class="filter-label">Filter Region:</label>
           <select v-model="selectedRegion" @change="fetchQuestions">
             <option value="">Select Region</option>
             <option value="1">Asia-Pacific</option>
@@ -161,5 +161,95 @@ transform: scale(1.02);
     margin-top: 10px;
     font-size: 16px;
   }
+
+/* ///////// FILTER STYLE ////////////////// */
+
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  text-align: center;
+  background-color: #4c934c; /* Match the background color of the recipe boxes */
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-label {
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  margin-right: 10px;
+}
+
+.filter-select {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #0B6E4F;
+  border-radius: 4px;
+  background-color: white;
+  color: #0B6E4F;
+  appearance: none; /* Remove default arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Adjust the position of the arrow */
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+/* Style select dropdown options */
+.filter-select option {
+  background-color: white;
+  color: #0B6E4F;
+}
+
+/* Hover effect for select dropdown options */
+.filter-select option:hover {
+  background-color: #0B6E4F;
+  color: white;
+}
+
+/* //////////////////// */
+
+.filter-select {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #0B6E4F;
+  border-radius: 4px;
+  background-color: white;
+  color: #0B6E4F;
+  appearance: none; /* Remove default arrow */
+  background-repeat: no-repeat;
+  background-position: right 10px center; /* Adjust the position of the arrow */
+  cursor: pointer; /* Add pointer cursor on hover */
+}
+
+/* Style select dropdown options */
+.filter-select option {
+  background-color: white;
+  color: #0B6E4F;
+}
+
+/* Hover effect for select dropdown options */
+.filter-select option:hover {
+  background-color: #0B6E4F;
+  color: white;
+}
+
+/* Add the same background color and box shadow as the recipe boxes */
+.filter-container select {
+  background-color: #FADF54;
+  font-family: 'Lucida Sans';
+  color: #0B6E4F;
+  padding: 8px;
+  border-radius: 4px;
+  border: 1px solid #0B6E4F;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+
+
+
   </style>
   

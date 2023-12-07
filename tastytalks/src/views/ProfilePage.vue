@@ -8,13 +8,18 @@
         </div>
         <div class="profile-body">
           <div class="profile-info"> <!-- user info display -->
+            <h2>Personal Informations</h2>
+            <br>
             <p><strong>Name: </strong> {{ user?.username || 'Loading...' }}</p>
             <p><strong>Email: </strong> {{ user?.email || 'Loading...' }}</p>
             <p><strong>Region: </strong>{{ user?.region || 'Loading...' }}</p>
             <!-- Display more user information here -->
           </div>
+          <br>
+          <br>
           <div class="post-grid"> <!-- Recipes display // add styling and postion on left side of page only--> 
             <h2>Recipes</h2>
+            <br>
             <ul>
               <li v-for="recipe in recipes" :key="recipe.id">
                 <strong>Title:</strong> {{ recipe.title || 'No Title' }} <br>
@@ -22,6 +27,8 @@
               </li>
             </ul>
           </div>
+          <br>
+          <br>
           <div class="post-grid"> <!-- Questions display // add styling and postion on right side of page only--> 
             <h2>Questions</h2>
             <ul>
@@ -164,7 +171,7 @@ export default {
 }
 
 .profile-card {
-  background-color: #FADF54;;
+  background-color: lightgreen;;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 100%;
@@ -175,8 +182,8 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  color: #0B6E4F
-  /* Stack children vertically */
+  color: #0B6E4F;
+  font-family: var(--littleTextFont);
 }
 
 .profile-header {
@@ -211,7 +218,6 @@ export default {
   font-size: 16px;
   color: #333;
   line-height: 1.5;
-  margin-bottom: 30px;
   /* Spacing between paragraphs */
 }
 

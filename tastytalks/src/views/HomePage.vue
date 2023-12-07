@@ -147,6 +147,10 @@ h2{
 
 .recipe-info {
   padding: 10px;
+  text-align: center;
+  /* justify-content: center; */
+  background-color: var(--PrimaryBackgroundColor);
+  flex-grow: 1;
 }
 
 .btn {
@@ -202,8 +206,14 @@ p{
   font-family: var(--littleTextFont);
 }
 
+/* Put recommended Recipe Title in the middle */
+
+/* .recommended-recipe-section{
+  text-align: center;
+} */
 
 .section-container{
   gap: 20px;
+  text-align: center;
 }
 </style>

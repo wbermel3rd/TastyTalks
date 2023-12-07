@@ -3,8 +3,13 @@
 
     <div class="full-post-view" v-if="post">
       <h1>{{ post.title }}</h1>
-      <p>{{ post.instructions }}</p>
       <p>{{ post.date }}</p>
+      <br>
+
+      <h2> Instructions </h2>
+      <br>
+      <p>{{ post.instructions }}</p>
+      
       <!-- Display other post details and comments -->
     </div>
 
