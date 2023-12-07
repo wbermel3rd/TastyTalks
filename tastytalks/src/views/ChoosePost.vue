@@ -33,18 +33,20 @@
   /* Add your styling for clickable-div here */
   .clickable-div {
     cursor: pointer;
-    border: 2px solid #3498db; /* Change border color */
+    border: 2px solid #0B6E4F; /* Change border color */
     border-radius: 8px; /* Add border-radius for rounded corners */
     padding: 15px 20px; /* Adjust padding for top/bottom and left/right */
     margin: 10px;
     text-align: center;
     transition: background-color 0.3s, color 0.3s; /* Add smooth transition for background color and text color */
-    background-color: #3498db; /* Set default background color */
-    color: #fff; /* Set default text color */
+    background-color: #4c934c; /* Set default background color */
+    font-family:'Times New Roman';
+    color: #FADF54; /* Set default text color */
   }
 
   .clickable-div:hover {
-    background-color: #2980b9; /* Change background color on hover */
-    color: #fff; /* Change text color on hover */
+    background-color: #4c934c; /* Change background color on hover */
+    font-family:'Times New Roman';
+    color: #FADF54; /* Change text color on hover */
   }
 </style>
