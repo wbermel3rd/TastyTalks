@@ -29,7 +29,7 @@
           
           <div class="dropdown">
             <select v-model="register_form.region" required>
-                <option value="" disabled selected>Select your country</option>
+                <option value="" selected disabled>Select your region</option>
                 <option value="1">Asia-Pacific</option>
                 <option value="2">Caribbean</option>
                 <option value="3">Central America</option>
@@ -70,10 +70,12 @@ import router from '@/router'
     components: {},
     methods: {},
     setup() {
-     
-      const register_form = ref({})
+      
+      const register_form = ref({
+        region: '',
+      })
       // const store = useStore()
-
+      
       const Register = async () => {
         try{
           // Check if passwords match
