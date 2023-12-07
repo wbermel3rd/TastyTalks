@@ -41,7 +41,7 @@
               <p>{{ question.body }}</p>
               <!-- Display region instead of tags -->
               <div class="region">
-                <strong>Region:</strong>
+                <strong>Region: </strong>
                 <span>{{ getRegionName(question.regionID) }}</span>
               </div>
             </div>

@@ -1,8 +1,6 @@
 <template>
     <div class="Account-Container">
-        <a href=""><i class="fa-solid fa-user user-icon"></i></a>
         <button class="btn" @click="goToLogin">Login</button>
-
     </div>
 </template>
 

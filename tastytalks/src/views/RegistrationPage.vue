@@ -8,28 +8,28 @@
         <h1>Create an Account</h1>
         <form class="register" @submit.prevent="Register">
           <div class="textbox">
-            <input type="text" placeholder="First Name" v-model="register_form.first_name">
+            <input type="text" placeholder="First Name" v-model="register_form.first_name" required>
           </div>
           <div class="textbox">
-            <input type="text" placeholder="Last Name" v-model="register_form.last_name">
+            <input type="text" placeholder="Last Name" v-model="register_form.last_name" required>
           </div>
           <div class="textbox">
-            <input type="email" placeholder="Email Address" v-model="register_form.email">
+            <input type="email" placeholder="Email Address" v-model="register_form.email" required>
           </div>
           <div class="textbox">
-            <input type="username" placeholder="Username" v-model="register_form.username">
+            <input type="username" placeholder="Username" v-model="register_form.username" required>
           </div>
   
           <div class="textbox">
-            <input type="password" placeholder="Password" v-model="register_form.password">
+            <input type="password" placeholder="Password" v-model="register_form.password" required>
           </div>
           <div class="textbox">
-            <input type="password" placeholder="Confirm Password" v-model="register_form.confirmPassword">
+            <input type="password" placeholder="Confirm Password" v-model="register_form.confirmPassword" required>
           </div>
           
           <div class="dropdown">
             <select v-model="register_form.region" required>
-                <option value="" selected disabled>Select your region</option>
+                <option value="" selected disabled>Select your Region</option>
                 <option value="1">Asia-Pacific</option>
                 <option value="2">Caribbean</option>
                 <option value="3">Central America</option>
@@ -44,8 +44,6 @@
                 <option value="12">South America</option>
                 <option value="13">Southeast Asia</option>
                 <option value="14">Western Europe</option>
-
-                
             </select>
           </div>
 
@@ -125,7 +123,7 @@ import router from '@/router'
     display: flex;
     justify-content: center;
     padding-top: 30px;
-    padding-bottom: 620px;
+    padding-bottom: 20px;
     /* height: 100vh; */
     background-color: #222;
   }
