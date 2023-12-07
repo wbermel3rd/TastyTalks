@@ -89,24 +89,19 @@ export default {
         white-space: nowrap;;
     }
     
-    .main-title{
-        font-size: 20px;
-        font-family: var(--TestingFont);
-        color: var(--Trying2);
-    }
-
     .top-header a{
         display: flex;
         text-decoration: none;
         gap: 10px;
     }
+
     header{
         display: flex;
         align-items: stretch;
         width: 100%;
         height: 100%;
         background-color: var(--mainBackgroundColor);
-        font-family: var(--TestingFont);
+
     }
     
     .bottom-header{
