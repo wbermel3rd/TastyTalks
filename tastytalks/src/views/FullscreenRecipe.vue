@@ -3,15 +3,18 @@
 
     <div class="full-post-view" v-if="post">
       <h1>{{ post.title }}</h1>
-      <p>{{ post.date }}</p>
+      <p>Date Posted: {{ post.date }}</p>
       <br>
 
       <div class="image-fullscreen">
         <img :src="post.image" alt="Recipe Image">
       </div>
 
-      <h2> Instructions </h2>
+      <h2> Ingredients: </h2>
+      <p>{{ post.ingredients }}</p>
       <br>
+
+      <h2> Instructions: </h2>
       <p>{{ post.instructions }}</p>
       
       <!-- Display other post details and comments -->
