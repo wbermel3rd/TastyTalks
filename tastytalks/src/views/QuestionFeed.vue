@@ -44,6 +44,10 @@
                 <strong>Region: </strong>
                 <span>{{ getRegionName(question.regionID) }}</span>
               </div>
+              <div class="region">
+                <strong>Date: </strong>
+                <span>{{ question.date }}</span>
+              </div>
             </div>
           </div>
         </div>
@@ -158,6 +162,8 @@ transform: scale(1.02);
 }
   
   .region {
+    display: inline-block;
+    margin-right: 10px;
     margin-top: 10px;
     font-size: 16px;
   }

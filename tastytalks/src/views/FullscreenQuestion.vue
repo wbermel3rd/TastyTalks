@@ -3,8 +3,10 @@
 
       <div class="full-post-view" v-if="post">
         <h1 class="centered-heading">{{ post.title }}</h1>
-        <p>{{ post.instructions }}</p>
-        <p><span style="font-weight: bold; font-size: 18px;">Date Posted:</span> {{ post.date }}</p>
+        <br>
+        <p><span style="font-weight: 500; font-size: 20px;">{{ post.description }}</span></p>
+        <br>
+        <p><span style="font-weight: bold; font-size: 16px;">Date Posted:</span> {{ post.date }}</p>
         <!-- Display other post details and comments -->
       </div>
 
@@ -269,13 +271,14 @@
     font-size: 25px;
   }
   .full-post-view {
+    display: flex;
+    flex-direction: column;
     max-width: 800px;
     margin: 20px auto;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #4c934c;
-    min-height: 500px;
     font-family: 'Lucida Sans';
     color: #FADF54
   }

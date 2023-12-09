@@ -85,12 +85,13 @@ export default {
 
               const username = userData.username
               const userRegion = userData.region
+              const formattedDate = new Date().toLocaleDateString('en-US');
 
               console.log("username:", username);
               console.log("userRegion:", userRegion);
 
               const questionRef = await addDoc(collection(db, 'questions'), {
-                date: Date.now(),
+                date: formattedDate,
                 title: question_form.value.title,
                 regionID: question_form.value.region,
                 description: question_form.value.description,
