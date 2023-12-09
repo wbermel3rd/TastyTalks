@@ -203,7 +203,6 @@ footer{
 }
 
 
-
 /* Nav bar line */
 .custom-line {
     border: none;
@@ -211,14 +210,22 @@ footer{
     background-color: var(--TitleBackgroundColor);
 }
 
-/* Page Heading Background */
+/* Centered Container for One Heading Version*/
 .centered-container {
     text-align: center;
     padding-top: 30px;
     padding-bottom: 25px;
 }
 
-/* Page Heading  */
+/* Page Heading For Recipe and Questions Page  */
+.centered-heading {
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom:10px;
+    font-family: 'Helvetica', sans-serif;
+}
+
+/* Page Heading with Background  */
 .cylinder-heading {
     display: inline-block;
     padding: 10px;

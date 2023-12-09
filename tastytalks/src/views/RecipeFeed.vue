@@ -156,7 +156,6 @@ export default {
       12: 'South America',
       13: 'Southeast Asia',
       14: 'Western Europe',
-      // Add more entries for other regions
     };
 
     const getRegionName = (regionID) => {
@@ -258,7 +257,7 @@ flex-direction: column;
 box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 padding: 20px;
 border-radius: 8px;
-background-color: #4c934c;
+background-color: #59ab59;
 transition: transform 0.3s ease-in-out;
 /* The following lines will set the size of each recipe box to a predetermined size.
   presetting the size allows content to extend beyond box in some circumstances.

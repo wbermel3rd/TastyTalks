@@ -2,9 +2,9 @@
     <main>
 
       <div class="full-post-view" v-if="post">
-        <h1>{{ post.title }}</h1>
+        <h1 class="centered-heading">{{ post.title }}</h1>
         <p>{{ post.instructions }}</p>
-        <p>{{ post.date }}</p>
+        <p><span style="font-weight: bold; font-size: 18px;">Date Posted:</span> {{ post.date }}</p>
         <!-- Display other post details and comments -->
       </div>
 

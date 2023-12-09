@@ -2,8 +2,9 @@
   <main>
 
     <div class="full-post-view" v-if="post">
-      <h1>{{ post.title }}</h1>
-      <p>Date Posted: {{ post.date }}</p>
+      <h1 class="centered-heading">{{ post.title }}</h1>
+      <p><span style="font-weight: bold; font-size: 20px;">Date Posted:</span> {{ post.date }}</p>
+      <p><span style="font-weight: bold; font-size: 20px;">Region:</span> {{ getRegionName(post.regionID)}}</p>
       <br>
 
       <div class="image-fullscreen">
@@ -16,8 +17,7 @@
 
       <h2> Instructions: </h2>
       <p>{{ post.instructions }}</p>
-      
-      <!-- Display other post details and comments -->
+
     </div>
 
     <div v-else>
@@ -70,6 +70,26 @@ export default {
     const showCommentBox = ref(false); // For toggling the comment box
     const newComment = ref(''); // For storing new comment text
     const user = auth.currentUser;
+    const regionMap = {
+      1: 'Asia-Pacific',
+      2: 'Caribbean',
+      3: 'Central America',
+      4: 'Central Asia',
+      5: 'Eastern Europe',
+      6: 'Middle East',
+      7: 'Nordic Countries',
+      8: 'North America',
+      9: 'Northern Africa',
+      10: 'Oceania',
+      11: 'Southern Africa',
+      12: 'South America',
+      13: 'Southeast Asia',
+      14: 'Western Europe',
+    };
+
+    const getRegionName = (regionID) => {
+      return regionMap[regionID] || 'Unknown Region';
+    };
 
     return{
       route,
@@ -77,7 +97,8 @@ export default {
       showCommentBox,
       newComment,
       comments: reactive([]),
-      user
+      user,
+      getRegionName,
     };
   },
   mounted(){
@@ -290,7 +311,7 @@ h2{
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  background-color: #4c934c;
+  background-color: #59ab59;
   min-height: 500px;
   font-family: 'Lucida Sans';
   color: #FADF54
