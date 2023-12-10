@@ -83,7 +83,7 @@ export default {
         { id: 2, name: 'Ian Boyd', jobTitle: 'Frontend Development', image: require('@/assets/images/Group/IanB.jpg') },
         { id: 3, name: 'Sushmita Hari', jobTitle: 'Design Specialist', image: require('@/assets/images/Group/Sushmita.jpg') },
         { id: 4, name: 'Olivier Deschamps', jobTitle: 'Frontend Development', image: require('@/assets/images/Group/Olivier.jpg')},
-        { id: 5, name: 'Will Bermel', jobTitle: 'Backend Development', image: 'person2.jpg' },
+        { id: 5, name: 'Will Bermel', jobTitle: 'Backend Development', image: require('@/assets/images/Group/will_formal.jpeg') },
 
         // Add more persons as needed
       ],
