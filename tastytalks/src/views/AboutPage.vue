@@ -71,11 +71,6 @@
   </main>
 </template>
 
-<!-- Ian Boyd
-Olivier DeschampsOlivier Deschamps
-Samuel BaynesSamuel Baynes
-Sushmita HariSushmita Hari
-Will BermelWill Bermel  -->
 
 <script>
 
@@ -84,11 +79,11 @@ export default {
   data() {
     return {
       persons: [
-        { id: 1, name: 'Samuel Baynes', jobTitle: 'Job Title', image: require('@/assets/images/Group/Sam.jpg')},
-        { id: 2, name: 'Ian Boyd', jobTitle: 'Job Title', image: require('@/assets/images/Group/IanB.jpg') },
-        { id: 3, name: 'Sushmita Hari', jobTitle: 'Job Title', image: require('@/assets/images/Group/Sushmita.jpg') },
-        { id: 4, name: 'Olivier Deschamps', jobTitle: 'Job Title', image: require('@/assets/images/Group/Olivier.jpg')},
-        { id: 5, name: 'Will Bermel', jobTitle: 'Job Title', image: 'person2.jpg' },
+        { id: 1, name: 'Samuel Baynes', jobTitle: 'Design Manager', image: require('@/assets/images/Group/Sam.jpg')},
+        { id: 2, name: 'Ian Boyd', jobTitle: 'Frontend Development', image: require('@/assets/images/Group/IanB.jpg') },
+        { id: 3, name: 'Sushmita Hari', jobTitle: 'Design Specialist', image: require('@/assets/images/Group/Sushmita.jpg') },
+        { id: 4, name: 'Olivier Deschamps', jobTitle: 'Frontend Development', image: require('@/assets/images/Group/Olivier.jpg')},
+        { id: 5, name: 'Will Bermel', jobTitle: 'Backend Development', image: 'person2.jpg' },
 
         // Add more persons as needed
       ],
