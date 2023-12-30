@@ -1,6 +1,9 @@
 # TastyTalks
 Final project for ITSC3155 - Software Engineering
 
+### Figma Prototype
+[View the Figma prototype by clicking here](https://www.figma.com/proto/miPGcVLFRCXnJYF0yEROq9/TastyTalks?page-id=0%3A1&type=design&node-id=3-162&viewport=83%2C-172%2C0.2&t=uPohiySU6e9TW4c2-1&scaling=min-zoom&starting-point-node-id=3%3A162&mode=design)
+
 ### Collaborators
 Olivier Deschamps
 Ian Boyd
