@@ -14,6 +14,8 @@ world to learn recipes from various regions. The website allows the user to
 post a recipe, ask questions, and comment on other people's posts, all while
 displaying their origin region. 
 
+See TastyTalks_Report for detailed information about the forum application.
+
 **Instructions to Run**
 
 Instructions to run:
